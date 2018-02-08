@@ -18,11 +18,9 @@
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <?php
-if (isset($_GET['error'])) {
-    $error = 1;
-    print($error);
-}
 session_start();
+
+
 
 
 
@@ -92,29 +90,19 @@ if (isset($_SESSION['id'])) {
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Nom</th>
+                                                    <th>Name</th>
                                                     <th>Telephone</th>
                                                     <th>Crime</th>
-                                                    <th>Sanction</th>
-                                                    <th>delete</th>
-                                                    
+                                                    <th>Sanction, fine, ..</th>
+                                                    <th>
+                                                    Delete
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                     ';
     include("config.php");
-    if (isset($error)) {
-        if($error == 1){
-    echo '
-    <div class="alert alert-danger alert-dismissable fade in">
-    <a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation peuvent effacer un casier judiciaire  </div>
-    
-    ';
-    }
-    
-}
     // Get contents of the lspd table
     $reponse = $bdd->query('SELECT * FROM lspd');
 
@@ -138,7 +126,11 @@ if (isset($_SESSION['id'])) {
         echo $data['telephone'];
 ?>
                                                    </td>
-                                                    
+                                                    <td>
+                                                        <?php
+        echo $data['steam'];
+?>
+                                                   </td>
                                                     <td class="center">
                                                         <?php
         echo $data['crime'];
@@ -157,7 +149,6 @@ if (isset($_SESSION['id'])) {
 ?>
                                                 </form>
                                                 </tr>
-
                                                 <?php
     }
     $reponse->closeCursor(); // Complete query

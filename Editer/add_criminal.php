@@ -74,31 +74,25 @@
 					<form action="add_criminal_post.php" method="post">
 						<p>
 							<div class="form-group">
-								<label for="nom">First and Surname</label> :
+								<label for="nom">First and Surname *</label> :
 								<p class="help-block">ex: John Cena</p>
 								<input type="text" name="nom" id="nom" class="form-control" required />
 								<br />
 							</div>
 							<div class="form-group">
-								<label for="message">User ID</label> :
-								<p class="help-block">ex 123</p>
-								<input type="text" name="telephone" id="telephone" class="form-control" required />
+								<label for="message">Telephone</label> :
+								<p class="help-block">ex 555-12345</p>
+								<input type="text" name="telephone" id="telephone" class="form-control" />
 								<br />
 							</div>
 							<div class="form-group">
-								<label for="message">Steam ID</label> :
-								<p class="help-block">STEAM_0:0:61796428 or 76561198083858584</p>
-								<input type="text" name="steam" id="steam" class="form-control"/>
-								<br />
-							</div>
-							<div class="form-group">
-								<label for="message">Crime</label> :
+								<label for="message">Crime *</label> :
 								<p class="help-block">Robber/ Car jacking / ...</p>
 								<input type="text" name="crime" id="crime" class="form-control" required />
 								<br />
 							</div>
 							<div class="form-group">
-								<label for="message">Sanction</label> :
+								<label for="message">Sanction *</label> :
 								<p class="help-block">ex $100 Fine, 1 Year in jail</p>
 								<input type="text" name="sanction" id="sanction" class="form-control" required />
 								<br />
@@ -117,6 +111,7 @@
 							<div class="col-md-12">
                    &copy; 2017 LSPD |
 								<a href="https://www.youtube.com/user/davendrix" target="_blank"  > Coded by : Davendrix</a>
+								| Updated by : Glen McMahon
 							</div>
 						</div>
 					</div>
