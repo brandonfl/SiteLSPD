@@ -55,11 +55,17 @@ if (isset($_SESSION['id'])) {
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a href="index.php" class="menu-top-active"> Home</a>
+                                        <a href="index.php" class="menu-top-active">Home</a>
                                     </li>
                                     <li>
-                                        <a href="add_criminal.php">Add a criminal</a>
-                                    </li>
+										<a href="add_criminal.php">Ajouter un criminel</a>
+									</li>
+										<li>
+											<a href="trello" target="_blank"> Enquetes</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Infortations Internes</a>
+										</li>
                                 </ul>
                             </div>
                         </div>

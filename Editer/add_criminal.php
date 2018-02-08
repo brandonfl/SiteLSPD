@@ -45,12 +45,18 @@
 							<div class="navbar-collapse collapse ">
 								<ul id="menu-top" class="nav navbar-nav navbar-right">
 									<li>
-										<a href="index.php"> Home</a>
+										<a href="index.php">Home</a>
 									</li>
 									<li>
-										<a href="add_criminal.php" class="menu-top-active">Add a criminal</a>
+										<a href="add_criminal.php" class="menu-top-active">Ajouter un criminel</a>
 									</li>
-								</ul>
+										<li>
+											<a href="trello" target="_blank">Enquetes</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Infortations Internes</a>
+										</li>
+									</ul>
 							</div>
 						</div>
 					</div>
