@@ -4,6 +4,10 @@ include( "config.php" );
 session_start();
 
 if (isset($_SESSION['id'])) {
+	if($_SESSION['procureur'] == 1){
+		$error = 2;
+		header( "Location: index.php?error=".$error);		
+	}else{
 
 // Insert the information
 $req = $bdd->prepare('INSERT INTO lspd (nom, telephone, crime, sanction,Agent) VALUES(?, ?, ?, ?,?)');
@@ -11,7 +15,7 @@ $req->execute(array($_POST['nom'], $_POST['telephone'], $_POST['crime'], $_POST[
 
 // Redirect user back to the add criminal page
 header('Location: add_criminal.php');
-} else {
+}} else {
     header("Location: login.php");
 }
 ?>

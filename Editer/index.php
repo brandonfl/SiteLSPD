@@ -19,7 +19,7 @@
         </head>
         <?php
 if (isset($_GET['error'])) {
-    $error = 1;
+    $error = $_GET['error'];
 }
 session_start();
 
@@ -93,7 +93,7 @@ if (isset($_SESSION['id'])) {
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
+                                                    <th>Horodateur</th>
                                                     <th>Nom</th>
                                                     <th>Telephone</th>
                                                     <th>Crime</th>
@@ -114,6 +114,14 @@ if (isset($_SESSION['id'])) {
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation peuvent effacer un casier judiciaire  </div>
     
+    ';}
+    
+    if($error == 2){
+    echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Uniquement les agents de la LSPD peuvent ajouter un casier judiciaire et non le procureur</div>
+    
     ';
     }
     
@@ -128,7 +136,7 @@ if (isset($_SESSION['id'])) {
                                                     <form action='delete_entry.php' method='post'>
                                                     <td>
                                                         <?php
-        echo $data['id'];
+        echo $data['horodateur'];
 ?>
                                                    </td>
                                                     <td>
