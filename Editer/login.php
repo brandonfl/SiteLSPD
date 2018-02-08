@@ -12,10 +12,14 @@ if(isset($_POST['formconnexion'])) {
       $userexist = $requser->rowCount();
       if($userexist == 1) {
          $userinfo = $requser->fetch();
+         if($userinfo['allowed'] == 0){
+            $erreur = "Vous n'êtes pas encore autorisé à vous connecter !";
+        } else {
          $_SESSION['id'] = $userinfo['id'];
          $_SESSION['pseudo'] = $userinfo['pseudo'];
          $_SESSION['mail'] = $userinfo['mail'];
          header("Location: index.php?id=".$_SESSION['id']);
+         }
       } else {
          $erreur = "Email address or password is invalid !";
       }
