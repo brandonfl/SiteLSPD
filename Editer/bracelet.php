@@ -18,9 +18,11 @@
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <?php
+if (isset($_GET['statut'])) {
+    $statut = $_GET['statut'];
+    
+}
 session_start();
-
-
 
 
 
@@ -55,11 +57,14 @@ if (isset($_SESSION['id'])) {
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a href="index.php" class="menu-top-active">Home</a>
+                                        <a href="index.php">Home</a>
                                     </li>
                                     <li>
 										<a href="add_criminal.php">Ajouter un criminel</a>
 									</li>
+									<li>
+                                        <a href="bracelet.php" class="menu-top-active">Bracelet</a>
+                                    </li>
 										<li>
 											<a href="trello" target="_blank"> Enquetes</a>
 										</li>
@@ -77,9 +82,11 @@ if (isset($_SESSION['id'])) {
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">LSPD PANEL</h4>
-                        </div>
+                            <h4 class="header-line">Bracelet PANEL</h4>
+                        </div> 
                     </div>
+                    <a href="add_bracelet.php" class="btn btn-success pull-right">Ajouter un bracelet</a>
+                    </br>
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Advanced Tables -->
@@ -89,33 +96,59 @@ if (isset($_SESSION['id'])) {
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>Name</th>
+                                                    <th>Nom</th>
                                                     <th>Telephone</th>
-                                                    <th>Crime</th>
-                                                    <th>Sanction, fine, ..</th>
-                                                    <th>
-                                                    Delete
-                                                    </th>
+                                                    <th>Debut</th>
+                                                    <th>Fin</th>
+                                                    <th>Dernier pointage</th>
+                                                    <th>Fait par</th>
+                                                    <th>Pointer</th>
+                                                    <th>Supprimer</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                     ';
     include("config.php");
+    if (isset($statut)) {
+        if($statut == 0){
+    echo '
+    <div class="alert alert-info alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation ou le procureur peuvent ajouter un bracelet</div>
+    
+    ';
+    }
+    
+    if($statut == 1){
+    echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation ou le procureur peuvent effacer un casier judiciaire  </div>
+    
+    ';
+    }
+    
+    if($statut == 2){
+    echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Sucess !</strong> Vous avez bien pointer un bracelet electronique  </div>
+    
+    ';
+    }
+    
+}
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM lspd');
+    $reponse = $bdd->query('SELECT * FROM bracelet');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
 ?>
                                                <tr class="odd gradeX">
-                                                    <form action='delete_entry.php' method='post'>
-                                                    <td>
-                                                        <?php
-        echo $data['id'];
-?>
-                                                   </td>
+                                                    
+                                                    
                                                     <td>
                                                         <?php
         echo $data['nom'];
@@ -126,21 +159,36 @@ if (isset($_SESSION['id'])) {
         echo $data['telephone'];
 ?>
                                                    </td>
-                                                    <td>
+                                                    
+                                                    <td class="center">
                                                         <?php
-        echo $data['steam'];
+        echo $data['debut'];
 ?>
                                                    </td>
                                                     <td class="center">
                                                         <?php
-        echo $data['crime'];
+        echo $data['fin'];
 ?>
                                                    </td>
-                                                    <td class="center">
+                                                   <td class="center">
                                                         <?php
-        echo $data['sanction'];
+        echo $data['dernier'];
 ?>
                                                    </td>
+                                                   <td class="center">
+                                                        <?php
+        echo $data['par'];
+?>
+                                                   </td>
+                                                   
+                                                    <form action='pointer_bracelet.php' method='post'>
+                                                     <?php
+        echo '<td>
+                                                             <input type="submit" name="updateItem" class="btn btn-success" value="' . $data['id'] . '" />
+                                                     </td>';
+?>
+                                                </form>
+                                                   
                                                  <form action='delete_entry.php' method='post'>
                                                      <?php
         echo '<td>
@@ -149,6 +197,7 @@ if (isset($_SESSION['id'])) {
 ?>
                                                 </form>
                                                 </tr>
+
                                                 <?php
     }
     $reponse->closeCursor(); // Complete query

@@ -17,8 +17,14 @@
 			<!-- GOOGLE FONT -->
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 		</head>
-		<?php include( "config.php"); session_start(); if (isset($_SESSION[ 'id'])) { echo '
-
+		<?php include( "config.php"); session_start(); if (isset($_SESSION[ 'id'])) { 
+		
+		if($_SESSION['procureur'] == 0 and $_SESSION['Admin'] == 0){
+		 	$statut = 0;
+			header( "Location: bracelet.php?statut=".$statut);
+			} else {
+				echo '
+		
 		<body>
 			<div class="navbar navbar-inverse set-radius-zero" >
 				<div class="container">
@@ -48,10 +54,10 @@
 										<a href="index.php">Home</a>
 									</li>
 									<li>
-										<a href="add_criminal.php" class="menu-top-active">Ajouter un criminel</a>
+										<a href="add_criminal.php">Ajouter un criminel</a>
 									</li>
 									<li>
-										<a href="bracelet.php">Bracelet</a>
+										<a href="bracelet.php" class="menu-top-active">Bracelet</a>
 									</li>
 										<li>
 											<a href="trello" target="_blank">Enquetes</a>
@@ -69,12 +75,12 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<p></p>
-					<p></p>Add a Criminal
+					<p></p>Ajouter un Bracelet
 					<p></p>
 					<p></p>
 				</div>
 				<div class="panel-body">
-					<form action="add_criminal_post.php" method="post">
+					<form action="add_bracelet_post.php" method="post">
 						<p>
 							<div class="form-group">
 								<label for="nom">First and Surname *</label> :
@@ -83,21 +89,15 @@
 								<br />
 							</div>
 							<div class="form-group">
-								<label for="message">Telephone</label> :
+								<label for="message">Telephone *</label> :
 								<p class="help-block">ex 555-12345</p>
 								<input type="text" name="telephone" id="telephone" class="form-control" />
 								<br />
 							</div>
 							<div class="form-group">
-								<label for="message">Crime *</label> :
-								<p class="help-block">Robber/ Car jacking / ...</p>
-								<input type="text" name="crime" id="crime" class="form-control" required />
-								<br />
-							</div>
-							<div class="form-group">
-								<label for="message">Sanction *</label> :
-								<p class="help-block">ex $100 Fine, 1 Year in jail</p>
-								<input type="text" name="sanction" id="sanction" class="form-control" required />
+								<label for="message">Date de fin *</label> :
+								<p class="help-block">2012-12-21</p>
+								<input type="date" name="date" id="date" class="form-control" />
 								<br />
 							</div>
 							<input type="submit" value="Send" class="btn btn-info />
@@ -125,5 +125,6 @@
 				<script src="assets/js/jquery-1.10.2.js"></script>
 				<!-- BOOTSTRAP SCRIPTS  -->
 				<script src="assets/js/bootstrap.js"></script>
-			</body>'; } else { header( "Location: login.php"); } ?>
+			</body>';
+			 }} else { header( "Location: login.php"); } ?>
 		</html>

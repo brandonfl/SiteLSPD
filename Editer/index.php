@@ -20,7 +20,6 @@
         <?php
 if (isset($_GET['error'])) {
     $error = 1;
-    print($error);
 }
 session_start();
 
@@ -61,6 +60,9 @@ if (isset($_SESSION['id'])) {
                                     </li>
                                     <li>
 										<a href="add_criminal.php">Ajouter un criminel</a>
+									</li>
+									<li>
+										<a href="bracelet.php">Bracelet</a>
 									</li>
 										<li>
 											<a href="trello" target="_blank"> Enquetes</a>
