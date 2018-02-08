@@ -1,25 +1,42 @@
-
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
--- http://www.phpmyadmin.net
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
 --
--- Client: localhost
--- Généré le: Dim 04 Juin 2017 à 23:38
--- Version du serveur: 10.0.28-MariaDB
--- Version de PHP: 5.2.17
+-- Hôte : localhost:3306
+-- Généré le :  jeu. 08 fév. 2018 à 19:39
+-- Version du serveur :  10.1.30-MariaDB
+-- Version de PHP :  7.0.27
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données: `u917733090_lspd`
+-- Base de données :  `u606391292_lspdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `bracelet`
+--
+
+CREATE TABLE `bracelet` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `telephone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `debut` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fin` datetime NOT NULL,
+  `dernier` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `par` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -27,17 +44,14 @@ SET time_zone = "+00:00";
 -- Structure de la table `lspd`
 --
 
-CREATE TABLE IF NOT EXISTS `lspd` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lspd` (
+  `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `telephone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `steam` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `telephone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `crime` text COLLATE utf8_unicode_ci NOT NULL,
   `sanction` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
-
-
+  `Agent` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -45,15 +59,60 @@ CREATE TABLE IF NOT EXISTS `lspd` (
 -- Structure de la table `membres`
 --
 
-CREATE TABLE IF NOT EXISTS `membres` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `membres` (
+  `id` int(11) NOT NULL,
   `pseudo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `motdepasse` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+  `allowed` tinyint(1) NOT NULL DEFAULT '0' COMMENT ' A value of zero is considered false. 1 considered true',
+  `procureur` tinyint(1) NOT NULL DEFAULT '0',
+  `Admin` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Index pour les tables déchargées
+--
 
+--
+-- Index pour la table `bracelet`
+--
+ALTER TABLE `bracelet`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `lspd`
+--
+ALTER TABLE `lspd`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `membres`
+--
+ALTER TABLE `membres`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `bracelet`
+--
+ALTER TABLE `bracelet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `lspd`
+--
+ALTER TABLE `lspd`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT pour la table `membres`
+--
+ALTER TABLE `membres`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
