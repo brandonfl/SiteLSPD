@@ -96,6 +96,7 @@ if (isset($_SESSION['id'])) {
                                                     <th>Telephone</th>
                                                     <th>Crime</th>
                                                     <th>Sanction</th>
+                                                    <th>Agent</th>
                                                     <th>delete</th>
                                                     
                                                 </tr>
@@ -108,7 +109,7 @@ if (isset($_SESSION['id'])) {
         if($error == 1){
     echo '
     <div class="alert alert-danger alert-dismissable fade in">
-    <a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation peuvent effacer un casier judiciaire  </div>
     
     ';
@@ -147,6 +148,11 @@ if (isset($_SESSION['id'])) {
                                                     <td class="center">
                                                         <?php
         echo $data['sanction'];
+?>
+                                                   </td>
+                                                   <td class="center">
+                                                        <?php
+        echo $data['Agent'];
 ?>
                                                    </td>
                                                  <form action='delete_entry.php' method='post'>
