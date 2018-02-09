@@ -1,0 +1,147 @@
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-01 22:54:06","Pascual Ostieta","Port d'armes illégals","1100$,10 mois","Russel Jones");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-01 01:37:36","Manu Nadeau","braquage magasin - Possetion d'arme illégales - 2x vol de voiture - délit de fuite - tir sur agent ","18k$,45mois","russel Jones");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-01 01:39:45","john O'conor","braquage magasin  - vol de voiture - délit de fuite - "," 7k,45mois","russel jones ");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-01 01:42:32","Ray Defesse","braquage magasin  - 2x vol de voiture - délit de fuite  ","45 mois","russel jones");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-01 14:59:57","Lucciano REYNOSA","Meurtre sur moldu"," 5000$,20 mois","Stanislas BARCLAY");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-06 02:27:08","Mateo Porte","Tentative braquage superette"," 2000$, 15 mn","Jimmo Casto");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-06 02:28:20","Pascual Osteita","Délit de fuite + detention armes illégales (sniper / bombe / .50)","10000$, 30 min","Jimmo Casto");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:22:05","Tony Vasily","Vol véhicule + refus","51000$i, 10 mois"," Glen McMahon (+ Aiden, Jimmo, Jeylana)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:23:21","Pekom Harmant","Délit de fuite, conduite en contresens autoroute","30000$, 10","Glen McMahon (+ Aiden, Jimmo, Jeylana)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:24:13","Mayt Jhon","Vol de véhicule, illégale avec poudre, cocaïne, argent sale ","216 + 40000$, 45mois","Glen McMahon (+ Jimmo)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:24:48","Ray Desfesse","Vol de véhicule","3800$,5mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:25:30","Chris Ostreicher","Vol de véhicule + sans permis","1500 (+3800)$,5 mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:26:05","Salvatore Riina","Vol de véhicule + trouble à l'ordre public"," 3800$,15 mois","Glen McMahon (+ Stanisley + Jimmo)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:26:52","Rafale Pororas","Trouble à l'ordre public + entrave à une enquête de police + possession d'argent sale","1650 + 130 + 90$,20 mois","Glen McMahon (+ stanley + Jimmo)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:27:39","Ray Desfesse","Braquage de 3 supérettes avec délit de fuite"," (800 x 3) + (750 x 3) + 5000$,20 mois","Glen McMahon (+ Vladimir + Russel)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:28:18","Manu Nadeau","Braquage de 3 supérette avec délit de fuite + meurtre sur LSPD"," (750 x 3) + 5000 + (800 x 3) + 30000$,25 mois","Glen McMahon (+ Vladimir + russel)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:29:36","John O'Connor","Braquage de 3 supérette avec délit de fuite"," (750 x 3) + 5000 + (800 x 3)$,20 mois","Glen McMahon (+ vladimir + Russel)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:30:14","Mike Taylor","délit de fuite + excès de vitesse + Vol de véhicule","800 + 180 + 3800$,15 mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:30:54","John O'Connor","Vol de véhicule"," 3800$,10 mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:31:32","Mateo Porte","Tentative de braquage de superette (pas d'arme, coopératif)"," 1300$,10 mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:32:07","Pascual Osteita","Port d'arme illégale + délit de fuite"," 1100 + 800$,30 mois","Glen McMahon (+ Jimmo)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:32:42","Ray Defesse","Armes illégales + argent sale","1100$,10 mois","Glen McMahon (+Jimmo + Aiden + Kimble + Vladimir + bryan)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:33:20","Adil Kramdi","Attentat + homicide sur agent de police + délit de fuite + 5 vol de véhicule + autre","50190$, 45 mois","Glen McMahon + LSPD");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:33:51","Ray Defesse","délit de fuite + tentative de meurtre envers agent LSPD + argent sale + vol de véhicule","800 + 1650 + 5000$, 10 mois","Glen McMahon + LSPD");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:34:28","Omar Sindas","vol de véhicule + délit de fuite + outrage à agent + non respect de la signalisation + coups et blessure envers des agents LSPD","110 + 110 + 150 + 800 + 3800$, 10 mois","Glen McMahon + LSPD");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:35:07","Manu Nadeau","Homicide envers LSPD + braquage","mort","Glen McMahon + LSPD");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:36:03","Omar Sindas","récidive de coups et blessure envers LSPD (neutralisation 2ème parti) "," 5000$,10 mois + nuit","Glen McMahon + LSPD");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-07 20:36:35","Omar Sindas","multi-récidive de coups et blessure envers LSPD (neutralisation 3ème parti) "," 5000$,coma","Glen McMahon + LSPD");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-09 01:22:16","Ray Defesse","tentative meutre barclay + armes illegales etc","5000+3800+1100+90$,45 mois","Jimmo Casto");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-09 01:23:24","Aylan Kramdi","drogues + fuite + tentative meurtre agent etat","10000$,45 mois","Jimmo Casto");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-09 01:24:32","Adil Kramdi","meth + fuite + vol vehicule + tentative meurtre","10K$,45 mois","Jimmo Casto");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-09 22:22:24","Omar Sindas","braquage de magasin + vol de véhicule + refus d'obtempérer "," 3800 + 750 + 800$,20 mois","Glen McMahon (+ Alyana + Jeylana + Jimmo)");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-10 01:25:11","Adil Kramdi","delit fuite + vol vehicul + tentative meutre agent etat"," 20000$,38 mois","Jimmo Casto");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-10 23:12:26","Bob Kay","delit de fuite / homicide agent etat / armes illegales / …","40000$,30 mois","Jimmo Casto");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-10 23:13:12","John Duff","delit de fuite / homicide agent etat"," 40000$,30 mois","Jimmo Casto");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-10 23:13:59","Tuco Odenkirk","delit de fuite / homicide agent etat","40000$,30 mois","Jimmo Casto");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-21 21:40:15","Momo TAKINI","Vente de drogue, possession de drogue, vol de véhicule, délit de fuite"," 28000$,45 mois","BARCLAY");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-21 21:41:13","Lukas Viesa","Vente de drogue, possession de drogue, vol de véhicule, délit de fuit","28000$,45 mois","Barclay");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2017-12-28 00:44:05","Rankovic","Revente de meth et possession d'argent sale","17650$,45 mois","Kayser");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-01-15 23:24:31","Zé Grillo","Vol de véhicule","5000$,10 mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-01-16 00:53:57","Mr Morpheu","Multiple délit de fuite, non respect du code de la route, feux rouge , vitesse"," 100 + 500 + 2500 + 1200 + 400 + 400$,15 mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-01-19 00:36:14","Desfesses","trafic de chalumeaux (1) + 1500 argent sale","5000 + 2500$,20 mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-01-21 22:28:10","Francesco Comelli","Vol de véhicule","5 000$,15 mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-01-22 00:15:32","Chris Ostreicher","délit de fuite + code de la route","400 + 2500$,10 mois","Glen McMahon");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-01-23 00:55:27","Mr Defesses","port d'arme illégale, homicide, objets illégaux, etc…","6000+2000+ ( 5 * 5000) + 600 + 40 000 + 500$,1 ans","Glen McMahon + LSPD");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-02-01 17:57:17","Warner Frank","Braquage superette Vol de véhicules  Délit de fuite ","19500 $,25 mois","Razor");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-02-01 18:05:00","Asterixia Pinkman","Vol de véhicule Conduite sans permis","10000 $,10 mois","Razor");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-02-01 18:09:40","Chris ostreicher","Vol de véhicule","5000$,10 mois","Razor");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-02-01 18:12:08","Chris Otsreicher","Vol de véhicule"," 5000 $,10 mois","Razor");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-02-01 22:59:08","Moreau","Delit de fuite et vol de Véhicule"," 2500 $,20 mois","Korrigan");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-02-05 13:12:08","Affoué Tchoya","Possession drogue (cocaine)","12 000$,30 mois","Jean Chevallier");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-02-06 00:21:43","Clay MORROW","Coups et blessures ayant entrainé un coma sur un civil"," 3500$,10 mois","Stanislas BARCLAY");
+INSERT INTO lspd (horodateur,nom,crime, sanction,Agent) VALUES("2018-02-06 22:12:24","Prevost Thomas","Vole de voiture - Delit de fuite","7500$,20 mois","Callahan");
+																 
+										
+										
+										
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
