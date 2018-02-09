@@ -107,7 +107,7 @@
 						</p>
 					</form>
 					<p></p>
-					<img src="https://image.noelshack.com/fichiers/2015/40/1443969486-lspd-logo-modern-2.png" align="center">
+					<img src="assets/img/lspdlogo.png" align="center">
 					</div>
 				</div>
 				<!-- CONTENT-WRAPPER SECTION END-->
