@@ -57,6 +57,9 @@
 											<a href="trello" target="_blank">Enquetes</a>
 										</li>
 										<li>
+											<a href="plaque" target="_blank">Plaques</a>
+										</li>
+										<li>
 											<a href="drive" target="_blank">Infortations Internes</a>
 										</li>
 									</ul>

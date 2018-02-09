@@ -69,6 +69,9 @@ if (isset($_SESSION['id'])) {
 											<a href="trello" target="_blank"> Enquetes</a>
 										</li>
 										<li>
+											<a href="plaque" target="_blank">Plaques</a>
+										</li>
+										<li>
 											<a href="drive" target="_blank">Infortations Internes</a>
 										</li>
                                 </ul>
@@ -125,7 +128,7 @@ if (isset($_SESSION['id'])) {
     echo '
     <div class="alert alert-danger alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation ou le procureur peuvent effacer un casier judiciaire  </div>
+    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation ou le procureur peuvent effacer un bracelet</div>
     
     ';
     }
@@ -189,7 +192,7 @@ if (isset($_SESSION['id'])) {
 ?>
                                                 </form>
                                                    
-                                                 <form action='delete_entry.php' method='post'>
+                                                 <form action='delete_bracelet.php' method='post'>
                                                      <?php
         echo '<td>
                                                              <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />

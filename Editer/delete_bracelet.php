@@ -12,7 +12,7 @@ if(isset($_POST['deleteItem']) and is_numeric($_POST['deleteItem']))
   $count=$bdd->prepare("DELETE FROM bracelet WHERE id=:id");
   $count->bindParam(":id",$id,PDO::PARAM_INT);
   $count->execute();
-  header('Location: index.php');
+  header('Location: bracelet.php');
 }
 };
 };

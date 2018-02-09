@@ -4,14 +4,18 @@ include( "config.php" );
 session_start();
 
 if (isset($_SESSION['id'])) {
-
+if($_SESSION['Admin'] == 0 and $_SESSION['procureur']==0){
+	$statut = 0;
+	header( "Location: bracelet.php?statut=".$statut);	
+	
+}else{
 // Insert the information
 $req = $bdd->prepare('INSERT INTO bracelet (nom, telephone, fin,par) VALUES(?, ?, ?, ?)');
 $req->execute(array($_POST['nom'], $_POST['telephone'], $_POST['date'],$_SESSION['pseudo']));
 
 // Redirect user back to the add criminal page
 header('Location: bracelet.php');
-} else {
+}} else {
     header("Location: login.php");
 }
 ?>
