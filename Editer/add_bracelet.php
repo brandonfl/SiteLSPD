@@ -115,9 +115,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
-                   &copy; 2017 LSPD |
-								<a href="https://www.youtube.com/user/davendrix" target="_blank"  > Coded by : Davendrix</a>
-								| Updated by : Glen McMahon
+                   &copy; 2017 LSPD | Coded by :  Glen McMahon
 							</div>
 						</div>
 					</div>
