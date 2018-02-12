@@ -50,6 +50,9 @@ if(isset($_POST['forminscription'])) {
    </head>
    <body>
       <div align="center">
+       <header class="login__header">
+	    <img src="https://lossantospolicedepartmentlspd.weebly.com/uploads/2/5/6/4/25644844/6606452.png">
+      </header>
          <h2>Registration</h2>
          <br /><br />
          <form method="POST" action="">
