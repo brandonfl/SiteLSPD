@@ -59,10 +59,10 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                         <a href="index.php">Home</a>
                                     </li>
                                     <li>
-										<a href="administration.php class="menu-top-active"">Administration</a>
+										<a href="administration.php" class="menu-top-active">Administration</a>
 									</li>
 									<li>
-										<a href="administration_annonce.php">Bracelet</a>
+										<a href="administration_annonce.php">Annonce</a>
 									</li>
                                 </ul>
                             </div>

@@ -27,7 +27,7 @@ session_start();
 
 
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     echo '
 
         <body>
@@ -56,23 +56,14 @@ if (isset($_SESSION['id'])) {
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a href="index.php" class="menu-top-active">Home</a>
+                                        <a href="index.php">Home</a>
                                     </li>
                                     <li>
-										<a href="add_criminal.php">Ajouter un criminel</a>
+										<a href="administration.php" >Administration</a>
 									</li>
 									<li>
-										<a href="bracelet.php">Bracelet</a>
+										<a href="administration_annonce.php" class="menu-top-active">Annonce</a>
 									</li>
-										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
-										</li>
-										<li>
-											<a href="plaque" target="_blank">Plaques</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
-										</li>
                                 </ul>
                             </div>
                         </div>
@@ -84,7 +75,7 @@ if (isset($_SESSION['id'])) {
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">LSPD PANEL</h4>
+                            <h4 class="header-line">Annonce PANEL</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -96,13 +87,11 @@ if (isset($_SESSION['id'])) {
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th>Horodateur</th>
+                                                    <th>Id</th>
                                                     <th>Nom</th>
-                                                    <th>Telephone</th>
-                                                    <th>Crime</th>
-                                                    <th>Sanction</th>
-                                                    <th>Agent</th>
-                                                    <th>delete</th>
+                                                    <th>Texte</th>
+                                                    <th>Est Actif</th>
+                                                    <th>Activer</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -145,16 +134,15 @@ if (isset($_SESSION['id'])) {
 }
 }
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM lspd');
+    $reponse = $bdd->query('SELECT * FROM annonce');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
 ?>
                                                <tr class="odd gradeX">
-                                                    <form action='delete_entry.php' method='post'>
                                                     <td>
                                                         <?php
-        echo $data['horodateur'];
+        echo $data['id'];
 ?>
                                                    </td>
                                                     <td>
@@ -164,30 +152,29 @@ if (isset($_SESSION['id'])) {
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['telephone'];
+        echo $data['texte'];
 ?>
                                                    </td>
                                                     
                                                     <td class="center">
                                                         <?php
-        echo $data['crime'];
+        echo $data['isActive'];
 ?>
                                                    </td>
-                                                    <td class="center">
-                                                        <?php
-        echo $data['sanction'];
-?>
-                                                   </td>
-                                                   <td class="center">
-                                                        <?php
-        echo $data['Agent'];
-?>
-                                                   </td>
-                                                 <form action='delete_entry.php' method='post'>
+                                                  
                                                      <?php
-        echo '<td>
-                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
-                                                     </td>';
+                                                    if($data['isActive'] == 1){
+                                                            echo '<form action="administration_form.php?allowed=0" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['id'] . '" />
+                                                     </td></form>';
+                                                        }else{
+                                                        if($data['isActive'] == 0){
+                                                            echo '<form action="administration_form.php?allowed=1" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
+                                                     </td></form>';
+                                                        }}
 ?>
                                                 </form>
                                                 </tr>
