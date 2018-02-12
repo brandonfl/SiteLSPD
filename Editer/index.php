@@ -111,18 +111,28 @@ if (isset($_SESSION['id'])) {
                                     ';
     include("config.php");
     
-    if(isset($_SESSION['annonce']) and is_numeric($_SESSION['annonce']) and $_SESSION['annonce'] == 0){
-        
+    if(isset($_SESSION['annonce']) and is_numeric($_SESSION['annonce']) and $_SESSION['annonce'] == 0 and $_SESSION['Admin'] == 1){
         $_SESSION['annonce'] = 1;
         
-        echo '
+        
+        $nbannonce = $bdd->query('SELECT COUNT(*) AS nb FROM annonce WHERE isActive = 1');
+            while($nbannoncedata = $nbannonce->fetch()){
+                $nombreannonce = $nbannoncedata['nb'];
+                }
+                
+        if(isset($nombreannonce) and is_numeric($nombreannonce) and $nombreannonce == 1){
+            $annonce = $bdd->query('SELECT * FROM annonce WHERE isActive = 1');
+            while ($annoncedata = $annonce->fetch()){
+                
+                echo '
     <div class="alert alert-info alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Annonce :</strong> test</div>
-    
-    ';
-        
-    }else{
+    <strong>Annonce :</strong> ' . $annoncedata["texte"] . '</div>';
+
+                
+            }
+                }
+        }else{
     
     if (isset($error)) {
         if($error == 1){
