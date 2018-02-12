@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  lun. 12 fév. 2018 à 09:03
+-- Généré le :  lun. 12 fév. 2018 à 18:23
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.0.27
 
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `u606391292_lspdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `annonce`
+--
+
+CREATE TABLE `annonce` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `texte` text COLLATE utf8_unicode_ci NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -77,6 +90,12 @@ CREATE TABLE `membres` (
 --
 
 --
+-- Index pour la table `annonce`
+--
+ALTER TABLE `annonce`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `bracelet`
 --
 ALTER TABLE `bracelet`
@@ -99,6 +118,12 @@ ALTER TABLE `membres`
 --
 
 --
+-- AUTO_INCREMENT pour la table `annonce`
+--
+ALTER TABLE `annonce`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `bracelet`
 --
 ALTER TABLE `bracelet`
@@ -114,7 +139,7 @@ ALTER TABLE `lspd`
 -- AUTO_INCREMENT pour la table `membres`
 --
 ALTER TABLE `membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
