@@ -81,6 +81,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <h4 class="header-line">Annonce PANEL</h4>
                         </div>
                     </div>
+                    <a href="administration_annonce_add.php" class="btn btn-success pull-right">Ajouter une annonce</a>
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Advanced Tables -->
@@ -216,7 +217,7 @@ echo '
     <div class="row">
         <div class="col-md-12">
                    &copy; 2017 LSPD |
-            <a href="https://www.youtube.com/user/davendrix" target="_blank"  > Coded by : Davendrix</a> &amp; Glen McMahon
+             Coded by : Glen McMahon
         </div>
     </div>
 </div> </section> <!-- FOOTER SECTION END--> <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  --> <!-- CORE JQUERY  --> <script src="assets/js/jquery-1.10.2.js"></script> <!-- BOOTSTRAP SCRIPTS  --> <script src="assets/js/bootstrap.js"></script> <!-- DATATABLE SCRIPTS  --> <script src="assets/js/dataTables/jquery.dataTables.js"></script> <script src="assets/js/dataTables/dataTables.bootstrap.js"></script> <!-- CUSTOM SCRIPTS  --> <script src="assets/js/custom.js"></script> </body>';
