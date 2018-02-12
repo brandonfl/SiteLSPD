@@ -111,7 +111,7 @@ if (isset($_SESSION['id'])) {
                                     ';
     include("config.php");
     
-    if(isset($_SESSION['annonce']) and is_numeric($_SESSION['annonce']) and $_SESSION['annonce'] == 0 and $_SESSION['Admin'] == 1){
+    if(isset($_SESSION['annonce']) and is_numeric($_SESSION['annonce']) and $_SESSION['annonce'] == 0){
         $_SESSION['annonce'] = 1;
         
         

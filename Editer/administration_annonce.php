@@ -18,8 +18,8 @@
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <?php
-if (isset($_GET['error'])) {
-    $error = $_GET['error'];
+if (isset($_GET['statut'])) {
+    $statut = $_GET['statut'];
 }
 session_start();
 
@@ -92,6 +92,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                     <th>Texte</th>
                                                     <th>Est Actif</th>
                                                     <th>Activer</th>
+                                                    <th>Supprimer</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -100,38 +101,33 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                     ';
     include("config.php");
     
-    if(isset($_SESSION['annonce']) and is_numeric($_SESSION['annonce']) and $_SESSION['annonce'] == 0){
-        
-        $_SESSION['annonce'] = 1;
-        
-        echo '
-    <div class="alert alert-info alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Annonce :</strong> test</div>
-    
-    ';
-        
-    }else{
-    
-    if (isset($error)) {
-        if($error == 1){
+if (isset($statut)) {
+        if($statut == 1){
     echo '
-    <div class="alert alert-danger alert-dismissable fade in">
+    <div class="alert alert-success alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation peuvent effacer un casier judiciaire  </div>
+    <strong>Success !</strong> L\'annonce est bien supprimée  </div>
     
     ';}
     
-    if($error == 2){
-    echo '
-    <div class="alert alert-danger alert-dismissable fade in">
+    if($statut == 2){
+echo '
+    <div class="alert alert-success alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents de la LSPD peuvent ajouter un casier judiciaire et non le procureur</div>
+    <strong>Success !</strong> L\'annonce est bien désactivée</div>
     
     ';
     }
     
-}
+        if($statut == 3){
+echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Vous avez bien activé une annonce</div>
+    
+    ';
+    }
+    
 }
     // Get contents of the lspd table
     $reponse = $bdd->query('SELECT * FROM annonce');
@@ -164,17 +160,24 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                   
                                                      <?php
                                                     if($data['isActive'] == 1){
-                                                            echo '<form action="administration_form.php?allowed=0" method="post">
+                                                            echo '<form action="administration_annonce_desactiver.php" method="post">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['id'] . '" />
                                                      </td></form>';
                                                         }else{
                                                         if($data['isActive'] == 0){
-                                                            echo '<form action="administration_form.php?allowed=1" method="post">
+                                                            echo '<form action="administration_annonce_activer.php" method="post">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
                                                      </td></form>';
                                                         }}
+?>
+
+<?php
+                                                            echo '<form action="administration_annonce_delete.php" method="post">
+        <td>
+                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
+                                                     </td></form>';
 ?>
                                                 </form>
                                                 </tr>
