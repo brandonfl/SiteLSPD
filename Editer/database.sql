@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  jeu. 08 fév. 2018 à 19:39
+-- Généré le :  lun. 12 fév. 2018 à 09:03
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.0.27
 
@@ -33,7 +33,7 @@ CREATE TABLE `bracelet` (
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `telephone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `debut` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `fin` datetime NOT NULL,
+  `fin` date NOT NULL,
   `dernier` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `par` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -46,6 +46,7 @@ CREATE TABLE `bracelet` (
 
 CREATE TABLE `lspd` (
   `id` int(11) NOT NULL,
+  `horodateur` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `telephone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `crime` text COLLATE utf8_unicode_ci NOT NULL,
@@ -66,7 +67,9 @@ CREATE TABLE `membres` (
   `motdepasse` text COLLATE utf8_unicode_ci NOT NULL,
   `allowed` tinyint(1) NOT NULL DEFAULT '0' COMMENT ' A value of zero is considered false. 1 considered true',
   `procureur` tinyint(1) NOT NULL DEFAULT '0',
-  `Admin` tinyint(1) NOT NULL DEFAULT '0'
+  `Admin` tinyint(1) NOT NULL DEFAULT '0',
+  `lastConnection` datetime DEFAULT NULL,
+  `lastIp` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -105,13 +108,13 @@ ALTER TABLE `bracelet`
 -- AUTO_INCREMENT pour la table `lspd`
 --
 ALTER TABLE `lspd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT pour la table `membres`
 --
 ALTER TABLE `membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
