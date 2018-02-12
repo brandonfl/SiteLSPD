@@ -18,7 +18,10 @@
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 		</head>
 		<?php include( "config.php"); session_start(); if (isset($_SESSION[ 'id'])) { echo '
-
+	    <head>
+    <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
+<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" /><![endif]-->
+    </head>
 		<body>
 			<div class="navbar navbar-inverse set-radius-zero" >
 				<div class="container">

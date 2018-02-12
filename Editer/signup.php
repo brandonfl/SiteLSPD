@@ -43,6 +43,8 @@ if(isset($_POST['forminscription'])) {
 ?>
 <html>
    <head>
+    <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
+<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" /><![endif]-->
       <title>LSPD</title>
       <meta charset="utf-8">
    </head>
