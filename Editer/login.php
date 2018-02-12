@@ -37,13 +37,19 @@ if(isset($_POST['formconnexion'])) {
          $_SESSION['mail'] = $userinfo['mail'];
          $_SESSION['procureur'] = $userinfo['procureur'];
          $_SESSION['Admin'] = $userinfo['Admin'];
+         $_SESSION['annonce'] = 0;
          
-         $req = $bdd->prepare('INSERT INTO membres (lastConnection, lastIp) VALUES(NOW() + INTERVAL 1 HOUR,?)');
-         
-         $req->execute(array(get_ip()));
-         
+        $req = $bdd->prepare('UPDATE membres SET lastConnection = NOW() + INTERVAL 1 HOUR , lastIp = ? WHERE membres.id = ?');
+        
+        
+        $req->bindParam(1, get_ip(), PDO::PARAM_STR);
+        $req->bindParam(2,$_SESSION['id'] , PDO::PARAM_INT);
+        
+        $req->execute();
          
          header("Location: index.php?id=".$_SESSION['id']);
+         
+         
          }
       } else {
          $erreur = "Email address or password is invalid !";
