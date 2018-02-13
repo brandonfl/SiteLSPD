@@ -1,4 +1,4 @@
-<html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -60,11 +60,31 @@
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">LSPD PANEL</h4>
+                            <h4 class="header-line">Site LSPD</h4>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Advanced Tables -->
+                            <div class="panel panel-default">
+                                <div class="panel-body">
                     <!-- /. ICI  -->
+                    <h3>Recrutement LSPD</h3>
+                                    <center>
+                                    </br>
+                    La LSPD recrute ! Que vous soyez blond, brun, roux, il y a une place pour vous chez nous !
+                    N'hésitez pas à remplir notre <a href="https://docs.google.com/forms/d/e/1FAIpQLSfMFwuD0P086_8tYLPQWr363RLMwvMhiR9Aum2gqMHETJNLqA/viewform"> formulaire de recutement</a> et à contacter l'un des deux capitaines ( @[Capitaine] Alyana Lasticot ou @[Capitaine] Stanislas BARCLAY ) afin de valider la priser en compte de votre candidature.
+                    Nous recherchons des personnes fiables, ayant l'esprit d'équipe et prête à se mettre au service de nos concitoyens. Casier vierge requis. Une expérience dans un domaine de la sécurité est un plus mais pas obligatoire.
+                    </br>
+
+                    <img src="https://cdn.discordapp.com/attachments/399576168770174978/410885422877769733/tousbienvenu.png"/>
+                               </center>
+
                     <!-- /. ROW  -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /. ROW  -->
             </div>
