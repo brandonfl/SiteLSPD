@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  lun. 12 fév. 2018 à 18:23
+-- Généré le :  mar. 13 fév. 2018 à 20:19
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.0.27
 
@@ -54,6 +54,22 @@ CREATE TABLE `bracelet` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `controle`
+--
+
+CREATE TABLE `controle` (
+  `id` int(11) NOT NULL,
+  `horodateur` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `plaque` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `commentaire` text COLLATE utf8_unicode_ci NOT NULL,
+  `fin` date NOT NULL,
+  `par` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `lspd`
 --
 
@@ -85,6 +101,20 @@ CREATE TABLE `membres` (
   `lastIp` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `plaque`
+--
+
+CREATE TABLE `plaque` (
+  `id` int(11) NOT NULL,
+  `plaque` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `proprietaire` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `modele` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Index pour les tables déchargées
 --
@@ -102,6 +132,12 @@ ALTER TABLE `bracelet`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `controle`
+--
+ALTER TABLE `controle`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `lspd`
 --
 ALTER TABLE `lspd`
@@ -111,6 +147,12 @@ ALTER TABLE `lspd`
 -- Index pour la table `membres`
 --
 ALTER TABLE `membres`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `plaque`
+--
+ALTER TABLE `plaque`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -130,16 +172,28 @@ ALTER TABLE `bracelet`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `controle`
+--
+ALTER TABLE `controle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT pour la table `lspd`
 --
 ALTER TABLE `lspd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT pour la table `membres`
 --
 ALTER TABLE `membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT pour la table `plaque`
+--
+ALTER TABLE `plaque`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
