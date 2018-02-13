@@ -36,8 +36,12 @@
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>
                     </div>
+
                     <div class="right-div">
-                        <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
+                        <a href="login.php" class="btn btn-info pull-right">Se connecter</a>
+                    </div>
+                    <div class="right-div">
+                        <a href="signup.php" class="btn btn-info pull-right">S'inscrire</a>
                     </div>
                 </div>
             </div>
@@ -46,28 +50,7 @@
                 <div class="container">
                     <div class="row ">
                         <div class="col-md-12">
-                            <div class="navbar-collapse collapse ">
-                                <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <a href="index.php" class="menu-top-active">Home</a>
-                                    </li>
-                                    <li>
-										<a href="add_criminal.php">Ajouter un criminel</a>
-									</li>
-									<li>
-										<a href="bracelet.php">Bracelet</a>
-									</li>
-										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
-										</li>
-										<li>
-											<a href="plaque" target="_blank">Plaques</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
-										</li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
                 </div>
