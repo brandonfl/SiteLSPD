@@ -140,7 +140,6 @@ if (isset($_SESSION['id'])) {
                                                     <th>Commentaire</th>
                                                     <th>Fin de validite</th>
                                                     <th>Mecanicien</th>
-                                                    <th>delete</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -156,7 +155,6 @@ if (isset($_SESSION['id'])) {
             while ($data = $reponse->fetch()) {
                 ?>
                 <tr class="odd gradeX">
-                    <form action='delete_entry.php' method='post'>
                         <td>
                             <?php
                             echo $data['horodateur'];
@@ -188,13 +186,6 @@ if (isset($_SESSION['id'])) {
                             echo $data['par'];
                             ?>
                         </td>
-                        <form action='delete_entry.php' method='post'>
-                            <?php
-                            echo '<td>
-                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
-                                                     </td>';
-                            ?>
-                        </form>
                 </tr>
 
                 <?php
