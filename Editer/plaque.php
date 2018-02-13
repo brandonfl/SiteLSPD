@@ -105,7 +105,6 @@ if (isset($_SESSION['id'])) {
             }
         }
 
-        print($nombreplaque);
         if($nombreplaque==0){
                 header('Location: plaque.php?error=1');
             }else {
@@ -118,7 +117,7 @@ if (isset($_SESSION['id'])) {
             if(isset($maplaque)){
                 while($datamaplaque = $maplaque->fetch()){
 
-                    echo '<s>Propriétaire : ' . $datamaplaque['proprietaire'] . '</s></br><s>date aquisition : '. $datamaplaque['date'] .'</s>';
+                    echo 'Propriétaire : ' . $datamaplaque['proprietaire'] . '</br>modele de vehicule : '. $datamaplaque['modele'] . '</br>date aquisition : '. $datamaplaque['date'] .'';
 
                 }
             }
@@ -136,11 +135,11 @@ if (isset($_SESSION['id'])) {
                                             <thead>
                                                 <tr>
                                                     <th>Horodateur</th>
+                                                    <th>Plaque</th>
                                                     <th>Nom</th>
-                                                    <th>Telephone</th>
-                                                    <th>Crime</th>
-                                                    <th>Sanction</th>
-                                                    <th>Agent</th>
+                                                    <th>Commentaire</th>
+                                                    <th>Fin de validite</th>
+                                                    <th>Mecanicien</th>
                                                     <th>delete</th>
                                                     
                                                 </tr>
@@ -151,7 +150,7 @@ if (isset($_SESSION['id'])) {
 
 
             // Get contents of the lspd table
-            $reponse = $bdd->query('SELECT * FROM lspd');
+            $reponse = $bdd->query('SELECT * FROM controle WHERE plaque =\''.$_GET['plaque'].'\'');
 
             // Display each entry one by one
             while ($data = $reponse->fetch()) {
@@ -165,28 +164,28 @@ if (isset($_SESSION['id'])) {
                         </td>
                         <td>
                             <?php
-                            echo $data['nom'];
+                            echo $data['plaque'];
                             ?>
                         </td>
                         <td>
                             <?php
-                            echo $data['telephone'];
+                            echo $data['nom'];
                             ?>
                         </td>
 
                         <td class="center">
                             <?php
-                            echo $data['crime'];
+                            echo $data['commentaire'];
                             ?>
                         </td>
                         <td class="center">
                             <?php
-                            echo $data['sanction'];
+                            echo $data['fin'];
                             ?>
                         </td>
                         <td class="center">
                             <?php
-                            echo $data['Agent'];
+                            echo $data['par'];
                             ?>
                         </td>
                         <form action='delete_entry.php' method='post'>
