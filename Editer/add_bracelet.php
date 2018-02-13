@@ -54,7 +54,7 @@
 							<div class="navbar-collapse collapse ">
 								<ul id="menu-top" class="nav navbar-nav navbar-right">
 									<li>
-										<a href="index.php">Home</a>
+										<a href="police.php">Home</a>
 									</li>
 									<li>
 										<a href="add_criminal.php">Ajouter un criminel</a>

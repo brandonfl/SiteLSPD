@@ -47,7 +47,7 @@ if(isset($_POST['formconnexion'])) {
         
         $req->execute();
          
-         header("Location: index.php?id=".$_SESSION['id']);
+         header("Location: police.php?id=".$_SESSION['id']);
          
          
          }

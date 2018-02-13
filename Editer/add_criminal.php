@@ -48,7 +48,7 @@
 							<div class="navbar-collapse collapse ">
 								<ul id="menu-top" class="nav navbar-nav navbar-right">
 									<li>
-										<a href="index.php">Home</a>
+										<a href="police.php">Home</a>
 									</li>
 									<li>
 										<a href="add_criminal.php" class="menu-top-active">Ajouter un criminel</a>
@@ -106,7 +106,7 @@
 								<input type="text" name="sanction" id="sanction" class="form-control" required />
 								<br />
 							</div>
-							<input type="submit" value="Send" class="btn btn-info />
+							<input type="submit" value="Send" class="btn btn-info" />
 						</p>
 					</form>
 					<p></p>
