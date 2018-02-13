@@ -106,7 +106,7 @@
 								<input type="text" name="sanction" id="sanction" class="form-control" required />
 								<br />
 							</div>
-							<input type="submit" value="Send" class="btn btn-info />
+							<input type="submit" value="Send" class="btn btn-info" />
 						</p>
 					</form>
 					<p></p>

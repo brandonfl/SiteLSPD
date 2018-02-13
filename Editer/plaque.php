@@ -28,6 +28,7 @@ session_start();
 
 
 if (isset($_SESSION['id'])) {
+    include("config.php");
 
     if(isset($_GET['plaque'])) {
 
@@ -96,14 +97,40 @@ if (isset($_SESSION['id'])) {
                         </div>
                     </div>';
 
+        $nbplaque = $bdd->query('SELECT COUNT(*) AS nb FROM plaque WHERE plaque =\''.$_GET['plaque'].'\'');
+
+        if(isset($nbplaque)){
+            while($datanbplaque = $nbplaque->fetch()){
+                $nombreplaque = $datanbplaque['nb'];
+            }
+        }
+
+        print($nombreplaque);
+        if($nombreplaque==0){
+                header('Location: plaque.php?error=1');
+            }else {
 
 
 
-                   echo ' <div class="row">
+
+            $maplaque = $bdd->query('SELECT * FROM plaque WHERE plaque =\''.$_GET['plaque'].'\'');
+
+            if(isset($maplaque)){
+                while($datamaplaque = $maplaque->fetch()){
+
+                    echo '<s>Propriétaire : ' . $datamaplaque['proprietaire'] . '</s></br><s>date aquisition : '. $datamaplaque['date'] .'</s>';
+
+                }
+            }
+
+            echo ' 
+                    <h3>Controle technique</h3>
+                    <div class="row">
                         <div class="col-md-12">
                             <!-- Advanced Tables -->
                             <div class="panel panel-default">
                                 <div class="panel-body">
+            
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
@@ -121,61 +148,60 @@ if (isset($_SESSION['id'])) {
                                             <tbody>
 
                                     ';
-        include("config.php");
 
 
-        // Get contents of the lspd table
-        $reponse = $bdd->query('SELECT * FROM lspd');
+            // Get contents of the lspd table
+            $reponse = $bdd->query('SELECT * FROM lspd');
 
-        // Display each entry one by one
-        while ($data = $reponse->fetch()) {
-            ?>
-            <tr class="odd gradeX">
-                <form action='delete_entry.php' method='post'>
-                    <td>
-                        <?php
-                        echo $data['horodateur'];
-                        ?>
-                    </td>
-                    <td>
-                        <?php
-                        echo $data['nom'];
-                        ?>
-                    </td>
-                    <td>
-                        <?php
-                        echo $data['telephone'];
-                        ?>
-                    </td>
-
-                    <td class="center">
-                        <?php
-                        echo $data['crime'];
-                        ?>
-                    </td>
-                    <td class="center">
-                        <?php
-                        echo $data['sanction'];
-                        ?>
-                    </td>
-                    <td class="center">
-                        <?php
-                        echo $data['Agent'];
-                        ?>
-                    </td>
+            // Display each entry one by one
+            while ($data = $reponse->fetch()) {
+                ?>
+                <tr class="odd gradeX">
                     <form action='delete_entry.php' method='post'>
-                        <?php
-                        echo '<td>
+                        <td>
+                            <?php
+                            echo $data['horodateur'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo $data['nom'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo $data['telephone'];
+                            ?>
+                        </td>
+
+                        <td class="center">
+                            <?php
+                            echo $data['crime'];
+                            ?>
+                        </td>
+                        <td class="center">
+                            <?php
+                            echo $data['sanction'];
+                            ?>
+                        </td>
+                        <td class="center">
+                            <?php
+                            echo $data['Agent'];
+                            ?>
+                        </td>
+                        <form action='delete_entry.php' method='post'>
+                            <?php
+                            echo '<td>
                                                              <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
                                                      </td>';
-                        ?>
-                    </form>
-            </tr>
+                            ?>
+                        </form>
+                </tr>
 
-            <?php
-        }
-        $reponse->closeCursor(); // Complete query
-        echo '
+                <?php
+            }
+            $reponse->closeCursor(); // Complete query
+            echo '
 
                                             </tbody>
                                         </table>
@@ -207,6 +233,8 @@ if (isset($_SESSION['id'])) {
         </div>
     </div>
 </div> </section> <!-- FOOTER SECTION END--> <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  --> <!-- CORE JQUERY  --> <script src="assets/js/jquery-1.10.2.js"></script> <!-- BOOTSTRAP SCRIPTS  --> <script src="assets/js/bootstrap.js"></script> <!-- DATATABLE SCRIPTS  --> <script src="assets/js/dataTables/jquery.dataTables.js"></script> <script src="assets/js/dataTables/dataTables.bootstrap.js"></script> <!-- CUSTOM SCRIPTS  --> <script src="assets/js/custom.js"></script> </body>';
+        }
+
 
     }else{
 
@@ -271,11 +299,34 @@ if (isset($_SESSION['id'])) {
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">Plaque :  t</h4>
+                            <h4 class="header-line">Rechercher une plaque</h4>
                         </div>
                     </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Advanced Tables -->
+                            <div class="panel panel-default">
+                                <div class="panel-body">';
 
-                                            </tbody>
+        if(isset($_GET['error']) and $_GET['error'] == 1){
+            echo '<div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Aucune plaque trouvée </div>';
+        }
+                                
+                             echo'   <form action="plaque.php" method="get">
+						<p>
+							<div class="form-group">
+								<label for="nom">Plaque *</label> :
+								<p class="help-block">ex: DB111BC</p>
+								<input type="text" name="plaque" id="plaque" class="form-control" required />
+								<br />
+							</div>
+							<input type="submit" value="Send" class="btn btn-info" />
+						</p>
+					</form>
+                                        
                                         </table>
                                     </div>
                                 </div>
