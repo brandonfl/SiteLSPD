@@ -59,7 +59,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a href="index.php">Home</a>
+                                        <a href="police.php">Home</a>
                                     </li>
                                     <li>
 										<a href="administration.php" class="menu-top-active">Administration</a>
