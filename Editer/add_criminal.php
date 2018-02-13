@@ -60,7 +60,7 @@
 											<a href="trello" target="_blank">Enquetes</a>
 										</li>
 										<li>
-											<a href="plaque.php" target="_blank">Plaques</a>
+											<a href="plaque.php">Plaques</a>
 										</li>
 										<li>
 											<a href="drive" target="_blank">Infortations Internes</a>
