@@ -123,6 +123,8 @@ if (isset($_SESSION['id'])) {
             }
 
             echo ' 
+                    </br>
+                    </br>
                     <h3>Controle technique</h3>
                     <div class="row">
                         <div class="col-md-12">
