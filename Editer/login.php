@@ -32,23 +32,35 @@ if(isset($_POST['formconnexion'])) {
          if($userinfo['allowed'] == 0){
             $erreur = "Vous n'êtes pas encore autorisé à vous connecter !";
         } else {
-         $_SESSION['id'] = $userinfo['id'];
-         $_SESSION['pseudo'] = $userinfo['pseudo'];
-         $_SESSION['mail'] = $userinfo['mail'];
-         $_SESSION['procureur'] = $userinfo['procureur'];
-         $_SESSION['Admin'] = $userinfo['Admin'];
-         $_SESSION['annonce'] = 0; //Todo : a mettre à 0 quand les annonces sont fini 
-         
-        $req = $bdd->prepare('UPDATE membres SET lastConnection = NOW() + INTERVAL 1 HOUR , lastIp = ? WHERE membres.id = ?');
-        
-        
-        $req->bindParam(1, get_ip(), PDO::PARAM_STR);
-        $req->bindParam(2,$_SESSION['id'] , PDO::PARAM_INT);
-        
-        $req->execute();
-         
-         header("Location: police.php?id=".$_SESSION['id']);
-         
+             $_SESSION['police'] = $userinfo['police'];
+             $_SESSION['procureur'] = $userinfo['procureur'];
+             $_SESSION['juge'] = $userinfo['juge'];
+             $_SESSION['concessionnaire'] = $userinfo['concessionnaire'];
+             $_SESSION['mecanicien'] = $userinfo['mecanicien'];
+             $gm = $_SESSION['police'] + $_SESSION['procureur'] + $_SESSION['juge'] + $_SESSION['concessionnaire'] + $_SESSION['mecanicien'];
+             if($gm == 0){
+                 $erreur = "Vous n'avez pas encore de grade. Merci de bien vouloir contacter un administrateur";
+             } else {
+                 if ($gm != 1){
+                    $erreur = "Une erreur c'est produite au niveau de vos grades. Merci de bien vouloir contacter un administrateur";
+                 }else {
+                     $_SESSION['id'] = $userinfo['id'];
+                     $_SESSION['pseudo'] = $userinfo['pseudo'];
+                     $_SESSION['mail'] = $userinfo['mail'];
+                     $_SESSION['Admin'] = $userinfo['Admin'];
+                     $_SESSION['annonce'] = 0; //Todo : a mettre à 0 quand les annonces sont fini
+
+                     $req = $bdd->prepare('UPDATE membres SET lastConnection = NOW() + INTERVAL 1 HOUR , lastIp = ? WHERE membres.id = ?');
+
+
+                     $req->bindParam(1, get_ip(), PDO::PARAM_STR);
+                     $req->bindParam(2, $_SESSION['id'], PDO::PARAM_INT);
+
+                     $req->execute();
+
+                     header("Location: police.php?id=" . $_SESSION['id']);
+                 }
+             }
          
          }
       } else {

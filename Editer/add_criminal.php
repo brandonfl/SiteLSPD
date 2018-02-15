@@ -17,7 +17,9 @@
 			<!-- GOOGLE FONT -->
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 		</head>
-		<?php include( "config.php"); session_start(); if (isset($_SESSION[ 'id'])) { echo '
+		<?php include( "config.php"); session_start();
+		if (isset($_SESSION[ 'id']) and  ($_SESSION['police'] == 1 or $_SESSION['procurreur'] == 1 or $_SESSION['Admin'] == 1)) {
+		    echo '
 	    <head>
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
 <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" /><![endif]-->

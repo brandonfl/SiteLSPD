@@ -18,6 +18,9 @@
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <?php
+
+        include("config.php");
+
 if (isset($_GET['statut'])) {
     $statut = $_GET['statut'];
     
@@ -27,8 +30,7 @@ session_start();
 
 
 
-
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procurreur'] == 1 or $_SESSION['Admin'] == 1 or $_SESSION['juge'] = 1)) {
     echo '
     <head>
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
@@ -116,7 +118,6 @@ if (isset($_SESSION['id'])) {
                                             <tbody>
 
                                     ';
-    include("config.php");
     if (isset($statut)) {
         if($statut == 0){
     echo '
@@ -144,6 +145,15 @@ if (isset($_SESSION['id'])) {
     
     ';
     }
+
+    if($statut == 2){
+            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Le Juge ne peut pas gérer les bracelets. Merci de bien vouloir s\'adresser au procurreur </div>
+    
+    ';
+        }
     
 }
     // Get contents of the lspd table

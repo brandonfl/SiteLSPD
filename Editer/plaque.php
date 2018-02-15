@@ -27,7 +27,7 @@ session_start();
 
 
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procurreur'] == 1 or $_SESSION['Admin'] == 1 )) {
     include("config.php");
 
     if(isset($_GET['plaque'])) {

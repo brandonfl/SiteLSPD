@@ -3,7 +3,7 @@
 include( "config.php" );
 session_start();
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procurreur'] == 1 or $_SESSION['Admin'] == 1)) {
 	if($_SESSION['procureur'] == 1){
 		$error = 2;
 		header( "Location: index.php?error=".$error);		

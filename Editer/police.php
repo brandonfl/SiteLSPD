@@ -27,7 +27,7 @@ session_start();
 
 
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procurreur'] == 1 or $_SESSION['Admin'] == 1 or $_SESSION['juge'] = 1)) {
     echo '
     <head>
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
