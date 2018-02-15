@@ -18,6 +18,9 @@
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <?php
+
+        include("config.php");
+
 if (isset($_GET['statut'])) {
     $statut = $_GET['statut'];
     
@@ -27,8 +30,43 @@ session_start();
 
 
 
+if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['Admin'] == 1 or $_SESSION['juge'] == 1)) {
 
-if (isset($_SESSION['id'])) {
+
+    if($_SESSION['juge'] == 1){
+        $nav = '                    <li>
+                                        <a href="police.php" class="menu-top-active">Home</a>
+                                    </li>
+									<li>
+										<a href="bracelet.php">Bracelet</a>
+									</li>
+										<li>
+											<a href="trello" target="_blank"> Enquetes</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Infortations Internes</a>
+										</li>';
+    }else{
+        $nav = '                    <li>
+                                        <a href="police.php" class="menu-top-active">Home</a>
+                                    </li>
+                                    <li>
+										<a href="add_criminal.php">Ajouter un criminel</a>
+									</li>
+									<li>
+										<a href="bracelet.php">Bracelet</a>
+									</li>
+										<li>
+											<a href="trello" target="_blank"> Enquetes</a>
+										</li>
+										<li>
+											<a href="plaque.php">Plaques</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Infortations Internes</a>
+										</li>';
+    }
+
     echo '
     <head>
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
@@ -43,7 +81,7 @@ if (isset($_SESSION['id'])) {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.php">
+                        <a class="navbar-brand" href="police.php">
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>
                     </div>
@@ -59,24 +97,7 @@ if (isset($_SESSION['id'])) {
                         <div class="col-md-12">
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <a href="police.php">Home</a>
-                                    </li>
-                                    <li>
-										<a href="add_criminal.php">Ajouter un criminel</a>
-									</li>
-									<li>
-                                        <a href="bracelet.php" class="menu-top-active">Bracelet</a>
-                                    </li>
-										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
-										</li>
-										<li>
-											<a href="plaque.php">Plaques</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
-										</li>
+                                    '.$nav.'
                                 </ul>
                             </div>
                         </div>
@@ -116,7 +137,6 @@ if (isset($_SESSION['id'])) {
                                             <tbody>
 
                                     ';
-    include("config.php");
     if (isset($statut)) {
         if($statut == 0){
     echo '
@@ -144,6 +164,15 @@ if (isset($_SESSION['id'])) {
     
     ';
     }
+
+    if($statut == 3){
+            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Le Juge ne peut pas gérer les bracelets. Merci de bien vouloir s\'adresser au procurreur </div>
+    
+    ';
+        }
     
 }
     // Get contents of the lspd table

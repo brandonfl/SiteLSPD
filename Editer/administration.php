@@ -42,7 +42,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.php">
+                        <a class="navbar-brand" href="administration.php">
                             <img src="assets/img/lspd.png" width=180 height=70/>
                         </a>
                     </div>
@@ -59,7 +59,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a href="police.php">Home</a>
+                                        <a href="police.php">Police</a>
                                     </li>
                                     <li>
 										<a href="administration.php" class="menu-top-active">Administration</a>

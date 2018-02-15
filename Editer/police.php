@@ -27,39 +27,23 @@ session_start();
 
 
 
-if (isset($_SESSION['id'])) {
-    echo '
-    <head>
-    <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
-<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" /><![endif]-->
-    </head>
+if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['Admin'] == 1 or $_SESSION['juge'] == 1)) {
 
-        <body>
-            <div class="navbar navbar-inverse set-radius-zero" >
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="index.php">
-                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
-                        </a>
-                    </div>
-                    <div class="right-div">
-                        <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
-                    </div>
-                </div>
-            </div>
-            <!-- LOGO HEADER END-->
-            <section class="menu-section">
-                <div class="container">
-                    <div class="row ">
-                        <div class="col-md-12">
-                            <div class="navbar-collapse collapse ">
-                                <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                    <li>
+    if($_SESSION['juge']==1){
+        $nav = '                    <li>
+                                        <a href="police.php" class="menu-top-active">Home</a>
+                                    </li>
+									<li>
+										<a href="bracelet.php">Bracelet</a>
+									</li>
+										<li>
+											<a href="trello" target="_blank"> Enquetes</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Infortations Internes</a>
+										</li>';
+    }else{
+        $nav = '                    <li>
                                         <a href="police.php" class="menu-top-active">Home</a>
                                     </li>
                                     <li>
@@ -76,7 +60,41 @@ if (isset($_SESSION['id'])) {
 										</li>
 										<li>
 											<a href="drive" target="_blank">Infortations Internes</a>
-										</li>
+										</li>';
+    }
+
+    echo '
+    <head>
+    <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
+<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" /><![endif]-->
+    </head>
+
+        <body>
+            <div class="navbar navbar-inverse set-radius-zero" >
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="police.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>
+                    </div>
+                    <div class="right-div">
+                        <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
+                    </div>
+                </div>
+            </div>
+            <!-- LOGO HEADER END-->
+            <section class="menu-section">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="navbar-collapse collapse ">
+                                <ul id="menu-top" class="nav navbar-nav navbar-right">
+                                    '. $nav .'
                                 </ul>
                             </div>
                         </div>
