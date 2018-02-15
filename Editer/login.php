@@ -37,13 +37,12 @@ if(isset($_POST['formconnexion'])) {
              $_SESSION['juge'] = $userinfo['juge'];
              $_SESSION['concessionnaire'] = $userinfo['concessionnaire'];
              $_SESSION['mecanicien'] = $userinfo['mecanicien'];
-             $gm = $_SESSION['police'] + $_SESSION['procureur'] + $_SESSION['juge'] + $_SESSION['concessionnaire'] + $_SESSION['mecanicien'];
+             $gm = 0;
+             $gm =  $_SESSION['police'] + $_SESSION['procureur'] + $_SESSION['juge'] + $_SESSION['concessionnaire'] + $_SESSION['mecanicien'];
              if($gm == 0){
                  $erreur = "Vous n'avez pas encore de grade. Merci de bien vouloir contacter un administrateur";
              } else {
-                 if ($gm != 1){
-                    $erreur = "Une erreur c'est produite au niveau de vos grades. Merci de bien vouloir contacter un administrateur";
-                 }else {
+                 if (isset($gm) and is_numeric($gm) and ($gm == 1)){
                      $_SESSION['id'] = $userinfo['id'];
                      $_SESSION['pseudo'] = $userinfo['pseudo'];
                      $_SESSION['mail'] = $userinfo['mail'];
@@ -59,6 +58,9 @@ if(isset($_POST['formconnexion'])) {
                      $req->execute();
 
                      header("Location: police.php?id=" . $_SESSION['id']);
+
+                 }else {
+                     $erreur = "Une erreur c'est produite au niveau de vos grades. Merci de bien vouloir contacter un administrateur";
                  }
              }
          

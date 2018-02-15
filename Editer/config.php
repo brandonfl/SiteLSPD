@@ -1,8 +1,8 @@
 <?php
-$username = "police-portal"; // username
-$password = "your password"; // password of the database
-$hostname = "localhost"; // host of the database
-$namebase = "police"; // name of the database
+$username = "u606391292_root1"; // username
+$password = "cyv3J7v!KGsxCA`6I]"; // password of the database
+$hostname = "mysql.hostinger.fr"; // host of the database
+$namebase = "u606391292_lspdb"; // name of the database
 
 
 

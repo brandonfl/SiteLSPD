@@ -30,10 +30,10 @@ session_start();
 
 
 
-if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procurreur'] == 1 or $_SESSION['Admin'] == 1 or $_SESSION['juge'] = 1)) {
+if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['Admin'] == 1 or $_SESSION['juge'] == 1)) {
 
 
-    if($_SESSION['juge'] = 1){
+    if($_SESSION['juge'] == 1){
         $nav = '                    <li>
                                         <a href="police.php" class="menu-top-active">Home</a>
                                     </li>
@@ -165,7 +165,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procurre
     ';
     }
 
-    if($statut == 2){
+    if($statut == 3){
             echo '
     <div class="alert alert-danger alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
