@@ -78,7 +78,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procurre
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.php">
+                        <a class="navbar-brand" href="police.php">
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>
                     </div>

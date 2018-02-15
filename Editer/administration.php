@@ -42,7 +42,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.php">
+                        <a class="navbar-brand" href="administration.php">
                             <img src="assets/img/lspd.png" width=180 height=70/>
                         </a>
                     </div>
