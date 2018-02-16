@@ -150,6 +150,14 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     
     ';}
 
+        if($statut == 5){
+            echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Les droits d\'un membre ont été modifiés</div>
+    
+    ';}
+
     
 }
     // Get contents of the lspd table
@@ -218,7 +226,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                      </td></form>';
                                                        }else{
                                                            if($data['police'] == 0){
-                                                               echo '<form action="administration_droit_desactiver.php?rang=police" method="post">
+                                                               echo '<form action="administration_droit_activer.php?rang=1" method="post">
                                                                         <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['police'] . '" />
@@ -241,7 +249,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                      </td></form>';
                                                        }else{
                                                            if($data['procureur'] == 0){
-                                                               echo '<form action="administration_droit_desactiver.php?rang=procureur" method="post">
+                                                               echo '<form action="administration_droit_activer.php?rang=2" method="post">
                                                                         <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['procureur'] . '" />
@@ -264,7 +272,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                      </td></form>';
                                                        }else{
                                                            if($data['juge'] == 0){
-                                                               echo '<form action="administration_droit_desactiver.php?rang=juge" method="post">
+                                                               echo '<form action="administration_droit_activer.php?rang=3" method="post">
                                                                         <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['juge'] . '" />
@@ -287,7 +295,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                      </td></form>';
                                                        }else{
                                                            if($data['concessionnaire'] == 0){
-                                                               echo '<form action="administration_droit_desactiver.php?rang=concessionnaire" method="post">
+                                                               echo '<form action="administration_droit_activer.php?rang=4" method="post">
                                                                         <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['concessionnaire'] . '" />
@@ -310,7 +318,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                      </td></form>';
                                                        }else{
                                                            if($data['mecanicien'] == 0){
-                                                               echo '<form action="administration_droit_desactiver.php?rang=mecanicien" method="post">
+                                                               echo '<form action="administration_droit_activer.php?rang=5" method="post">
                                                                         <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['mecanicien'] . '" />
