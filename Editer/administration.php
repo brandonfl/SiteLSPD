@@ -94,9 +94,13 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                     <th>Id</th>
                                                     <th>Pseudo</th>
                                                     <th>Mail</th>
-                                                    <th>Peut se connecter</th>
                                                     <th>Autoriser</th>
+                                                    <th>Allow</th>
+                                                    <th>Police</th>
                                                     <th>Procureur</th>
+                                                    <th>Juge</th>
+                                                    <th>Concessionnaire</th>
+                                                    <th>Mecanicien</th>
                                                     <th>Admin</th>
                                                     
                                                 </tr>
@@ -130,6 +134,30 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     
     ';}
 
+        if($statut == 3){
+            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Vous ne pouvez pas vous editer un administrateur</div>
+    
+    ';}
+
+        if($statut == 4){
+            echo '
+    <div class="alert alert-warning alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Un membre n\'ayant plus de droits ne pourra pas se connecter</div>
+    
+    ';}
+
+        if($statut == 5){
+            echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Les droits d\'un membre ont été modifiés</div>
+    
+    ';}
+
     
 }
     // Get contents of the lspd table
@@ -155,14 +183,15 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         echo $data['mail'];
 ?>
                                                    </td>
-                                                    
-                                                    <td class="center">
-                                                        <?php
-        echo $data['allowed'];
-?>
-                                                   </td>
+
                                                    
                                                      <?php
+                                                     if($data['Admin'] == 1){
+                                                         echo '<form action="administration.php?statut=3" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['id'] . '" />
+                                                     </td></form>';
+                                                     }else{
                                                     if($data['allowed'] == 1){
                                                             echo '<form action="administration_form.php?allowed=0" method="post">
         <td>
@@ -174,14 +203,129 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
                                                      </td></form>';
-                                                        }}
+                                                        }}}
 ?>
-                                                
-                                                    <td class="center">
-                                                        <?php
-        echo $data['procureur'];
-?>
+
+                                                   <td class="center">
+                                                       <?php
+                                                       echo $data['allowed'];
+                                                       ?>
                                                    </td>
+                                                   <?php
+                                                   if($data['Admin'] == 1){
+                                                       echo '<form action="administration.php?statut=3" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['police'] . '" />
+                                                     </td></form>';
+                                                   }else{
+                                                       if($data['police'] == 1){
+                                                           echo '<form action="administration_droit_desactiver.php?rang=police" method="post">
+                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['police'] . '" />
+                                                     </td></form>';
+                                                       }else{
+                                                           if($data['police'] == 0){
+                                                               echo '<form action="administration_droit_activer.php?rang=1" method="post">
+                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['police'] . '" />
+                                                     </td></form>';
+                                                           }}}
+                                                   ?>
+
+                                                   <?php
+                                                   if($data['Admin'] == 1){
+                                                       echo '<form action="administration.php?statut=3" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['procureur'] . '" />
+                                                     </td></form>';
+                                                   }else{
+                                                       if($data['procureur'] == 1){
+                                                           echo '<form action="administration_droit_desactiver.php?rang=procureur" method="post">
+                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['procureur'] . '" />
+                                                     </td></form>';
+                                                       }else{
+                                                           if($data['procureur'] == 0){
+                                                               echo '<form action="administration_droit_activer.php?rang=2" method="post">
+                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['procureur'] . '" />
+                                                     </td></form>';
+                                                           }}}
+                                                   ?>
+
+                                                   <?php
+                                                   if($data['Admin'] == 1){
+                                                       echo '<form action="administration.php?statut=3" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['juge'] . '" />
+                                                     </td></form>';
+                                                   }else{
+                                                       if($data['juge'] == 1){
+                                                           echo '<form action="administration_droit_desactiver.php?rang=juge" method="post">
+                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['juge'] . '" />
+                                                     </td></form>';
+                                                       }else{
+                                                           if($data['juge'] == 0){
+                                                               echo '<form action="administration_droit_activer.php?rang=3" method="post">
+                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['juge'] . '" />
+                                                     </td></form>';
+                                                           }}}
+                                                   ?>
+
+                                                   <?php
+                                                   if($data['Admin'] == 1){
+                                                       echo '<form action="administration.php?statut=3" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['concessionnaire'] . '" />
+                                                     </td></form>';
+                                                   }else{
+                                                       if($data['concessionnaire'] == 1){
+                                                           echo '<form action="administration_droit_desactiver.php?rang=concessionnaire" method="post">
+                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['concessionnaire'] . '" />
+                                                     </td></form>';
+                                                       }else{
+                                                           if($data['concessionnaire'] == 0){
+                                                               echo '<form action="administration_droit_activer.php?rang=4" method="post">
+                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['concessionnaire'] . '" />
+                                                     </td></form>';
+                                                           }}}
+                                                   ?>
+
+                                                   <?php
+                                                   if($data['Admin'] == 1){
+                                                       echo '<form action="administration.php?statut=3" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['mecanicien'] . '" />
+                                                     </td></form>';
+                                                   }else{
+                                                       if($data['mecanicien'] == 1){
+                                                           echo '<form action="administration_droit_desactiver.php?rang=mecanicien" method="post">
+                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['mecanicien'] . '" />
+                                                     </td></form>';
+                                                       }else{
+                                                           if($data['mecanicien'] == 0){
+                                                               echo '<form action="administration_droit_activer.php?rang=5" method="post">
+                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['mecanicien'] . '" />
+                                                     </td></form>';
+                                                           }}}
+                                                   ?>
+
                                                    <td class="center">
                                                         <?php
         echo $data['Admin'];
