@@ -94,8 +94,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                     <th>Id</th>
                                                     <th>Pseudo</th>
                                                     <th>Mail</th>
-                                                    <th>Peut se connecter</th>
                                                     <th>Autoriser</th>
+                                                    <th>Peut se connecter</th>
+                                                    
                                                     <th>Procureur</th>
                                                     <th>Admin</th>
                                                     
@@ -130,6 +131,14 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     
     ';}
 
+        if($statut == 3){
+            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Vous ne pouvez pas vous editer un administrateur</div>
+    
+    ';}
+
     
 }
     // Get contents of the lspd table
@@ -155,14 +164,15 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         echo $data['mail'];
 ?>
                                                    </td>
-                                                    
-                                                    <td class="center">
-                                                        <?php
-        echo $data['allowed'];
-?>
-                                                   </td>
+
                                                    
                                                      <?php
+                                                     if($data['Admin'] == 1){
+                                                         echo '<form action="administration.php?statut=3" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['id'] . '" />
+                                                     </td></form>';
+                                                     }else{
                                                     if($data['allowed'] == 1){
                                                             echo '<form action="administration_form.php?allowed=0" method="post">
         <td>
@@ -174,8 +184,35 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
                                                      </td></form>';
-                                                        }}
+                                                        }}}
 ?>
+
+                                                   <td class="center">
+                                                       <?php
+                                                       echo $data['allowed'];
+                                                       ?>
+                                                   </td>
+
+                                                   <?php
+                                                   if($data['Admin'] == 1){
+                                                       echo '<form action="administration.php?statut=3" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['procureur'] . '" />
+                                                     </td></form>';
+                                                   }else{
+                                                       if($data['procureur'] == 1){
+                                                           echo '<form action="administration_form.php?allowed=0" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['procureur'] . '" />
+                                                     </td></form>';
+                                                       }else{
+                                                           if($data['procureur'] == 0){
+                                                               echo '<form action="administration_form.php?allowed=1" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['procureur'] . '" />
+                                                     </td></form>';
+                                                           }}}
+                                                   ?>
                                                 
                                                     <td class="center">
                                                         <?php
