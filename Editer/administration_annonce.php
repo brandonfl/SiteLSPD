@@ -62,6 +62,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                         <a href="police.php">Police</a>
                                     </li>
                                     <li>
+                                        <a href="concessionnaire.php">Concessionnaire</a>
+                                    </li>
+                                    <li>
 										<a href="administration.php" >Administration</a>
 									</li>
 									<li>
