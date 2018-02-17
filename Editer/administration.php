@@ -189,7 +189,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                      if($data['Admin'] == 1){
                                                          echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['id'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['id'] . '" />
                                                      </td></form>';
                                                      }else{
                                                     if($data['allowed'] == 1){
@@ -215,7 +215,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['police'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['police'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['police'] == 1){
@@ -238,7 +238,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['procureur'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['procureur'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['procureur'] == 1){
@@ -261,7 +261,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['juge'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['juge'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['juge'] == 1){
@@ -284,7 +284,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['concessionnaire'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['concessionnaire'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['concessionnaire'] == 1){
@@ -307,7 +307,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['mecanicien'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['mecanicien'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['mecanicien'] == 1){
