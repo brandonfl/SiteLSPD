@@ -59,12 +59,6 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a href="police.php">Police</a>
-                                    </li>
-                                    <li>
-                                        <a href="concessionnaire.php">Concessionnaire</a>
-                                    </li>
-                                    <li>
 										<a href="administration.php" class="menu-top-active">Administration</a>
 									</li>
 									<li>
@@ -141,7 +135,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
             echo '
     <div class="alert alert-danger alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Vous ne pouvez pas vous editer un administrateur</div>
+    <strong>Attention !</strong> Vous ne pouvez pas editer un administrateur</div>
     
     ';}
 

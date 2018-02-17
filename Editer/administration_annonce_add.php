@@ -47,9 +47,6 @@
 						<div class="col-md-12">
 							<div class="navbar-collapse collapse ">
 								<ul id="menu-top" class="nav navbar-nav navbar-right">
-									<li>
-                                        <a href="police.php">Home</a>
-                                    </li>
                                     <li>
 										<a href="administration.php" >Administration</a>
 									</li>
