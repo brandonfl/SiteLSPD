@@ -43,6 +43,10 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 										<li>
 											<a href="serveur" target="_blank">Ville</a>
 										</li>';
+
+        $logo = '<a class="navbar-brand" href="concessionnaire.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>';
     }else{
         $nav = '<li>
                                         <a href="police.php">Home</a>
@@ -62,6 +66,10 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 										<li>
 											<a href="drive" target="_blank">Infortations Internes</a>
 										</li>';
+
+        $logo = '<a class="navbar-brand" href="police.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>';
     }
 
     if(isset($_GET['plaque'])) {
@@ -82,9 +90,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="police.php">
-                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
-                        </a>
+                        '.$logo.'
                     </div>
                     <div class="right-div">
                         <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
