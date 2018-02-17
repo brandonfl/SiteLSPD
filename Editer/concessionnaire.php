@@ -27,12 +27,28 @@ session_start();
 
 
 
-if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
+if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION['Admin'] == 1)) {
+
+        $nav = '                    <li>
+                                        <a href="concessionnaire.php" class="menu-top-active">Home</a>
+                                    </li>
+									<li>
+										<a href="concessionnaire_add.php">Ajouter une plaque</a>
+									</li>
+									<li>
+										<a href="plaque.php">Rechercher une plaque</a>
+									</li>
+										<li>
+											<a href="serveur" target="_blank">Ville</a>
+										</li>';
+
+
     echo '
     <head>
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
 <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" /><![endif]-->
     </head>
+
         <body>
             <div class="navbar navbar-inverse set-radius-zero" >
                 <div class="container">
@@ -42,7 +58,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="administration.php">
+                        <a class="navbar-brand" href="concessionnaire.php">
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>
                     </div>
@@ -58,18 +74,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                         <div class="col-md-12">
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <a href="police.php">Police</a>
-                                    </li>
-                                    <li>
-                                        <a href="concessionnaire.php">Concessionnaire</a>
-                                    </li>
-                                    <li>
-										<a href="administration.php" >Administration</a>
-									</li>
-									<li>
-										<a href="administration_annonce.php" class="menu-top-active">Annonce</a>
-									</li>
+                                    '. $nav .'
                                 </ul>
                             </div>
                         </div>
@@ -81,10 +86,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">Annonce PANEL</h4>
+                            <h4 class="header-line">CONCESSIONNAIRE PANEL</h4>
                         </div>
                     </div>
-                    <a href="administration_annonce_add.php" class="btn btn-success pull-right">Ajouter une annonce</a>
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Advanced Tables -->
@@ -94,12 +98,12 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>Nom</th>
-                                                    <th>Texte</th>
-                                                    <th>Est Actif</th>
-                                                    <th>Activer</th>
-                                                    <th>Supprimer</th>
+                                                    <th>Horodateur</th>
+                                                    <th>Plaque</th>
+                                                    <th>Propriétaire</th>
+                                                    <th>Modele</th>
+                                                    <th>Fait par</th>
+                                                    <th>informations</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -107,37 +111,20 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 
                                     ';
     include("config.php");
+
     
-if (isset($statut)) {
+    if (isset($statut)) {
         if($statut == 1){
     echo '
     <div class="alert alert-success alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> L\'annonce est bien supprimée  </div>
+    <strong>Success !</strong> Une nouvelle plaque a bien été ajoutée </div>
     
     ';}
     
-    if($statut == 2){
-echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> L\'annonce est bien désactivée</div>
-    
-    ';
-    }
-    
-        if($statut == 3){
-echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Vous avez bien activé une annonce</div>
-    
-    ';
-    }
-    
 }
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM annonce');
+    $reponse = $bdd->query('SELECT * FROM plaque');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
@@ -145,46 +132,38 @@ echo '
                                                <tr class="odd gradeX">
                                                     <td>
                                                         <?php
-        echo $data['id'];
+        echo $data['date'];
 ?>
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['nom'];
+        echo $data['plaque'];
 ?>
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['texte'];
+        echo $data['proprietaire'];
 ?>
                                                    </td>
                                                     
                                                     <td class="center">
                                                         <?php
-        echo $data['isActive'];
+        echo $data['modele'];
 ?>
                                                    </td>
-                                                  
-                                                     <?php
-                                                    if($data['isActive'] == 1){
-                                                            echo '<form action="administration_annonce_desactiver.php" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['id'] . '" />
-                                                     </td></form>';
-                                                        }else{
-                                                        if($data['isActive'] == 0){
-                                                            echo '<form action="administration_annonce_activer.php" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
-                                                     </td></form>';
-                                                        }}
+                                                    <td class="center">
+                                                        <?php
+        echo $data['par'];
 ?>
+                                                   </td>
 
-<?php
-                                                            echo '<form action="administration_annonce_delete.php" method="post">
-        <td>
-                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
-                                                     </td></form>';
+                                                 <form action='plaque.php' method='get'>
+                                                     <?php
+        echo '<td>                                            
+                                                            <input type="hidden" name="plaque" value="'.$data['plaque'].'" />
+                                                             <input type="submit" name="id" class="btn btn-info" value="' . $data['id'] . '" />
+                                                             
+                                                     </td>';
 ?>
                                                 </form>
                                                 </tr>
@@ -220,7 +199,7 @@ echo '
     <div class="row">
         <div class="col-md-12">
                    &copy; 2017 LSPD |
-             Coded by : Glen McMahon
+            <a href="https://www.youtube.com/user/davendrix" target="_blank"  > Coded by : Davendrix</a> &amp; Glen McMahon
         </div>
     </div>
 </div> </section> <!-- FOOTER SECTION END--> <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  --> <!-- CORE JQUERY  --> <script src="assets/js/jquery-1.10.2.js"></script> <!-- BOOTSTRAP SCRIPTS  --> <script src="assets/js/bootstrap.js"></script> <!-- DATATABLE SCRIPTS  --> <script src="assets/js/dataTables/jquery.dataTables.js"></script> <script src="assets/js/dataTables/dataTables.bootstrap.js"></script> <!-- CUSTOM SCRIPTS  --> <script src="assets/js/custom.js"></script> </body>';

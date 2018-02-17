@@ -27,8 +27,50 @@ session_start();
 
 
 
-if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['Admin'] == 1 )) {
+if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['Admin'] == 1 or $_SESSION['concessionnaire'] == 1)) {
     include("config.php");
+
+    if($_SESSION['concessionnaire'] == 1) {
+        $nav = '                    <li>
+                                        <a href="concessionnaire.php">Home</a>
+                                    </li>
+									<li>
+										<a href="concessionnaire_add.php">Ajouter une plaque</a>
+									</li>
+									<li>
+										<a href="plaque.php" class="menu-top-active">Rechercher une plaque</a>
+									</li>
+										<li>
+											<a href="serveur" target="_blank">Ville</a>
+										</li>';
+
+        $logo = '<a class="navbar-brand" href="concessionnaire.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>';
+    }else{
+        $nav = '<li>
+                                        <a href="police.php">Home</a>
+                                    </li>
+                                    <li>
+										<a href="add_criminal.php">Ajouter un criminel</a>
+									</li>
+									<li>
+										<a href="bracelet.php">Bracelet</a>
+									</li>
+										<li>
+											<a href="trello" target="_blank"> Enquetes</a>
+										</li>
+										<li>
+											<a href="plaque.php" class="menu-top-active">Plaques</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Infortations Internes</a>
+										</li>';
+
+        $logo = '<a class="navbar-brand" href="police.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>';
+    }
 
     if(isset($_GET['plaque'])) {
 
@@ -48,9 +90,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="police.php">
-                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
-                        </a>
+                        '.$logo.'
                     </div>
                     <div class="right-div">
                         <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
@@ -64,24 +104,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                         <div class="col-md-12">
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <a href="police.php">Home</a>
-                                    </li>
-                                    <li>
-										<a href="add_criminal.php">Ajouter un criminel</a>
-									</li>
-									<li>
-										<a href="bracelet.php">Bracelet</a>
-									</li>
-										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
-										</li>
-										<li>
-											<a href="plaque.php" class="menu-top-active">Plaques</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
-										</li>
+                                    ' . $nav . '
                                 </ul>
                             </div>
                         </div>
@@ -246,9 +269,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="police.php">
-                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
-                        </a>
+                        '.$logo.'
                     </div>
                     <div class="right-div">
                         <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
@@ -262,24 +283,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                         <div class="col-md-12">
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <a href="police.php"◊>Home</a>
-                                    </li>
-                                    <li>
-										<a href="add_criminal.php">Ajouter un criminel</a>
-									</li>
-									<li>
-										<a href="bracelet.php">Bracelet</a>
-									</li>
-										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
-										</li>
-										<li>
-											<a href="plaque.php" class="menu-top-active">Plaques</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
-										</li>
+                                    '.$nav .'
                                 </ul>
                             </div>
                         </div>
