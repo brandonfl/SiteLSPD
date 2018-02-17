@@ -35,6 +35,7 @@
 										</li>';
 
 
+
 		    echo '
 	    <head>
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
@@ -76,12 +77,12 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<p></p>
-					<p></p>Add a Criminal
+					<p></p>Ajouter une plaque
 					<p></p>
 					<p></p>
 				</div>
 				<div class="panel-body">
-					<form action="add_criminal_post.php" method="post">
+					<form action="concessionnaire_add_post.php" method="post">
 						<p>
 							<div class="form-group">
 								<label for="nom">First and Surname *</label> :
@@ -90,23 +91,18 @@
 								<br />
 							</div>
 							<div class="form-group">
-								<label for="message">Telephone</label> :
-								<p class="help-block">ex 555-12345</p>
-								<input type="text" name="telephone" id="telephone" class="form-control" />
+								<label for="message">Plaque * (en maj)</label> :
+								<p class="help-block">ex: DON1</p>
+								<input type="text" name="plaque" id="plaque" class="form-control" />
 								<br />
 							</div>
 							<div class="form-group">
-								<label for="message">Crime *</label> :
-								<p class="help-block">Robber/ Car jacking / ...</p>
-								<input type="text" name="crime" id="crime" class="form-control" required />
+								<label for="message">Modele *</label> :
+								<p class="help-block">ex: twingo</p>
+								<input type="text" name="modele" id="modele" class="form-control" required />
 								<br />
 							</div>
-							<div class="form-group">
-								<label for="message">Sanction *</label> :
-								<p class="help-block">ex $100 Fine, 1 Year in jail</p>
-								<input type="text" name="sanction" id="sanction" class="form-control" required />
-								<br />
-							</div>
+							
 							<input type="submit" value="Send" class="btn btn-info" />
 						</p>
 					</form>

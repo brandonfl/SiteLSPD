@@ -18,8 +18,8 @@
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <?php
-if (isset($_GET['error'])) {
-    $error = $_GET['error'];
+if (isset($_GET['statut'])) {
+    $statut = $_GET['statut'];
 }
 session_start();
 
@@ -41,6 +41,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION
 										<li>
 											<a href="serveur" target="_blank">Ville</a>
 										</li>';
+
 
     echo '
     <head>
@@ -115,9 +116,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION
     if (isset($statut)) {
         if($statut == 1){
     echo '
-    <div class="alert alert-danger alert-dismissable fade in">
+    <div class="alert alert-success alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les administrateurs peuvent effacer une plaque </div>
+    <strong>Success !</strong> Une nouvelle plaque a bien été ajoutée </div>
     
     ';}
     

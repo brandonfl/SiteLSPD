@@ -57,21 +57,25 @@ if(isset($_POST['formconnexion'])) {
 
                      $req->execute();
 
-                     if($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['juge'] == 1){
-                         header("Location: police.php?id=" . $_SESSION['id']);
-                     }
-
                      if($_SESSION['Admin'] == 1){
                          header("Location: administration.php?id=" . $_SESSION['id']);
+                     }else {
+
+                         if($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['juge'] == 1){
+                             header("Location: police.php?id=" . $_SESSION['id']);
+                         }
+
+
+                         if($_SESSION['concessionnaire'] == 1){
+                             header("Location: concessionnaire.php?id=" . $_SESSION['id']);
+                         }
+
+                         if($_SESSION['mecanicien'] == 1){
+                             header("Location: login.php");
+                         }
                      }
 
-                     if($_SESSION['concessionnaire'] == 1){
-                         header("Location: concessionnaire.php?id=" . $_SESSION['id']);
-                     }
 
-                     if($_SESSION['mecanicien'] == 1){
-                         header("Location: login.php");
-                     }
 
 
                  }else {
