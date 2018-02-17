@@ -69,6 +69,10 @@ if(isset($_POST['formconnexion'])) {
                          header("Location: concessionnaire.php?id=" . $_SESSION['id']);
                      }
 
+                     if($_SESSION['mecanicien'] == 1){
+                         header("Location: login.php");
+                     }
+
 
                  }else {
                      $erreur = "Une erreur c'est produite au niveau de vos grades. Merci de bien vouloir contacter un administrateur";

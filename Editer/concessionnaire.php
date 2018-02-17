@@ -27,41 +27,20 @@ session_start();
 
 
 
-if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['Admin'] == 1 or $_SESSION['juge'] == 1)) {
+if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION['Admin'] == 1)) {
 
-    if($_SESSION['juge']==1){
         $nav = '                    <li>
                                         <a href="concessionnaire.php" class="menu-top-active">Home</a>
                                     </li>
 									<li>
-										<a href="bracelet.php">Bracelet</a>
-									</li>
-										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
-										</li>';
-    }else{
-        $nav = '                    <li>
-                                        <a href="police.php" class="menu-top-active">Home</a>
-                                    </li>
-                                    <li>
-										<a href="add_criminal.php">Ajouter un criminel</a>
+										<a href="concessionnaire_add.php">Ajouter une plaque</a>
 									</li>
 									<li>
-										<a href="bracelet.php">Bracelet</a>
+										<a href="plaque.php">Rechercher une plaque</a>
 									</li>
 										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
-										</li>
-										<li>
-											<a href="plaque.php">Plaques</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
+											<a href="serveur" target="_blank">Ville</a>
 										</li>';
-    }
 
     echo '
     <head>
@@ -106,7 +85,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">LSPD PANEL</h4>
+                            <h4 class="header-line">CONCESSIONNAIRE PANEL</h4>
                         </div>
                     </div>
                     <div class="row">
