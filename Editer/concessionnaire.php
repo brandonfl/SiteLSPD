@@ -98,12 +98,11 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION
                                             <thead>
                                                 <tr>
                                                     <th>Horodateur</th>
-                                                    <th>Nom</th>
-                                                    <th>Telephone</th>
-                                                    <th>Crime</th>
-                                                    <th>Sanction</th>
-                                                    <th>Agent</th>
-                                                    <th>delete</th>
+                                                    <th>Plaque</th>
+                                                    <th>Propriétaire</th>
+                                                    <th>Modele</th>
+                                                    <th>Fait par</th>
+                                                    <th>informations</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -111,93 +110,58 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION
 
                                     ';
     include("config.php");
-    
-    if(isset($_SESSION['annonce']) and is_numeric($_SESSION['annonce']) and $_SESSION['annonce'] == 0){
-        $_SESSION['annonce'] = 1;
-        
-        
-        $nbannonce = $bdd->query('SELECT COUNT(*) AS nb FROM annonce WHERE isActive = 1');
-            while($nbannoncedata = $nbannonce->fetch()){
-                $nombreannonce = $nbannoncedata['nb'];
-                }
-                
-        if(isset($nombreannonce) and is_numeric($nombreannonce) and $nombreannonce == 1){
-            $annonce = $bdd->query('SELECT * FROM annonce WHERE isActive = 1');
-            while ($annoncedata = $annonce->fetch()){
-                
-                echo '
-    <div class="alert alert-info alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Annonce :</strong> ' . $annoncedata["texte"] . '</div>';
 
-                
-            }
-                }
-        }else{
     
-    if (isset($error)) {
-        if($error == 1){
+    if (isset($statut)) {
+        if($statut == 1){
     echo '
     <div class="alert alert-danger alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation peuvent effacer un casier judiciaire  </div>
+    <strong>Attention !</strong> Uniquement les administrateurs peuvent effacer une plaque </div>
     
     ';}
     
-    if($error == 2){
-    echo '
-    <div class="alert alert-danger alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents de la LSPD peuvent ajouter un casier judiciaire et non le procureur</div>
-    
-    ';
-    }
-    
-}
 }
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM lspd');
+    $reponse = $bdd->query('SELECT * FROM plaque');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
 ?>
                                                <tr class="odd gradeX">
-                                                    <form action='delete_entry.php' method='post'>
                                                     <td>
                                                         <?php
-        echo $data['horodateur'];
+        echo $data['date'];
 ?>
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['nom'];
+        echo $data['plaque'];
 ?>
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['telephone'];
+        echo $data['proprietaire'];
 ?>
                                                    </td>
                                                     
                                                     <td class="center">
                                                         <?php
-        echo $data['crime'];
+        echo $data['modele'];
 ?>
                                                    </td>
                                                     <td class="center">
                                                         <?php
-        echo $data['sanction'];
+        echo $data['par'];
 ?>
                                                    </td>
-                                                   <td class="center">
-                                                        <?php
-        echo $data['Agent'];
-?>
-                                                   </td>
-                                                 <form action='delete_entry.php' method='post'>
+
+                                                 <form action='plaque.php' method='get'>
                                                      <?php
-        echo '<td>
-                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
+        echo '<td>                                            
+                                                            <input type="hidden" name="plaque" value="'.$data['plaque'].'" />
+                                                             <input type="submit" name="id" class="btn btn-info" value="' . $data['id'] . '" />
+                                                             
                                                      </td>';
 ?>
                                                 </form>
