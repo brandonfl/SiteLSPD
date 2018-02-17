@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  mar. 13 fév. 2018 à 20:19
+-- Généré le :  sam. 17 fév. 2018 à 13:39
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.0.27
 
@@ -95,7 +95,11 @@ CREATE TABLE `membres` (
   `mail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `motdepasse` text COLLATE utf8_unicode_ci NOT NULL,
   `allowed` tinyint(1) NOT NULL DEFAULT '0' COMMENT ' A value of zero is considered false. 1 considered true',
+  `police` tinyint(1) NOT NULL DEFAULT '0',
   `procureur` tinyint(1) NOT NULL DEFAULT '0',
+  `juge` tinyint(1) NOT NULL DEFAULT '0',
+  `concessionnaire` tinyint(1) NOT NULL DEFAULT '0',
+  `mecanicien` tinyint(1) NOT NULL DEFAULT '0',
   `Admin` tinyint(1) NOT NULL DEFAULT '0',
   `lastConnection` datetime DEFAULT NULL,
   `lastIp` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
@@ -112,7 +116,8 @@ CREATE TABLE `plaque` (
   `plaque` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `proprietaire` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `modele` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `par` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -153,7 +158,8 @@ ALTER TABLE `membres`
 -- Index pour la table `plaque`
 --
 ALTER TABLE `plaque`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `plaque` (`plaque`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -163,7 +169,7 @@ ALTER TABLE `plaque`
 -- AUTO_INCREMENT pour la table `annonce`
 --
 ALTER TABLE `annonce`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `bracelet`
@@ -181,19 +187,19 @@ ALTER TABLE `controle`
 -- AUTO_INCREMENT pour la table `lspd`
 --
 ALTER TABLE `lspd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT pour la table `membres`
 --
 ALTER TABLE `membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT pour la table `plaque`
 --
 ALTER TABLE `plaque`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
