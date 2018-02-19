@@ -89,7 +89,7 @@
 					<p></p>
 				</div>
 				<div class="panel-body">
-					<form action="concessionnaire_add_post.php" method="post">
+					<form action="mecanicien_add_post.php" method="post">
 						<p>
 							<div class="form-group">
 								<label for="nom">Propriétaire *</label> :
@@ -109,6 +109,7 @@
 								<input type="date" name="date" id="date" class="form-control" />
 								<br />
 							</div>
+							<input type="hidden" name="plaque" value="' . $_POST['plaque'] . '">
 							<input type="submit" value="Send" class="btn btn-info" />
 						</p>
 					</form>
