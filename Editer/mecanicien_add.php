@@ -79,27 +79,14 @@
 					<p></p>
 				</div>
 				<div class="panel-body">
-					<form action="concessionnaire_add_post.php" method="post">
+					<form action="mecanicien_add_controle.php" method="post">
 						<p>
-							<div class="form-group">
-								<label for="nom">First and Surname *</label> :
-								<p class="help-block">ex: John Cena</p>
-								<input type="text" name="nom" id="nom" class="form-control" required />
-								<br />
-							</div>
 							<div class="form-group">
 								<label for="message">Plaque * (en maj)</label> :
 								<p class="help-block">ex: DON1</p>
 								<input type="text" name="plaque" id="plaque" class="form-control" />
 								<br />
 							</div>
-							<div class="form-group">
-								<label for="message">Modele *</label> :
-								<p class="help-block">ex: twingo</p>
-								<input type="text" name="modele" id="modele" class="form-control" required />
-								<br />
-							</div>
-							
 							<input type="submit" value="Send" class="btn btn-info" />
 						</p>
 					</form>
@@ -113,7 +100,7 @@
 						<div class="row">
 							<div class="col-md-12">
                    &copy; 2017 LSPD |
-								<a href="https://www.youtube.com/user/davendrix" target="_blank"  > Coded by : Davendrix</a> &amp;  Glen McMahon
+								 Glen McMahon
 							</div>
 						</div>
 					</div>
