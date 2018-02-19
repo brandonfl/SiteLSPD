@@ -83,7 +83,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Adm
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">CONCESSIONNAIRE PANEL</h4>
+                            <h4 class="header-line">MECANICIEN PANEL</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -116,6 +116,14 @@ if (isset($_SESSION['id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Adm
     <div class="alert alert-success alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Success !</strong> Un nouveau controle a bien été ajouté</div>
+    
+    ';}
+
+        if($statut == 2){
+            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Echec !</strong> La plaque entrée n\'existe pas, merci de bien vouloir rentrer les plaques en majuscule. Sinon, contactez le concessionnaire</div>
     
     ';}
     

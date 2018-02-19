@@ -92,9 +92,16 @@
 					<form action="concessionnaire_add_post.php" method="post">
 						<p>
 							<div class="form-group">
-								<label for="message">Plaque * (en maj)</label> :
-								<p class="help-block">ex: DON1</p>
-								<input type="text" name="plaque" id="plaque" class="form-control" />
+								<label for="nom">First and Surname *</label> :
+								<p class="help-block">ex: John Cena</p>
+								<input type="text" name="nom" id="nom" class="form-control" required />
+								<br />
+							</div>
+							
+							<div class="form-group">
+								<label for="message">Modele *</label> :
+								<p class="help-block">ex: twingo</p>
+								<input type="text" name="modele" id="modele" class="form-control" required />
 								<br />
 							</div>
 							<input type="submit" value="Send" class="btn btn-info" />
@@ -124,7 +131,7 @@
 			</body>';
 
             }else{
-                header("Locaion: mecanicien.php?statut=2");
+                header("Location: mecanicien.php?statut=2");
             }
             } else { header( "Location: login.php"); } ?>
 		</html>
