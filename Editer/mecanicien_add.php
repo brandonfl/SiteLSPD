@@ -18,17 +18,14 @@
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 		</head>
 		<?php include( "config.php"); session_start();
-		if (isset($_SESSION[ 'id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION['Admin'] == 1)) {
+		if (isset($_SESSION[ 'id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Admin'] == 1)) {
 
 
             $nav = '                    <li>
-                                        <a href="concessionnaire.php">Home</a>
+                                        <a href="mecanicien.php">Home</a>
                                     </li>
 									<li>
-										<a href="concessionnaire_add.php" class="menu-top-active">Ajouter une plaque</a>
-									</li>
-									<li>
-										<a href="plaque.php">Rechercher une plaque</a>
+										<a href="mecanicien_add.php" class="menu-top-active">Ajouter un controle technique</a>
 									</li>
 										<li>
 											<a href="serveur" target="_blank">Ville</a>
@@ -50,7 +47,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="concessionnaire.php">
+						<a class="navbar-brand" href="mecanicien.php">
 							<img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
 						</a>
 					</div>
@@ -82,32 +79,18 @@
 					<p></p>
 				</div>
 				<div class="panel-body">
-					<form action="concessionnaire_add_post.php" method="post">
+					<form action="mecanicien_add_controle.php" method="post">
 						<p>
-							<div class="form-group">
-								<label for="nom">First and Surname *</label> :
-								<p class="help-block">ex: John Cena</p>
-								<input type="text" name="nom" id="nom" class="form-control" required />
-								<br />
-							</div>
 							<div class="form-group">
 								<label for="message">Plaque * (en maj)</label> :
 								<p class="help-block">ex: DON1</p>
 								<input type="text" name="plaque" id="plaque" class="form-control" />
 								<br />
 							</div>
-							<div class="form-group">
-								<label for="message">Modele *</label> :
-								<p class="help-block">ex: twingo</p>
-								<input type="text" name="modele" id="modele" class="form-control" required />
-								<br />
-							</div>
-							
 							<input type="submit" value="Send" class="btn btn-info" />
 						</p>
 					</form>
 					<p></p>
-					<img src="https://image.noelshack.com/fichiers/2015/40/1443969486-lspd-logo-modern-2.png" align="center">
 					</div>
 				</div>
 				<!-- CONTENT-WRAPPER SECTION END-->
@@ -116,7 +99,7 @@
 						<div class="row">
 							<div class="col-md-12">
                    &copy; 2017 LSPD |
-								<a href="https://www.youtube.com/user/davendrix" target="_blank"  > Coded by : Davendrix</a> &amp;  Glen McMahon
+								 Glen McMahon
 							</div>
 						</div>
 					</div>

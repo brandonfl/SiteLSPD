@@ -67,7 +67,7 @@ if(isset($_POST['formconnexion'])) {
                          }
 
                          if($_SESSION['mecanicien'] == 1){
-                             header("Location: login.php");
+                             header("Location: mecanicien.php");
                          }
 
 
