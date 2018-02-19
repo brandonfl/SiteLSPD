@@ -92,16 +92,21 @@
 					<form action="concessionnaire_add_post.php" method="post">
 						<p>
 							<div class="form-group">
-								<label for="nom">First and Surname *</label> :
+								<label for="nom">Propriétaire *</label> :
 								<p class="help-block">ex: John Cena</p>
 								<input type="text" name="nom" id="nom" class="form-control" required />
 								<br />
 							</div>
-							
 							<div class="form-group">
-								<label for="message">Modele *</label> :
-								<p class="help-block">ex: twingo</p>
-								<input type="text" name="modele" id="modele" class="form-control" required />
+								<label for="message">Commentaires *</label> :
+								<p class="help-block">ex: bon etat/contre visite/prochaine visite ...</p>
+								<input type="text" name="commentaire" id="commentaire" class="form-control" required />
+								<br />
+							</div>
+							<div class="form-group">
+								<label for="message">Date de fin de validité *</label> :
+								<p class="help-block">ex : 2012-12-21</p>
+								<input type="date" name="date" id="date" class="form-control" />
 								<br />
 							</div>
 							<input type="submit" value="Send" class="btn btn-info" />
