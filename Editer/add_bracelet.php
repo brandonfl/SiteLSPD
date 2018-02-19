@@ -32,10 +32,10 @@
 
             if($_SESSION['juge'] == 1){
                 $nav = '                    <li>
-                                        <a href="police.php" class="menu-top-active">Home</a>
+                                        <a href="police.php">Home</a>
                                     </li>
 									<li>
-										<a href="bracelet.php">Bracelet</a>
+										<a href="bracelet.php" class="menu-top-active">Bracelet</a>
 									</li>
 										<li>
 											<a href="trello" target="_blank"> Enquetes</a>
@@ -45,13 +45,13 @@
 										</li>';
             }else{
                 $nav = '                    <li>
-                                        <a href="police.php" class="menu-top-active">Home</a>
+                                        <a href="police.php">Home</a>
                                     </li>
                                     <li>
 										<a href="add_criminal.php">Ajouter un criminel</a>
 									</li>
 									<li>
-										<a href="bracelet.php">Bracelet</a>
+										<a href="bracelet.php" class="menu-top-active">Bracelet</a>
 									</li>
 										<li>
 											<a href="trello" target="_blank"> Enquetes</a>
