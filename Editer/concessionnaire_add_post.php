@@ -12,7 +12,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1 or $_SESSION[
 
     $commentaire = 'Concessionnaire : nouveau vehicule';
 
-    $req2 = $bdd->prepare('INSERT INTO controle (horodateur,plaque,nom,commentaire,fin,par) VALUES(NOW() + INTERVAL 1 HOUR,?,?,?,NOW() + INTERVAL 7 DAY,?)');
+    $req2 = $bdd->prepare('INSERT INTO controle (horodateur,plaque,nom,commentaire,fin,par) VALUES(NOW() + INTERVAL 1 HOUR,?,?,?,NOW() + INTERVAL 30 DAY,?)');
     $req2->execute(array($_POST['plaque'], $_POST['nom'], $commentaire,$_SESSION['pseudo']));
 
 // Redirect user back to the add criminal page
