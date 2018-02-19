@@ -20,7 +20,7 @@
 		<?php include( "config.php"); session_start();
 		if (isset($_SESSION[ 'id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Admin'] == 1) and isset($_POST['plaque'])) {
 
-		    $reponse = $bdd->query('SELECT COUNT(*) AS nb FROM plaque WHERE plaque =\''.$_GET['plaque'].'\'');
+		    $reponse = $bdd->query('SELECT COUNT(*) AS nb FROM plaque WHERE plaque =\''.$_POST['plaque'].'\'');
 
             // Display each entry one by one
             while ($data = $reponse->fetch()) {
