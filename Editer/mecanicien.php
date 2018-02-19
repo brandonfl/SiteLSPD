@@ -121,7 +121,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Adm
     
 }
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM plaque');
+    $reponse = $bdd->query('SELECT * FROM controle');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
