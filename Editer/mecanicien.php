@@ -98,9 +98,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Adm
                                                     <th>Horodateur</th>
                                                     <th>Plaque</th>
                                                     <th>Propriétaire</th>
-                                                    <th>Modele</th>
+                                                    <th>Commentaire</th>
+                                                    <th>Fin de validité</th>
                                                     <th>Fait par</th>
-                                                    <th>informations</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -115,7 +115,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Adm
     echo '
     <div class="alert alert-success alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Une nouvelle plaque a bien été ajoutée </div>
+    <strong>Success !</strong> Un nouveau controle a bien été ajouté</div>
     
     ';}
     
@@ -129,7 +129,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Adm
                                                <tr class="odd gradeX">
                                                     <td>
                                                         <?php
-        echo $data['date'];
+        echo $data['horodateur'];
 ?>
                                                    </td>
                                                     <td>
@@ -139,30 +139,26 @@ if (isset($_SESSION['id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Adm
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['proprietaire'];
+        echo $data['nom'];
 ?>
                                                    </td>
                                                     
                                                     <td class="center">
                                                         <?php
-        echo $data['modele'];
+        echo $data['commentaire'];
 ?>
                                                    </td>
                                                     <td class="center">
                                                         <?php
-        echo $data['par'];
+        echo $data['fin'];
 ?>
                                                    </td>
 
-                                                 <form action='plaque.php' method='get'>
-                                                     <?php
-        echo '<td>                                            
-                                                            <input type="hidden" name="plaque" value="'.$data['plaque'].'" />
-                                                             <input type="submit" name="id" class="btn btn-info" value="' . $data['id'] . '" />
-                                                             
-                                                     </td>';
-?>
-                                                </form>
+                                                   <td class="center">
+                                                       <?php
+                                                       echo $data['par'];
+                                                       ?>
+                                                   </td>
                                                 </tr>
 
                                                 <?php
