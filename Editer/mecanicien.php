@@ -27,16 +27,13 @@ session_start();
 
 
 
-if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION['Admin'] == 1)) {
+if (isset($_SESSION['id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Admin'] == 1)) {
 
         $nav = '                    <li>
-                                        <a href="concessionnaire.php" class="menu-top-active">Home</a>
+                                        <a href="mecanicien.php" class="menu-top-active">Home</a>
                                     </li>
 									<li>
-										<a href="concessionnaire_add.php">Ajouter une plaque</a>
-									</li>
-									<li>
-										<a href="plaque.php">Rechercher une plaque</a>
+										<a href="mecanicien_add.php">Ajouter un controle technique</a>
 									</li>
 										<li>
 											<a href="serveur" target="_blank">Ville</a>
