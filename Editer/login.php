@@ -48,6 +48,7 @@ if(isset($_POST['formconnexion'])) {
                      $_SESSION['mail'] = $userinfo['mail'];
                      $_SESSION['Admin'] = $userinfo['Admin'];
                      $_SESSION['annonce'] = 0; //Todo : a mettre à 0 quand les annonces sont fini
+                     $_SESSION['connexion'] = $userinfo['lastConnection'];
 
                      $req = $bdd->prepare('UPDATE membres SET lastConnection = NOW() + INTERVAL 1 HOUR , lastIp = ? WHERE membres.id = ?');
 

@@ -220,19 +220,8 @@ if (isset($_SESSION['id'])) {
     }
     
 }
-    // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM membres WHERE id='.$ID.' ');
 
-    // Display each entry one by one
-    while ($data = $reponse->fetch()) {
-        $pseudo = $data['pseudo'];
-        $mail = $data['mail'];
-        $connection = $data['lastConnection'];
-        $admin = $data['Admin'];
-    }
-    $reponse->closeCursor(); // Complete query
-
-    if($admin == 1){
+    if($_SESSION['Admin'] == 1){
         $ad = '<a href="administration.php"><div class="label label-danger">Administrateur</div></a>';
     }else{
         $ad = ' ';
@@ -259,7 +248,7 @@ if (isset($_SESSION['id'])) {
                         <h3 class="panel-title">Nom</h3>
                     </div>
                     <div class="panel-body">
-                        '.$pseudo.'
+                        '.$_SESSION['pseudo'].'
                     </div>
                 </div>
                 <div class="panel panel-info" style="margin: 1em;">
@@ -267,7 +256,7 @@ if (isset($_SESSION['id'])) {
                         <h3 class="panel-title">Email</h3>
                     </div>
                     <div class="panel-body">
-                        '.$mail.'
+                        '.$_SESSION['mail'].'
                     </div>
                 </div>
                 <div class="panel panel-info" style="margin: 1em;">
@@ -286,7 +275,7 @@ if (isset($_SESSION['id'])) {
 
                     </div>
                     <div class="panel-body">
-                        '.$connection.'
+                        '.$_SESSION['connexion'].'
                     </div>
                 </div>
 
