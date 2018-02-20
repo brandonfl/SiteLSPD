@@ -192,6 +192,13 @@ if (isset($_SESSION['id'])) {
 
                                     ';
 
+    echo '
+    <div class="alert alert-warning alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>En cours de developpement ...</strong></div>
+    
+    ';
+
     if (isset($error)) {
         if($error == 1){
     echo '
@@ -239,17 +246,15 @@ if (isset($_SESSION['id'])) {
 
             <div class="col-md-3">
                 <ul class="nav nav-pills nav-stacked admin-menu" >
-                    <li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
-                    <li><a href="" data-target-id="change-password"><i class="glyphicon glyphicon-lock"></i> Change Password</a></li>
-                    <li><a href="" data-target-id="settings"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
-                    <li><a href="" data-target-id="logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+                    <li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Profil</a></li>
+                    <li><a href="" data-target-id="change-password"><i class="glyphicon glyphicon-lock"></i> Changer son mot de passe</a></li>
                 </ul>
             </div>
 
             <div class="col-md-9  admin-content" id="profile">
                 <div class="panel panel-info" style="margin: 1em;">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Name</h3>
+                        <h3 class="panel-title">Nom</h3>
                     </div>
                     <div class="panel-body">
                         '.$pseudo.'
@@ -284,34 +289,6 @@ if (isset($_SESSION['id'])) {
                 </div>
 
             </div>
-   <div class="col-md-9  admin-content" id="settings">
-                <div class="panel panel-info" style="margin: 1em;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Notification</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="label label-success">allowed</div>
-                    </div>
-                </div>
-                <div class="panel panel-info" style="margin: 1em;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Newsletter</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="badge">Monthly</div>
-                    </div>
-                </div>
-                <div class="panel panel-info" style="margin: 1em;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Admin</h3>
-
-                    </div>
-                    <div class="panel-body">
-                         <div class="label label-success">yes</div>
-                    </div>
-                </div>
-
-            </div>
 
             <div class="col-md-9  admin-content" id="change-password">
                 <form action="/password" method="post">
@@ -319,7 +296,7 @@ if (isset($_SESSION['id'])) {
            
                     <div class="panel panel-info" style="margin: 1em;">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">New Password</label></h3>
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Nouveau mot de passe</label></h3>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -334,7 +311,7 @@ if (isset($_SESSION['id'])) {
              
                     <div class="panel panel-info" style="margin: 1em;">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><label for="confirm_password" class="control-label panel-title">Confirm password</label></h3>
+                            <h3 class="panel-title"><label for="confirm_password" class="control-label panel-title">Confirmez le nouveau mot de passe</label></h3>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -359,24 +336,7 @@ if (isset($_SESSION['id'])) {
                 </form>
             </div>
 
-            <div class="col-md-9  admin-content" id="settings"></div>
-
-            <div class="col-md-9  admin-content" id="logout">
-                <div class="panel panel-info" style="margin: 1em;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Confirm Logout</h3>
-                    </div>
-                    <div class="panel-body">
-                        Do you really want to logout ?  
-                        <a  href="#" class="label label-danger"
-                            onclick="event.preventDefault();
-                                                     document.getElementById(\'logout-form\').submit();">
-                            <span >   Yes   </span>
-                        </a>    
-                        <a href="/account" class="label label-success"> <span >  No   </span></a>
-                    </div>
-                    <form id="logout-form" action="#" method="POST" style="display: none;">
-                    </form>
+           
 
 
 

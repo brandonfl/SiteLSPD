@@ -62,8 +62,9 @@
 						</a>
 					</div>
 					<div class="right-div">
-						<a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
-					</div>
+                        <a href="profil.php" class="btn btn-info">PROFIL</a>
+                        <a href="logout.php" class="btn btn-danger">DECONNEXION</a>
+                    </div>
 				</div>
 			</div>
 			<!-- LOGO HEADER END-->
