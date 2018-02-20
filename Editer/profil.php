@@ -29,6 +29,7 @@ session_start();
 
 if (isset($_SESSION['id'])) {
     include("config.php");
+    $ID=$_SESSION['id'];
 
     if($_SESSION['juge']==1){
         $nav = '                    <li>
@@ -47,6 +48,8 @@ if (isset($_SESSION['id'])) {
         $logo = '<a class="navbar-brand" href="police.php">
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>';
+
+        $rang = 'Juge';
     }else{
         if($_SESSION['police']==1 or $_SESSION['procureur']==1){
             $nav = '                    <li>
@@ -70,6 +73,12 @@ if (isset($_SESSION['id'])) {
             $logo = '<a class="navbar-brand" href="police.php">
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>';
+
+            if($_SESSION['police']==1){
+                $rang = 'Police';
+            }else{
+                $rang = 'Procureur';
+            }
         }else{
             if($_SESSION['concessionnaire']==1){
                 $nav = '                    <li>
@@ -88,6 +97,8 @@ if (isset($_SESSION['id'])) {
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>';
 
+                $rang = 'Concessionnaire';
+
             }else{
                 if($_SESSION['mecanicien']==1){
                     $nav = '                    <li>
@@ -103,6 +114,8 @@ if (isset($_SESSION['id'])) {
                     $logo='<a class="navbar-brand" href="mecanicien.php">
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>';
+
+                    $rang = 'Mecanicien';
                 }else{
                         header("Location: index.php");
                 }
@@ -159,21 +172,7 @@ if (isset($_SESSION['id'])) {
                             <!-- Advanced Tables -->
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                            <thead>
-                                                <tr>
-                                                    <th>Horodateur</th>
-                                                    <th>Nom</th>
-                                                    <th>Telephone</th>
-                                                    <th>Crime</th>
-                                                    <th>Sanction</th>
-                                                    <th>Agent</th>
-                                                    <th>delete</th>
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                        
 
                                     ';
 
@@ -197,62 +196,19 @@ if (isset($_SESSION['id'])) {
     
 }
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM lspd');
+    $reponse = $bdd->query('SELECT * FROM membres WHERE id='.$ID.' ');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
-?>
-                                               <tr class="odd gradeX">
-                                                    <form action='delete_entry.php' method='post'>
-                                                    <td>
-                                                        <?php
-        echo $data['horodateur'];
-?>
-                                                   </td>
-                                                    <td>
-                                                        <?php
-        echo $data['nom'];
-?>
-                                                   </td>
-                                                    <td>
-                                                        <?php
-        echo $data['telephone'];
-?>
-                                                   </td>
-                                                    
-                                                    <td class="center">
-                                                        <?php
-        echo $data['crime'];
-?>
-                                                   </td>
-                                                    <td class="center">
-                                                        <?php
-        echo $data['sanction'];
-?>
-                                                   </td>
-                                                   <td class="center">
-                                                        <?php
-        echo $data['Agent'];
-?>
-                                                   </td>
-                                                 <form action='delete_entry.php' method='post'>
-                                                     <?php
-        echo '<td>
-                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
-                                                     </td>';
-?>
-                                                </form>
-                                                </tr>
-
-                                                <?php
+        $pseudo = $data['pseudo'];
+        $mail = $data['mail'];
     }
     $reponse->closeCursor(); // Complete query
     echo '
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                            pseudo : '.$pseudo.'<br>
+                            mail : '.$mail.'<br>
+                            rang : '.$rang.'<br>
+                                            
                             </div>
                             <!--End Advanced Tables -->
                         </div>
