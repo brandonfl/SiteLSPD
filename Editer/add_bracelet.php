@@ -41,7 +41,7 @@
 											<a href="trello" target="_blank"> Enquetes</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
+											<a href="drive" target="_blank">Informations Internes</a>
 										</li>';
             }else{
                 $nav = '                    <li>
@@ -60,7 +60,7 @@
 											<a href="plaque.php">Plaques</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
+											<a href="drive" target="_blank">Informations Internes</a>
 										</li>';
             }
 

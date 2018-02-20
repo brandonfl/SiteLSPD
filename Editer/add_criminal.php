@@ -65,7 +65,7 @@
 											<a href="plaque.php">Plaques</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
+											<a href="drive" target="_blank">Informations Internes</a>
 										</li>
 									</ul>
 							</div>

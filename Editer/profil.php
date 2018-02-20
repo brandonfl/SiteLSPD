@@ -63,7 +63,7 @@ if (isset($_SESSION['id'])) {
 											<a href="trello" target="_blank"> Enquetes</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
+											<a href="drive" target="_blank">Informations Internes</a>
 										</li>';
 
         $logo = '<a class="navbar-brand" href="police.php">
