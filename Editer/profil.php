@@ -17,6 +17,7 @@
             <!-- GOOGLE FONT -->
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style type="text/css">a:link{text-decoration:none}</style>
         <script>
 
             $(document).ready(function()
@@ -232,7 +233,7 @@ if (isset($_SESSION['id'])) {
     $reponse->closeCursor(); // Complete query
 
     if($admin == 1){
-        $ad = '<div class="label label-danger">Administrateur</div>';
+        $ad = '<a href="administration.php"><div class="label label-danger">Administrateur</div></a>';
     }else{
         $ad = ' ';
     }
