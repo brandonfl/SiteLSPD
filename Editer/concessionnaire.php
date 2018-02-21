@@ -48,7 +48,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION
     }else{
         if($_SESSION['police']==1){
             $nav = '                    <li>
-                                        <a href="police.php" class="menu-top-active">Home</a>
+                                        <a href="police.php">Home</a>
                                     </li>
                                     <li>
 										<a href="add_criminal.php">Ajouter un criminel</a>
@@ -60,7 +60,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION
 											<a href="trello" target="_blank"> Enquetes</a>
 										</li>
 										<li>
-											<a href="concessionnaire.php">Plaques</a>
+											<a href="concessionnaire.php" class="menu-top-active">Plaques</a>
 										</li>
 										<li>
 											<a href="drive" target="_blank">Informations Internes</a>
