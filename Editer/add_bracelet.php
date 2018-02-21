@@ -41,7 +41,7 @@
 											<a href="trello" target="_blank"> Enquetes</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
+											<a href="drive" target="_blank">Informations Internes</a>
 										</li>';
             }else{
                 $nav = '                    <li>
@@ -60,7 +60,7 @@
 											<a href="plaque.php">Plaques</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
+											<a href="drive" target="_blank">Informations Internes</a>
 										</li>';
             }
 
@@ -83,8 +83,9 @@
 						</a>
 					</div>
 					<div class="right-div">
-						<a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
-					</div>
+                        <a href="profil.php" class="btn btn-info">PROFIL</a>
+                        <a href="logout.php" class="btn btn-danger">DECONNEXION</a>
+                    </div>
 				</div>
 			</div>
 			<!-- LOGO HEADER END-->

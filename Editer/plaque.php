@@ -64,7 +64,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 											<a href="plaque.php" class="menu-top-active">Plaques</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
+											<a href="drive" target="_blank">Informations Internes</a>
 										</li>';
 
         $logo = '<a class="navbar-brand" href="police.php">
@@ -93,7 +93,8 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                         '.$logo.'
                     </div>
                     <div class="right-div">
-                        <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
+                        <a href="profil.php" class="btn btn-info">PROFIL</a>
+                        <a href="logout.php" class="btn btn-danger">DECONNEXION</a>
                     </div>
                 </div>
             </div>
@@ -272,7 +273,8 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                         '.$logo.'
                     </div>
                     <div class="right-div">
-                        <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
+                        <a href="profil.php" class="btn btn-info">PROFIL</a>
+                        <a href="logout.php" class="btn btn-danger">DECONNEXION</a>
                     </div>
                 </div>
             </div>

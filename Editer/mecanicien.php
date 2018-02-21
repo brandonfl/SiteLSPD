@@ -60,7 +60,8 @@ if (isset($_SESSION['id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Adm
                         </a>
                     </div>
                     <div class="right-div">
-                        <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
+                        <a href="profil.php" class="btn btn-info">PROFIL</a>
+                        <a href="logout.php" class="btn btn-danger">DECONNEXION</a>
                     </div>
                 </div>
             </div>
