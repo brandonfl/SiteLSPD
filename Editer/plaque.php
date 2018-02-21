@@ -61,7 +61,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 											<a href="trello" target="_blank"> Enquetes</a>
 										</li>
 										<li>
-											<a href="plaque.php" class="menu-top-active">Plaques</a>
+											<a href="concessionnaire.php" class="menu-top-active">Plaques</a>
 										</li>
 										<li>
 											<a href="drive" target="_blank">Informations Internes</a>
