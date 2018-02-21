@@ -27,8 +27,9 @@ session_start();
 
 
 
-if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION['Admin'] == 1)) {
+if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION['Admin'] == 1 or $_SESSION['police']==1)) {
 
+    if($_SESSION['concessionnaire'] == 1) {
         $nav = '                    <li>
                                         <a href="concessionnaire.php" class="menu-top-active">Home</a>
                                     </li>
@@ -41,6 +42,38 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION
 										<li>
 											<a href="serveur" target="_blank">Ville</a>
 										</li>';
+        $logo = '<a class="navbar-brand" href="concessionnaire.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>';
+    }else{
+        if($_SESSION['police']==1){
+            $nav = '                    <li>
+                                        <a href="police.php" class="menu-top-active">Home</a>
+                                    </li>
+                                    <li>
+										<a href="add_criminal.php">Ajouter un criminel</a>
+									</li>
+									<li>
+										<a href="bracelet.php">Bracelet</a>
+									</li>
+										<li>
+											<a href="trello" target="_blank"> Enquetes</a>
+										</li>
+										<li>
+											<a href="concessionnaire.php">Plaques</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Informations Internes</a>
+										</li>';
+
+            $logo = '<a class="navbar-brand" href="police.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>';
+
+        }else{
+            header("Location: login.php");
+        }
+    }
 
 
     echo '
@@ -58,9 +91,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1  or $_SESSION
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="concessionnaire.php">
-                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
-                        </a>
+                        '.$logo.'
                     </div>
                     <div class="right-div">
                         <a href="profil.php" class="btn btn-info">PROFIL</a>
