@@ -37,10 +37,10 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 										<a href="bracelet.php">Bracelet</a>
 									</li>
 										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
+											<a href="trello" target="_blank">Informations Internes</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Informations Internes</a>
+											<a href="drive" target="_blank">Documents</a>
 										</li>';
     }else{
         $nav = '                    <li>
@@ -52,14 +52,14 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 									<li>
 										<a href="bracelet.php">Bracelet</a>
 									</li>
-										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
-										</li>
-										<li>
+									<li>
 											<a href="concessionnaire.php">Plaques</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Informations Internes</a>
+											<a href="trello" target="_blank">Informations Internes</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Documents</a>
 										</li>';
     }
 

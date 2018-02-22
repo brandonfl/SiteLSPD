@@ -61,10 +61,10 @@ if (isset($_SESSION['id'])) {
 										<a href="bracelet.php">Bracelet</a>
 									</li>
 										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
+											<a href="trello" target="_blank">Informations Internes</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Informations Internes</a>
+											<a href="drive" target="_blank">Documents</a>
 										</li>';
 
         $logo = '<a class="navbar-brand" href="police.php">
@@ -83,14 +83,14 @@ if (isset($_SESSION['id'])) {
 									<li>
 										<a href="bracelet.php">Bracelet</a>
 									</li>
-										<li>
-											<a href="trello" target="_blank"> Enquetes</a>
+									<li>
+											<a href="concessionnaire.php">Plaques</a>
 										</li>
 										<li>
-											<a href="plaque.php">Plaques</a>
+											<a href="trello" target="_blank">Informations Internes</a>
 										</li>
 										<li>
-											<a href="drive" target="_blank">Infortations Internes</a>
+											<a href="drive" target="_blank">Documents</a>
 										</li>';
             $logo = '<a class="navbar-brand" href="police.php">
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
