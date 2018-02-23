@@ -202,22 +202,23 @@ if (isset($_SESSION['id'])) {
     ';
 
     if (isset($error)) {
+
+        if($error == 0){
+            echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Le mot de passe a été modifié</div>
+    
+    ';}
+
         if($error == 1){
     echo '
     <div class="alert alert-danger alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation peuvent effacer un casier judiciaire  </div>
+    <strong>Attention !</strong> Le mot de passe de confirmation doit être le même que le nouveau proposé</div>
     
     ';}
-    
-    if($error == 2){
-    echo '
-    <div class="alert alert-danger alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents de la LSPD peuvent ajouter un casier judiciaire et non le procureur</div>
-    
-    ';
-    }
+
     
 }
 
@@ -282,7 +283,7 @@ if (isset($_SESSION['id'])) {
             </div>
 
             <div class="col-md-9  admin-content" id="change-password">
-                <form action="/password" method="post">
+                <form action="edit-password.php" method="post">
 
            
                     <div class="panel panel-info" style="margin: 1em;">
@@ -318,6 +319,7 @@ if (isset($_SESSION['id'])) {
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="pull-left">
+                                        <input type="hidden" name="id" id="id" value="' . $_SESSION['id'] . '">
                                     <input type="submit" class="form-control btn btn-primary" name="submit" id="submit">
                                 </div>
                             </div>
