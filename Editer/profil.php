@@ -194,13 +194,6 @@ if (isset($_SESSION['id'])) {
 
                                     ';
 
-    echo '
-    <div class="alert alert-warning alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>En cours de developpement ...</strong></div>
-    
-    ';
-
     if (isset($error)) {
 
         if($error == 0){
