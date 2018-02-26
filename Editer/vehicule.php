@@ -138,7 +138,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                 <div class="container">    
                   <div class="row">
                       <div class="panel panel-default">
-                      <div class="panel-heading">  <h4 >Mes vehicules</h4></div>
+                      <div class="panel-heading">  <h4 >Mes véhicules</h4></div>
                       ';
 
     echo '
@@ -153,7 +153,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                             <div class="container">    
                   <div class="row">
                       <div class="panel panel-default">
-                      <div class="panel-heading">  <h4 >Vehicules disponible à tous</h4></div>';
+                      <div class="panel-heading">  <h4 >Véhicules disponibles à tous</h4></div>';
 
     echo '
                        <div class="panel-body">
