@@ -31,7 +31,7 @@ include("config.php");
 if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] == 1)) {
 
         $nav = '                    <li>
-                                        <a href="police.php" class="menu-top-active">Home</a>
+                                        <a href="police.php">Home</a>
                                     </li>
                                     <li>
 										<a href="add_criminal.php">Ajouter un criminel</a>
@@ -42,6 +42,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
 									<li>
 											<a href="concessionnaire.php">Plaques</a>
 										</li>
+										<li>
+										<a href="vehicule.php" class="menu-top-active">Vehicule</a>
+									</li>
 										<li>
 											<a href="trello" target="_blank">Informations Internes</a>
 										</li>
@@ -99,6 +102,14 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                     </div>
                     <div class="row">
                         <div class="col-md-12">';
+
+    echo '
+    <div class="alert alert-warning alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>En cours de developpement ...</strong></div>
+    
+    ';
+
     
     if (isset($error)) {
         if($error == 1){
@@ -119,62 +130,6 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
     }
     }
 
-    echo'
-    
-                        
-                            <!-- Advanced Tables -->
-                            <div class="container">    
-                  <div class="row">
-                      <div class="panel panel-default">
-                      <div class="panel-heading">  <h4 >Vehicules disponible à tous</h4></div>';
-
-    echo '
-                       <div class="panel-body">
-                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                       <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
-                     
-                 
-                      </div>
-                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
-                          <div class="container" >
-                            <h2>John Doe</h2>
-                            <p>an   <b> Employee</b></p>
-                          
-                           
-                          </div>
-                           <hr>
-                          <ul class="container details" >
-                            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>i.rudberg</p></li>
-                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>somerandom@email.com</p></li>
-                          </ul>
-                          <hr>
-                          <div class="col-sm-5 col-xs-6 tital " >Date Of Joining: 15 Jun 2016</div>
-                      </div> ';
-
-    echo '
-                      
-                </div>
-                <div class="panel-body">
-                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                       <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
-                     
-                 
-                      </div>
-                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
-                          <div class="container" >
-                            <h2>John Doe</h2>
-                            <p>an   <b> Employee</b></p>
-                          
-                           
-                          </div>
-                           <hr>
-                          <ul class="container details" >
-                            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>i.rudberg</p></li>
-                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>somerandom@email.com</p></li>
-                          </ul>
-                          <hr>
-                          <div class="col-sm-5 col-xs-6 tital " >Date Of Joining: 15 Jun 2016</div>
-                      </div>';
     echo '              
                 </div>
                 
@@ -188,56 +143,72 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
 
     echo '
                        <div class="panel-body">
-                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                       <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
-                     
-                 
-                      </div>
-                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
-                          <div class="container" >
-                            <h2>John Doe</h2>
-                            <p>an   <b> Employee</b></p>
-                          
-                           
-                          </div>
-                           <hr>
-                          <ul class="container details" >
-                            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>i.rudberg</p></li>
-                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>somerandom@email.com</p></li>
-                          </ul>
-                          <hr>
-                          <div class="col-sm-5 col-xs-6 tital " >Date Of Joining: 15 Jun 2016</div>
+                          <div class="col-sm-5 col-xs-6 tital " >Aucun vehicule disponible</div>
                       </div>';
 
+    echo'
+        </div>
+                        
+                            <!-- Advanced Tables -->
+                            <div class="container">    
+                  <div class="row">
+                      <div class="panel panel-default">
+                      <div class="panel-heading">  <h4 >Vehicules disponible à tous</h4></div>';
+
     echo '
-                      
-                </div>
-                <div class="panel-body">
+                       <div class="panel-body">
                       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                       <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
+                       <img alt="Vehicule Pic" src="https://lspd-fivelife.fr/vehicule/police-cruiser.jpg" class="img-responsive"> 
                      
                  
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
                           <div class="container" >
-                            <h2>John Doe</h2>
-                            <p>an   <b> Employee</b></p>
+                            <h2>Police Cruiser</h2>
                           
                            
                           </div>
                            <hr>
                           <ul class="container details" >
-                            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>i.rudberg</p></li>
-                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>somerandom@email.com</p></li>
+                            <li><strong>Plaque : XXXXXXX</strong></li>
+                            <li>Sorti : Non</li>
+                            <li>Perdu : Non</li>
+                            <li>Last : 2018-02_26 10:30:00</li>
+                            <li>Agent : Glen McMahon</li>
                           </ul>
                           <hr>
-                          <div class="col-sm-5 col-xs-6 tital " >Date Of Joining: 15 Jun 2016</div>
+                          <a href="" class="btn btn-danger">SORTIR</a>
+                            <a href="" class="btn btn-warning">PERDU</a>
                       </div>
-                      
-                </div>
-                            
+                      <hr> </div>';
 
-                                    ';
+    echo '
+                       <div class="panel-body">
+                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                       <img alt="Vehicule Pic" src="https://lspd-fivelife.fr/vehicule/police-bike.jpg" class="img-responsive"> 
+                     
+                 
+                      </div>
+                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
+                          <div class="container" >
+                            <h2>Police Bike</h2>
+                          
+                           
+                          </div>
+                           <hr>
+                          <ul class="container details" >
+                          <li><strong>Plaque : XXXXXXX</strong></li>
+                            <li>Sorti : Oui</li>
+                            <li>Perdu : Non</li>
+                            <li>Last : 2018-02_26 11:00:00</li>
+                            <li>Agent : Glen McMahon</li>
+                          </ul>
+                          <hr>
+                          <a href="" class="btn btn-success">RENTRER</a>
+                            <a href="" class="btn btn-warning">PERDU</a>
+                      </div>
+                      <hr></div> ';
+
 
     echo '
                             </div>

@@ -77,6 +77,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1 or $_SESSION[
 											<a href="concessionnaire.php" class="menu-top-active">Plaques</a>
 										</li>
 										<li>
+										<a href="vehicule.php">Vehicule</a>
+									</li>
+										<li>
 											<a href="trello" target="_blank">Informations Internes</a>
 										</li>
 										<li>

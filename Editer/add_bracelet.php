@@ -74,6 +74,9 @@
 											<a href="concessionnaire.php">Plaques</a>
 										</li>
 										<li>
+										<a href="vehicule.php">Vehicule</a>
+									</li>
+										<li>
 											<a href="trello" target="_blank">Informations Internes</a>
 										</li>
 										<li>
