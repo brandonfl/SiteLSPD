@@ -89,9 +89,6 @@ if (isset($_SESSION['id'])) {
 										</li>
 										<li>
 											<a href="trello" target="_blank">Informations Internes</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Documents</a>
 										</li>';
             }else{
                 $nav = '                    <li>
