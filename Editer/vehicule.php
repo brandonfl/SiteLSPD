@@ -28,7 +28,7 @@ include("config.php");
 
 
 
-if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['Admin'] == 1)) {
+if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] == 1)) {
 
         $nav = '                    <li>
                                         <a href="police.php" class="menu-top-active">Home</a>

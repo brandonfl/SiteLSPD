@@ -19,6 +19,48 @@
 		</head>
 		<?php include( "config.php"); session_start();
 		if (isset($_SESSION[ 'id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['Admin'] == 1)) {
+
+            if($_SESSION['procureur']==1){
+                $nav = '                    <li>
+                                        <a href="police.php">Home</a>
+                                    </li>
+                                    <li>
+										<a href="add_criminal.php" class="menu-top-active">Ajouter un criminel</a>
+									</li>
+									<li>
+										<a href="bracelet.php">Bracelet</a>
+									</li>
+									<li>
+											<a href="concessionnaire.php">Plaques</a>
+										</li>
+										<li>
+											<a href="trello" target="_blank">Informations Internes</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Documents</a>
+										</li>';
+            }else{
+                $nav = '                    <li>
+                                        <a href="police.php">Home</a>
+                                    </li>
+                                    <li>
+										<a href="add_criminal.php" class="menu-top-active">Ajouter un criminel</a>
+									</li>
+									<li>
+										<a href="bracelet.php">Bracelet</a>
+									</li>
+									<li>
+											<a href="concessionnaire.php">Plaques</a>
+										</li>
+										<li>
+											<a href="trello" target="_blank">Informations Internes</a>
+										</li>
+										<li>
+											<a href="drive" target="_blank">Documents</a>
+										</li>';
+            }
+
+
 		    echo '
 	    <head>
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
