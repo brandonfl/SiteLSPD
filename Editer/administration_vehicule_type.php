@@ -18,9 +18,6 @@
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <?php
-if (isset($_GET['statut'])) {
-    $statut = $_GET['statut'];
-}
 session_start();
 
 
@@ -82,20 +79,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">VEHICULE PANEL</h4>
+                            <h4 class="header-line">VEHICULE TYPE PANEL</h4>
                         </div>
                     </div>
-                    
-                     <div class="alert alert-warning alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>En cours de developpement ...</strong></div>
-                    
-                    <div class="right-div">
-                    <a href="administration_vehicule_type.php" class="btn btn-info">Types de vehicules</a>
-                    <a href="administration_vehicule_add.php" class="btn btn-success">Ajouter un nouveau véhicule</a>
-                    
-                    </div>
-                    
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Advanced Tables -->
@@ -106,44 +92,17 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Plaque</th>
+                                                    <th>Nom</th>
                                                     <th>Type</th>
-                                                    <th>Assigné à</th>
-                                                    <th>Sorti</th>
-                                                    <th>Perdu</th>
-                                                    <th>Last</th>
-                                                    <th>Delete</th>
-                                                    
+                                                    <th>Img</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                     ';
-
-
-
     include("config.php");
-    if (isset($statut)) {
-        if($statut == 1){
-    echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Un nouveau véhicule a bien été ajouté</div>
-    
-    ';}
-
-        if($statut == 2){
-            echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Un véhicule a bien été retiré</div>
-    
-    ';}
-
-    
-}
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM vehicule');
+    $reponse = $bdd->query('SELECT * FROM type');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
@@ -157,7 +116,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['plaque'];
+        echo $data['nom'];
 ?>
                                                    </td>
                                                     <td>
@@ -166,58 +125,14 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 ?>
                                                    </td>
                                                    <td>
-                                                       <?php
-                                                       echo $data['assigne'];
-                                                       ?>
-                                                   </td>
-                                                   <?php
-                                                       if($data['sorti'] == 1){
-                                                           echo '<form action="" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['sorti'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['sorti'] == 0){
-                                                               echo '<form action="" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['sorti'] . '" />
-                                                     </td></form>';
-                                                           }}
-                                                   ?>
 
-                                                   <?php
-                                                   if($data['perdu'] == 1){
-                                                       echo '<form action="" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['perdu'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['perdu'] == 0){
-                                                           echo '<form action="" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['perdu'] . '" />
-                                                     </td></form>';
-                                                       }}
-                                                   ?>
-                                                   <td>
                                                        <?php
-                                                       echo $data['last'];
+                                                       echo '<img src="'.$data['img'].'" alt="img">';
                                                        ?>
                                                    </td>
 
-                                                   <form action='administration_vehicule_delete.php' method='post'>
-                                                       <?php
-                                                       echo '<td>
-                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
-                                                     </td>';
-                                                       ?>
-                                                   </form>
-                                                 
-                                                </tr>
+                                                   
+
 
                                                 <?php
     }
