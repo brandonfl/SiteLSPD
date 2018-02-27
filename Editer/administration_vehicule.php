@@ -97,7 +97,6 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Plaque</th>
-                                                    <th>Mail</th>
                                                     <th>Type</th>
                                                     <th>Assigné à</th>
                                                     <th>Sorti</th>
