@@ -169,6 +169,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
+        if($data['pseudo']=="All"){
+            continue;
+        }
 ?>
                                                <tr class="odd gradeX">
     
