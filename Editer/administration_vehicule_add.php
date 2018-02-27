@@ -79,7 +79,7 @@
 					<p></p>
 				</div>
 				<div class="panel-body">
-					<form action="administration_annonce_add_post.php" method="post">
+					<form action="administration_vehicule_add_form.php" method="post">
 					
 					<div class="form-group">
 								<label for="message">Plaque *</label> :
