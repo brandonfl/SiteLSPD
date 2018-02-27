@@ -96,16 +96,14 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Pseudo</th>
+                                                    <th>Plaque</th>
                                                     <th>Mail</th>
-                                                    <th>Autoriser</th>
-                                                    <th>Allow</th>
-                                                    <th>Police</th>
-                                                    <th>Procureur</th>
-                                                    <th>Juge</th>
-                                                    <th>Concessionnaire</th>
-                                                    <th>Mecanicien</th>
-                                                    <th>Admin</th>
+                                                    <th>Type</th>
+                                                    <th>Assigné à</th>
+                                                    <th>Sorti</th>
+                                                    <th>Perdu</th>
+                                                    <th>Last</th>
+                                                    <th>Delete</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -121,51 +119,11 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     <strong>Success !</strong> Un nouveau membre a été autorisé</div>
     
     ';}
-    
-    if($statut == 0){
-    echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Un membre a été révoqué</div>
-    
-    ';}
-    
-    if($statut == 2){
-    echo '
-    <div class="alert alert-danger alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Vous ne pouvez pas vous editer vous même</div>
-    
-    ';}
-
-        if($statut == 3){
-            echo '
-    <div class="alert alert-danger alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Vous ne pouvez pas editer un administrateur</div>
-    
-    ';}
-
-        if($statut == 4){
-            echo '
-    <div class="alert alert-warning alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Un membre n\'ayant plus de droits ne pourra pas se connecter</div>
-    
-    ';}
-
-        if($statut == 5){
-            echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Les droits d\'un membre ont été modifiés</div>
-    
-    ';}
 
     
 }
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM membres');
+    $reponse = $bdd->query('SELECT * FROM vehicule');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
@@ -179,36 +137,19 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['pseudo'];
+        echo $data['plaque'];
 ?>
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['mail'];
+        echo $data['type'];
 ?>
                                                    </td>
-
-                                                   
-                                                     <?php
-                                                     if($data['Admin'] == 1){
-                                                         echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['id'] . '" />
-                                                     </td></form>';
-                                                     }else{
-                                                    if($data['allowed'] == 1){
-                                                            echo '<form action="administration_form.php?allowed=0" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['id'] . '" />
-                                                     </td></form>';
-                                                        }else{
-                                                        if($data['allowed'] == 0){
-                                                            echo '<form action="administration_form.php?allowed=1" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
-                                                     </td></form>';
-                                                        }}}
-?>
+                                                   <td>
+                                                       <?php
+                                                       echo $data['assigne'];
+                                                       ?>
+                                                   </td>
 
                                                    <td class="center">
                                                        <?php
@@ -216,125 +157,51 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                        ?>
                                                    </td>
                                                    <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['police'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['police'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=police" method="post">
+                                                       if($data['sorti'] == 1){
+                                                           echo '<form action="" method="post">
                                                                     <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['police'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['sorti'] . '" />
                                                      </td></form>';
                                                        }else{
-                                                           if($data['police'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=1" method="post">
+                                                           if($data['sorti'] == 0){
+                                                               echo '<form action="" method="post">
                                                                         <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['police'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['sorti'] . '" />
                                                      </td></form>';
-                                                           }}}
+                                                           }}
                                                    ?>
 
                                                    <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['procureur'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['procureur'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=procureur" method="post">
+                                                   if($data['perdu'] == 1){
+                                                       echo '<form action="" method="post">
                                                                     <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['procureur'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['procureur'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=2" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['procureur'] . '" />
-                                                     </td></form>';
-                                                           }}}
-                                                   ?>
-
-                                                   <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['juge'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['perdu'] . '" />
                                                      </td></form>';
                                                    }else{
-                                                       if($data['juge'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=juge" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['juge'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['juge'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=3" method="post">
+                                                       if($data['perdu'] == 0){
+                                                           echo '<form action="" method="post">
                                                                         <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['juge'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['perdu'] . '" />
                                                      </td></form>';
-                                                           }}}
+                                                       }}
                                                    ?>
-
-                                                   <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['concessionnaire'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['concessionnaire'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=concessionnaire" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['concessionnaire'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['concessionnaire'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=4" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['concessionnaire'] . '" />
-                                                     </td></form>';
-                                                           }}}
-                                                   ?>
-
-                                                   <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['mecanicien'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['mecanicien'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=mecanicien" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['mecanicien'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['mecanicien'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=5" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['mecanicien'] . '" />
-                                                     </td></form>';
-                                                           }}}
-                                                   ?>
-
-                                                   <td class="center">
-                                                        <?php
-        echo $data['Admin'];
-?>
+                                                   <td>
+                                                       <?php
+                                                       echo $data['last'];
+                                                       ?>
                                                    </td>
+
+                                                   <form action='delete_bracelet.php' method='post'>
+                                                       <?php
+                                                       echo '<td>
+                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
+                                                     </td>';
+                                                       ?>
+                                                   </form>
                                                  
                                                 </tr>
 
