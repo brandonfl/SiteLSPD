@@ -171,7 +171,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                        echo '<form action="" method="post">
                                                                     <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['perdu'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['perdu'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['perdu'] == 0){
