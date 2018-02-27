@@ -82,10 +82,16 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">Admin PANEL</h4>
+                            <h4 class="header-line">VEHICULE PANEL</h4>
                         </div>
                     </div>
-                    <a href="administration.php" class="btn btn-info pull-right">Actualiser</a>
+                    
+                     <div class="alert alert-warning alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>En cours de developpement ...</strong></div>
+                    
+                    <a href="" class="btn btn-success pull-right">Ajouter un nouveau véhicule</a>
+                    
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Advanced Tables -->
@@ -109,6 +115,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                             <tbody>
 
                                     ';
+
+
+
     include("config.php");
     if (isset($statut)) {
         if($statut == 1){
