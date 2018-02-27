@@ -124,7 +124,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     echo '
     <div class="alert alert-success alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Un nouveau membre a été autorisé</div>
+    <strong>Success !</strong> Une nouvelle voiture a bien été ajoutée</div>
     
     ';}
 

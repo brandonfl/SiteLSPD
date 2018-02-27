@@ -10,7 +10,7 @@ $req = $bdd->prepare('INSERT INTO vehicule (plaque,type,assigne) VALUES(?,?,?)')
 $req->execute(array($_POST['plaque'], $_POST['type'], $_POST['pseudo']));
 
 // Redirect user back to the add criminal page
-header('Location: add_criminal.php');
+header('Location: administration_vehicule.php?statut=1');
 } else {
     header("Location: login.php");
 }
