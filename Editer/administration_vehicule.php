@@ -90,7 +90,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>En cours de developpement ...</strong></div>
                     
-                    <a href="" class="btn btn-success pull-right">Ajouter un nouveau véhicule</a>
+                    <a href="administration_vehicule_add.php" class="btn btn-success pull-right">Ajouter un nouveau véhicule</a>
                     
                     <div class="row">
                         <div class="col-md-12">
