@@ -128,6 +128,14 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     
     ';}
 
+        if($statut == 2){
+            echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Un véhicule a bien été retiré</div>
+    
+    ';}
+
     
 }
     // Get contents of the lspd table
@@ -197,7 +205,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                        ?>
                                                    </td>
 
-                                                   <form action='delete_bracelet.php' method='post'>
+                                                   <form action='administration_vehicule_delete.php' method='post'>
                                                        <?php
                                                        echo '<td>
                                                              <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
