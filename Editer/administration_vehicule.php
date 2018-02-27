@@ -63,13 +63,13 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                         <a href="police.php">Police</a>
                                     </li>
                                     <li>
-										<a href="administration.php" class="menu-top-active">Administration</a>
+										<a href="administration.php">Administration</a>
 									</li>
 									<li>
 										<a href="administration_annonce.php">Annonce</a>
 									</li>
 									<li>
-										<a href="administration.php">Véhicule</a>
+										<a href="administration.php" class="menu-top-active">Véhicule</a>
 									</li>
                                 </ul>
                             </div>

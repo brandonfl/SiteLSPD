@@ -68,6 +68,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 									<li>
 										<a href="administration_annonce.php" class="menu-top-active">Annonce</a>
 									</li>
+									<li>
+										<a href="administration.php">Véhicule</a>
+									</li>
                                 </ul>
                             </div>
                         </div>
