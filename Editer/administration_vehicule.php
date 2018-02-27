@@ -149,12 +149,6 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                        echo $data['assigne'];
                                                        ?>
                                                    </td>
-
-                                                   <td class="center">
-                                                       <?php
-                                                       echo $data['allowed'];
-                                                       ?>
-                                                   </td>
                                                    <?php
                                                        if($data['sorti'] == 1){
                                                            echo '<form action="" method="post">
