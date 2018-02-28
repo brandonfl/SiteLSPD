@@ -205,24 +205,70 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                             <li>Assigné à : '.$data['assigne'].'</li>';
 
             if($data['sorti']==1){
-                echo '<li>Sorti : Oui</li>';
+                echo '<li>Sorti : <strong>Oui</strong></li>';
             }else{
-                echo '<li>Sorti : Non</li>';
+                echo '<li>Sorti : <strong>Non</strong></li>';
             }
 
             if($data['perdu']==1){
-                echo '<li>Perdu : Oui</li>';
+                echo '<li>Perdu : <strong>Oui</strong></li>';
             }else{
-                echo '<li>Perdu : Non</li>';
+                echo '<li>Perdu : <strong>Non</strong></li>';
             }
 
             echo'
                             <li>Dernière modification : '.$data['last'].'</li>
                             <li>Fait par : '.$data['par'].'</li>
                           </ul>
-                          <hr>
-                          <a href="" class="btn btn-danger">SORTIR</a>
-                            <a href="" class="btn btn-warning">PERDU</a>
+                          <hr>';
+
+                                                       if($data['sorti'] == 1){
+                                                           echo '<form action="edit-vehicule.php" method="post">
+                                                                    <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="0">
+                                                                    <input id="from" name="from" type="hidden" value="vehicule">
+                                                                    <input id="for" name="for" type="hidden" value="sorti">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="RENTRER" />
+                                                     </form>';
+                                                       }else{
+                                                           if($data['sorti'] == 0){
+                                                               echo '<form action="edit-vehicule.php" method="post">
+                                                                        <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="1">
+                                                                    <input id="from" name="from" type="hidden" value="vehicule">
+                                                                    <input id="for" name="for" type="hidden" value="sorti">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="SORTIR" />
+                                                     </form>';
+                                                           }}
+
+
+            if($data['perdu'] == 1){
+                echo '<form action="edit-vehicule.php" method="post">
+                                                                    <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="0">
+                                                                    <input id="from" name="from" type="hidden" value="vehicule">
+                                                                    <input id="for" name="for" type="hidden" value="perdu">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="RETROUVER" />
+                                                     </form>';
+            }else{
+                if($data['perdu'] == 0){
+                    echo '<form action="edit-vehicule.php" method="post">
+                                                                        <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="1">
+                                                                    <input id="from" name="from" type="hidden" value="vehicule">
+                                                                    <input id="for" name="for" type="hidden" value="perdu">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="PERDRE" />
+                                                     </form>';
+                }}
+
+
+
+            echo'
+                          
                       </div>
                       <hr> </div>';
 
@@ -244,59 +290,127 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                       <div class="panel panel-default">
                       <div class="panel-heading">  <h4 >Véhicules disponibles à tous</h4></div>';
 
-    echo '
+    $nombreme = 0;
+    $nbme = $bdd->query('SELECT COUNT(*) AS nb FROM vehicule WHERE assigne="All" ');
+    while ($data = $nbme->fetch()) {
+        $nombreme = $data['nb'];
+    }
+    $nbme->closeCursor(); // Complete query
+
+    if($nombreme == 0){
+        echo '
+                       <div class="panel-body">
+                          <div class="col-sm-5 col-xs-6 tital " >Aucun vehicule disponible</div>
+                      </div>';
+
+    }else{
+
+        $me = $bdd->query('SELECT * FROM vehicule WHERE assigne="All" ');
+        while ($data = $me->fetch()) {
+
+
+            $nomvehicule = null;
+            $img = null;
+            $nom = $bdd->query('SELECT * FROM type WHERE type="'.$data['type'].'" ');
+            while ($nomdata = $nom->fetch()) {
+                $nomvehicule = $nomdata['nom'];
+                $img = $nomdata['img'];
+            }
+            $nom->closeCursor(); // Complete query
+
+
+            echo '
                        <div class="panel-body">
                       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                       <img alt="Vehicule Pic" src="https://lspd-fivelife.fr/vehicule/police-cruiser.jpg" class="img-responsive"> 
+                       <img alt="Vehicule Pic" src="'.$img.'" class="img-responsive"> 
                      
                  
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
                           <div class="container" >
-                            <h2>Police Cruiser</h2>
+                            <h2>'.$nomvehicule.'</h2>
                           
                            
                           </div>
                            <hr>
                           <ul class="container details" >
-                            <li><strong>Plaque : XXXXXXX</strong></li>
-                            <li>Sorti : Non</li>
-                            <li>Perdu : Non</li>
-                            <li>Last : 2018-02_26 10:30:00</li>
-                            <li>Agent : Glen McMahon</li>
+                            <li><strong>Plaque : '.$data['plaque'].'</strong></li>
+                            <li>Assigné à : '.$data['assigne'].'</li>';
+
+            if($data['sorti']==1){
+                echo '<li>Sorti : <strong>Oui</strong></li>';
+            }else{
+                echo '<li>Sorti : <strong>Non</strong></li>';
+            }
+
+            if($data['perdu']==1){
+                echo '<li>Perdu : <strong>Oui</strong></li>';
+            }else{
+                echo '<li>Perdu : <strong>Non</strong></li>';
+            }
+
+            echo'
+                            <li>Dernière modification : '.$data['last'].'</li>
+                            <li>Fait par : '.$data['par'].'</li>
                           </ul>
-                          <hr>
-                          <a href="" class="btn btn-danger">SORTIR</a>
-                            <a href="" class="btn btn-warning">PERDU</a>
+                          <hr>';
+
+            if($data['sorti'] == 1){
+                echo '<form action="edit-vehicule.php" method="post">
+                                                                    <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="0">
+                                                                    <input id="from" name="from" type="hidden" value="vehicule">
+                                                                    <input id="for" name="for" type="hidden" value="sorti">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="RENTRER" />
+                                                     </form>';
+            }else{
+                if($data['sorti'] == 0){
+                    echo '<form action="edit-vehicule.php" method="post">
+                                                                        <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="1">
+                                                                    <input id="from" name="from" type="hidden" value="vehicule">
+                                                                    <input id="for" name="for" type="hidden" value="sorti">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="SORTIR" />
+                                                     </form>';
+                }}
+
+
+            if($data['perdu'] == 1){
+                echo '<form action="edit-vehicule.php" method="post">
+                                                                    <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="0">
+                                                                    <input id="from" name="from" type="hidden" value="vehicule">
+                                                                    <input id="for" name="for" type="hidden" value="perdu">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="RETROUVER" />
+                                                     </form>';
+            }else{
+                if($data['perdu'] == 0){
+                    echo '<form action="edit-vehicule.php" method="post">
+                                                                        <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="1">
+                                                                    <input id="from" name="from" type="hidden" value="vehicule">
+                                                                    <input id="for" name="for" type="hidden" value="perdu">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="PERDRE" />
+                                                     </form>';
+                }}
+
+
+
+            echo'
+                          
                       </div>
                       <hr> </div>';
 
-    echo '
-                       <div class="panel-body">
-                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                       <img alt="Vehicule Pic" src="https://lspd-fivelife.fr/vehicule/police-bike.jpg" class="img-responsive"> 
-                     
-                 
-                      </div>
-                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
-                          <div class="container" >
-                            <h2>Police Bike</h2>
-                          
-                           
-                          </div>
-                           <hr>
-                          <ul class="container details" >
-                          <li><strong>Plaque : XXXXXXX</strong></li>
-                            <li>Sorti : Oui</li>
-                            <li>Perdu : Non</li>
-                            <li>Last : 2018-02_26 11:00:00</li>
-                            <li>Agent : Glen McMahon</li>
-                          </ul>
-                          <hr>
-                          <a href="" class="btn btn-success">RENTRER</a>
-                            <a href="" class="btn btn-warning">PERDU</a>
-                      </div>
-                      <hr></div> ';
+
+        }
+        $me->closeCursor(); // Complete query
+
+
+    }
 
 
     echo '
