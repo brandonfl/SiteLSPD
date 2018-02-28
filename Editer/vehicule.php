@@ -103,12 +103,6 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                     <div class="row">
                         <div class="col-md-12">';
 
-    echo '
-    <div class="alert alert-warning alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>En cours de developpement ...</strong></div>
-    
-    ';
 
     
     if (isset($error)) {
