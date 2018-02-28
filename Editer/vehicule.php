@@ -18,8 +18,8 @@
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <?php
-if (isset($_GET['error'])) {
-    $error = $_GET['error'];
+if (isset($_GET['statut'])) {
+    $error = $_GET['statut'];
 }
 session_start();
 include("config.php");
@@ -128,6 +128,21 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
     
     ';
     }
+        if($error == 3){
+            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error !</strong> Une erreur c\'est produite, merci de bien vouloir contacter un administrateur</div>
+    
+    ';}
+        if($error == 4){
+            echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Le statut d\'un vehicule a bien été modifié</div>
+    
+    ';}
+
     }
 
     echo '              

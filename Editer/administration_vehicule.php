@@ -105,13 +105,13 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
                                                     <th>Plaque</th>
                                                     <th>Type</th>
                                                     <th>Assigné à</th>
                                                     <th>Sorti</th>
                                                     <th>Perdu</th>
                                                     <th>Last</th>
+                                                    <th>Par</th>
                                                     <th>Delete</th>
                                                     
                                                 </tr>
@@ -140,6 +140,24 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     
     ';}
 
+        if($statut == 3){
+            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error !</strong> Une erreur c\'est produite, merci de bien vouloir contacter un administrateur</div>
+    
+    ';}
+
+        if($statut == 4){
+            echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Le statut d\'un vehicule a bien été modifié</div>
+    
+    ';}
+
+
+
     
 }
     // Get contents of the lspd table
@@ -150,11 +168,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 ?>
                                                <tr class="odd gradeX">
     
-                                                    <td>
-                                                        <?php
-        echo $data['id'];
-?>
-                                                   </td>
+
                                                     <td>
                                                         <?php
         echo $data['plaque'];
@@ -173,14 +187,20 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    <?php
                                                        if($data['sorti'] == 1){
                                                            echo '<form action="" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="0">
+                                                                    <input id="from" name="from" type="hidden" value="Admin">
+                                                                    <input id="for" name="for" type="hidden" value="sorti">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['sorti'] . '" />
                                                      </td></form>';
                                                        }else{
                                                            if($data['sorti'] == 0){
                                                                echo '<form action="" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+                                                                        <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="1">
+                                                                    <input id="from" name="from" type="hidden" value="Admin">
+                                                                    <input id="for" name="for" type="hidden" value="sorti">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['sorti'] . '" />
                                                      </td></form>';
@@ -190,14 +210,20 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    <?php
                                                    if($data['perdu'] == 1){
                                                        echo '<form action="" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="0">
+                                                                    <input id="from" name="from" type="hidden" value="Admin">
+                                                                    <input id="for" name="for" type="hidden" value="perdu">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['perdu'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['perdu'] == 0){
                                                            echo '<form action="" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
+                                                                        <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
+                                                                    <input id="action" name="action" type="hidden" value="1">
+                                                                    <input id="from" name="from" type="hidden" value="Admin">
+                                                                    <input id="for" name="for" type="hidden" value="perdu">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['perdu'] . '" />
                                                      </td></form>';
@@ -206,6 +232,11 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    <td>
                                                        <?php
                                                        echo $data['last'];
+                                                       ?>
+                                                   </td>
+                                                   <td>
+                                                       <?php
+                                                       echo $data['par'];
                                                        ?>
                                                    </td>
 
