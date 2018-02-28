@@ -202,13 +202,13 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                     if($data['allowed'] == 1){
                                                             echo '<form action="administration_form.php?allowed=0" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['id'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
                                                      </td></form>';
                                                         }else{
                                                         if($data['allowed'] == 0){
                                                             echo '<form action="administration_form.php?allowed=1" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['id'] . '" />
                                                      </td></form>';
                                                         }}}
 ?>
