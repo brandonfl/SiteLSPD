@@ -18,47 +18,7 @@
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 		</head>
 		<?php include( "config.php"); session_start();
-		if (isset($_SESSION[ 'id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureur'] == 1 or $_SESSION['Admin'] == 1)) {
-
-            if($_SESSION['procureur']==1){
-                $nav = '                    <li>
-                                        <a href="police.php">Home</a>
-                                    </li>
-                                    <li>
-										<a href="add_criminal.php" class="menu-top-active">Ajouter un criminel</a>
-									</li>
-									<li>
-										<a href="bracelet.php">Bracelet</a>
-									</li>
-									<li>
-											<a href="concessionnaire.php">Plaques</a>
-										</li>
-										<li>
-											<a href="trello" target="_blank">Informations Internes</a>
-										</li>';
-            }else{
-                $nav = '                    <li>
-                                        <a href="police.php">Home</a>
-                                    </li>
-                                    <li>
-										<a href="add_criminal.php" class="menu-top-active">Ajouter un criminel</a>
-									</li>
-									<li>
-										<a href="bracelet.php">Bracelet</a>
-									</li>
-									<li>
-											<a href="concessionnaire.php">Plaques</a>
-										</li>
-										<li>
-										<a href="vehicule.php">Vehicule</a>
-									</li>
-										<li>
-											<a href="trello" target="_blank">Informations Internes</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Documents</a>
-										</li>';
-            }
+		if (isset($_SESSION[ 'id']) and  $_SESSION['Admin'] == 1) {
 
 
 		    echo '
@@ -92,7 +52,18 @@
 						<div class="col-md-12">
 							<div class="navbar-collapse collapse ">
 								<ul id="menu-top" class="nav navbar-nav navbar-right">
-								'.$nav.'
+								<li>
+                                        <a href="police.php">Police</a>
+                                    </li>
+                                    <li>
+										<a href="administration.php">Administration</a>
+									</li>
+									<li>
+										<a href="administration_annonce.php">Annonce</a>
+									</li>
+									<li>
+										<a href="administration_vehicule.php" class="menu-top-active">Véhicule</a>
+									</li>
 									</ul>
 							</div>
 						</div>
@@ -103,37 +74,75 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<p></p>
-					<p></p>Add a Criminal
+					<p></p>Add a Vehicule
 					<p></p>
 					<p></p>
 				</div>
 				<div class="panel-body">
-					<form action="add_criminal_post.php" method="post">
+					<form action="administration_vehicule_add_form.php" method="post">
+					
+					<div class="form-group">
+								<label for="message">Plaque *</label> :
+								<p class="help-block">ex AB123YZ</p>
+								<input type="text" name="plaque" id="plaque" class="form-control" required />
+								<br />
+							</div>
+					
 						<p>
-							<div class="form-group">
-								<label for="nom">First and Surname *</label> :
-								<p class="help-block">ex: John Cena</p>
-								<input type="text" name="nom" id="nom" class="form-control" required />
+							';
+
+
+          echo'  <div class="form-group">
+								<label for="nom">Type *</label> :
+								<select name="type" id="type" class="form-control" required >
+
+
+
+            ';
+
+		      $reponse2 = $bdd->query('SELECT * FROM type');
+
+    // Display each entry one by one
+    while ($data = $reponse2->fetch()) {
+            echo '<option value="' . $data['type'] . '">' . $data['type'] . '</option>';
+    }
+            $reponse2->closeCursor(); // Complete query
+
+		    echo '</select>
 								<br />
-							</div>
-							<div class="form-group">
-								<label for="message">Telephone</label> :
-								<p class="help-block">ex 555-12345</p>
-								<input type="text" name="telephone" id="telephone" class="form-control" />
+							</div>';
+
+           echo' <div class="form-group">
+								<label for="nom">Agent *</label> :
+								<select name="pseudo" id="pseudo" class="form-control" required >
+
+
+
+            ';
+
+		      $reponse = $bdd->query('SELECT * FROM membres WHERE police=1');
+
+    // Display each entry one by one
+    while ($data = $reponse->fetch()) {
+        if($data['pseudo'] == 'All'){
+            echo '<option value="' . $data['pseudo'] . '" selected>' . $data['pseudo'] . '</option>';
+        }else {
+            echo '<option value="' . $data['pseudo'] . '">' . $data['pseudo'] . '</option>';
+        }
+
+
+    }
+            $reponse->closeCursor(); // Complete query
+
+		    echo '</select>
 								<br />
-							</div>
-							<div class="form-group">
-								<label for="message">Crime *</label> :
-								<p class="help-block">Robber/ Car jacking / ...</p>
-								<input type="text" name="crime" id="crime" class="form-control" required />
-								<br />
-							</div>
-							<div class="form-group">
-								<label for="message">Sanction *</label> :
-								<p class="help-block">ex $100 Fine, 1 Year in jail</p>
-								<input type="text" name="sanction" id="sanction" class="form-control" required />
-								<br />
-							</div>
+							</div>';
+
+
+		    echo'
+                            
+							
+							
 							<input type="submit" value="Send" class="btn btn-info" />
 						</p>
 					</form>
@@ -146,8 +155,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
-                   &copy; 2017 LSPD |
-								<a href="https://www.youtube.com/user/davendrix" target="_blank"  > Coded by : Davendrix</a> &amp;  Glen McMahon
+                   &copy; 2017 LSPD | Coded by : Glen McMahon
 							</div>
 						</div>
 					</div>

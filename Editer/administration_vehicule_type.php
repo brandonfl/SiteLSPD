@@ -18,9 +18,6 @@
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <?php
-if (isset($_GET['statut'])) {
-    $statut = $_GET['statut'];
-}
 session_start();
 
 
@@ -43,7 +40,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="police.php">
-                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                            <img src="assets/img/lspd.png" width=180 height=70/>
                         </a>
                     </div>
                     <div class="right-div">
@@ -63,13 +60,13 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                         <a href="police.php">Police</a>
                                     </li>
                                     <li>
-										<a href="administration.php" >Administration</a>
+										<a href="administration.php">Administration</a>
 									</li>
 									<li>
-										<a href="administration_annonce.php" class="menu-top-active">Annonce</a>
+										<a href="administration_annonce.php">Annonce</a>
 									</li>
 									<li>
-										<a href="administration_vehicule.php">Véhicule</a>
+										<a href="administration_vehicule.php" class="menu-top-active">Véhicule</a>
 									</li>
                                 </ul>
                             </div>
@@ -82,10 +79,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">Annonce PANEL</h4>
+                            <h4 class="header-line">VEHICULE TYPE PANEL</h4>
                         </div>
                     </div>
-                    <a href="administration_annonce_add.php" class="btn btn-success pull-right">Ajouter une annonce</a>
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Advanced Tables -->
@@ -97,53 +93,22 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Nom</th>
-                                                    <th>Texte</th>
-                                                    <th>Est Actif</th>
-                                                    <th>Activer</th>
-                                                    <th>Supprimer</th>
-                                                    
+                                                    <th>Type</th>
+                                                    <th>Img</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                     ';
     include("config.php");
-    
-if (isset($statut)) {
-        if($statut == 1){
-    echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> L\'annonce est bien supprimée  </div>
-    
-    ';}
-    
-    if($statut == 2){
-echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> L\'annonce est bien désactivée</div>
-    
-    ';
-    }
-    
-        if($statut == 3){
-echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Vous avez bien activé une annonce</div>
-    
-    ';
-    }
-    
-}
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM annonce');
+    $reponse = $bdd->query('SELECT * FROM type');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
 ?>
                                                <tr class="odd gradeX">
+    
                                                     <td>
                                                         <?php
         echo $data['id'];
@@ -156,39 +121,18 @@ echo '
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['texte'];
+        echo $data['type'];
 ?>
                                                    </td>
-                                                    
-                                                    <td class="center">
-                                                        <?php
-        echo $data['isActive'];
-?>
-                                                   </td>
-                                                  
-                                                     <?php
-                                                    if($data['isActive'] == 1){
-                                                            echo '<form action="administration_annonce_desactiver.php" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['id'] . '" />
-                                                     </td></form>';
-                                                        }else{
-                                                        if($data['isActive'] == 0){
-                                                            echo '<form action="administration_annonce_activer.php" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
-                                                     </td></form>';
-                                                        }}
-?>
+                                                   <td>
 
-<?php
-                                                            echo '<form action="administration_annonce_delete.php" method="post">
-        <td>
-                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
-                                                     </td></form>';
-?>
-                                                </form>
-                                                </tr>
+                                                       <?php
+                                                       echo '<img src="'.$data['img'].'" alt="img">';
+                                                       ?>
+                                                   </td>
+
+                                                   
+
 
                                                 <?php
     }

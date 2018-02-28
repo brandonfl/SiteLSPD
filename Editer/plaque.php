@@ -48,8 +48,8 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>';
     }else{
-        $nav = '<li>
-                                        <li>
+        if($_SESSION['procureur']==1){
+            $nav = '                    <li>
                                         <a href="police.php">Home</a>
                                     </li>
                                     <li>
@@ -63,10 +63,30 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 										</li>
 										<li>
 											<a href="trello" target="_blank">Informations Internes</a>
+										</li>';
+        }else{
+            $nav = '                    <li>
+                                        <a href="police.php">Home</a>
+                                    </li>
+                                    <li>
+										<a href="add_criminal.php">Ajouter un criminel</a>
+									</li>
+									<li>
+										<a href="bracelet.php">Bracelet</a>
+									</li>
+									<li>
+											<a href="concessionnaire.php" class="menu-top-active">Plaques</a>
+										</li>
+										<li>
+										<a href="vehicule.php">Vehicule</a>
+									</li>
+										<li>
+											<a href="trello" target="_blank">Informations Internes</a>
 										</li>
 										<li>
 											<a href="drive" target="_blank">Documents</a>
 										</li>';
+        }
 
         $logo = '<a class="navbar-brand" href="police.php">
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>

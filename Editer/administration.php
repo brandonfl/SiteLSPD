@@ -68,6 +68,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 									<li>
 										<a href="administration_annonce.php">Annonce</a>
 									</li>
+									<li>
+										<a href="administration_vehicule.php">Véhicule</a>
+									</li>
                                 </ul>
                             </div>
                         </div>
@@ -166,6 +169,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
+        if($data['pseudo']=="All"){
+            continue;
+        }
 ?>
                                                <tr class="odd gradeX">
     
