@@ -223,8 +223,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="RENTRER" />
-                                                     </form>';
+                                                             <input type="submit" name="allowItem" class="btn btn-success pull-left" value="RENTRER" />
+                                                     </form>
+                                                     <a class="btn pull-left"></a>';
                                                        }else{
                                                            if($data['sorti'] == 0){
                                                                echo '<form action="edit-vehicule.php" method="post">
@@ -233,8 +234,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="SORTIR" />
-                                                     </form>';
+                                                             <input type="submit" name="allowItem" class="btn btn-warning pull-left" value="SORTIR" />
+                                                     </form>
+                                                     <a class="btn pull-left"></a>';
                                                            }}
 
 
@@ -245,8 +247,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="RETROUVER" />
-                                                     </form>';
+                                                             <input type="submit" name="allowItem" class="btn btn-success pull-left" value="RETROUVER" />
+                                                     </form>
+                                                     <a class="btn pull-left"></a>';
             }else{
                 if($data['perdu'] == 0){
                     echo '<form action="edit-vehicule.php" method="post">
@@ -255,8 +258,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="PERDRE" />
-                                                     </form>';
+                                                             <input type="submit" name="allowItem" class="btn btn-danger pull-left" value="PERDRE" />
+                                                     </form>
+                                                     <a class="btn pull-left"></a>';
                 }}
 
 
@@ -356,8 +360,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="RENTRER" />
-                                                     </form>';
+                                                             <input type="submit" name="allowItem" class="btn btn-success pull-left" value="RENTRER" />
+                                                     </form>
+                                                     <a class="btn pull-left"></a>';
             }else{
                 if($data['sorti'] == 0){
                     echo '<form action="edit-vehicule.php" method="post">
@@ -366,8 +371,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="SORTIR" />
-                                                     </form>';
+                                                             <input type="submit" name="allowItem" class="btn btn-warning pull-left" value="SORTIR" />
+                                                     </form>
+                                                     <a class="btn pull-left"></a>';
                 }}
 
 
@@ -378,8 +384,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="RETROUVER" />
-                                                     </form>';
+                                                             <input type="submit" name="allowItem" class="btn btn-success pull-left" value="RETROUVER" />
+                                                     </form>
+                                                     <a class="btn pull-left"></a>';
             }else{
                 if($data['perdu'] == 0){
                     echo '<form action="edit-vehicule.php" method="post">
@@ -388,8 +395,9 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="PERDRE" />
-                                                     </form>';
+                                                             <input type="submit" name="allowItem" class="btn btn-danger pull-left" value="PERDRE" />
+                                                     </form>
+                                                     <a class="btn pull-left"></a>';
                 }}
 
 
