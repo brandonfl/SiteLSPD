@@ -54,9 +54,7 @@ while ($data = $reponse->fetch()) {
     	}else{
     		header("Location: vehicule.php?statut=4");
     		}
-		
-
-		print($req);
+    		
 
     	}else{
     	if ($_POST['from']=='Admin'){
