@@ -186,7 +186,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    </td>
                                                    <?php
                                                        if($data['sorti'] == 1){
-                                                           echo '<form action="" method="post">
+                                                           echo '<form action="edit-vehicule.php" method="post">
                                                                     <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
                                                                     <input id="action" name="action" type="hidden" value="0">
                                                                     <input id="from" name="from" type="hidden" value="Admin">
@@ -196,7 +196,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                      </td></form>';
                                                        }else{
                                                            if($data['sorti'] == 0){
-                                                               echo '<form action="" method="post">
+                                                               echo '<form action="edit-vehicule.php" method="post">
                                                                         <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
                                                                     <input id="action" name="action" type="hidden" value="1">
                                                                     <input id="from" name="from" type="hidden" value="Admin">
@@ -209,7 +209,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 
                                                    <?php
                                                    if($data['perdu'] == 1){
-                                                       echo '<form action="" method="post">
+                                                       echo '<form action="edit-vehicule.php" method="post">
                                                                     <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
                                                                     <input id="action" name="action" type="hidden" value="0">
                                                                     <input id="from" name="from" type="hidden" value="Admin">
@@ -219,7 +219,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                      </td></form>';
                                                    }else{
                                                        if($data['perdu'] == 0){
-                                                           echo '<form action="" method="post">
+                                                           echo '<form action="edit-vehicule.php" method="post">
                                                                         <input id="id" name="id" type="hidden" value="' . $data['id'] . '">
                                                                     <input id="action" name="action" type="hidden" value="1">
                                                                     <input id="from" name="from" type="hidden" value="Admin">
