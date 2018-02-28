@@ -44,8 +44,9 @@ while ($data = $reponse->fetch()) {
 
     	if($allow == 1){
 
-    		$req = $bdd->prepare('UPDATE vehicule SET last= NOW() + INTERVAL 1 HOUR , par='.$_SESSION['pseudo'].', '.$_POST['for'].'='.$_POST['action'].' WHERE id='.$_POST['id'].' ');
-			$req->execute();
+    		$req = $bdd->prepare('UPDATE vehicule SET last= NOW() + INTERVAL 1 HOUR , par="'.$_SESSION['pseudo'].'", '.$_POST['for'].'='.$_POST['action'].' WHERE id='.$_POST['id'].' ');
+
+    		$req->execute();
 
 
 		if ($_POST['from']=='Admin'){
@@ -53,7 +54,9 @@ while ($data = $reponse->fetch()) {
     	}else{
     		header("Location: vehicule.php?statut=4");
     		}
+		
 
+		print($req);
 
     	}else{
     	if ($_POST['from']=='Admin'){
