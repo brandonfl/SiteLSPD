@@ -156,10 +156,84 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                       <div class="panel-heading">  <h4 >Mes véhicules</h4></div>
                       ';
 
-    echo '
+
+    $nombreme = 0;
+    $nbme = $bdd->query('SELECT COUNT(*) AS nb FROM vehicule WHERE assigne="'.$_SESSION['pseudo'].'" ');
+    while ($data = $nbme->fetch()) {
+        $nombreme = $data['nb'];
+    }
+    $nbme->closeCursor(); // Complete query
+
+    if($nombreme == 0){
+        echo '
                        <div class="panel-body">
                           <div class="col-sm-5 col-xs-6 tital " >Aucun vehicule disponible</div>
                       </div>';
+
+    }else{
+
+        $me = $bdd->query('SELECT * FROM vehicule WHERE assigne="'.$_SESSION['pseudo'].'" ');
+        while ($data = $me->fetch()) {
+
+
+            $nomvehicule = null;
+            $img = null;
+            $nom = $bdd->query('SELECT * FROM type WHERE type="'.$data['type'].'" ');
+            while ($nomdata = $nom->fetch()) {
+                $nomvehicule = $nomdata['nom'];
+                $img = $nomdata['img'];
+            }
+            $nom->closeCursor(); // Complete query
+
+
+            echo '
+                       <div class="panel-body">
+                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                       <img alt="Vehicule Pic" src="'.$img.'" class="img-responsive"> 
+                     
+                 
+                      </div>
+                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
+                          <div class="container" >
+                            <h2>'.$nomvehicule.'</h2>
+                          
+                           
+                          </div>
+                           <hr>
+                          <ul class="container details" >
+                            <li><strong>Plaque : '.$data['plaque'].'</strong></li>
+                            <li>Assigné à : '.$data['assigne'].'</li>';
+
+            if($data['sorti']==1){
+                echo '<li>Sorti : Oui</li>';
+            }else{
+                echo '<li>Sorti : Non</li>';
+            }
+
+            if($data['perdu']==1){
+                echo '<li>Perdu : Oui</li>';
+            }else{
+                echo '<li>Perdu : Non</li>';
+            }
+
+            echo'
+                            <li>Dernière modification : '.$data['last'].'</li>
+                            <li>Fait par : '.$data['par'].'</li>
+                          </ul>
+                          <hr>
+                          <a href="" class="btn btn-danger">SORTIR</a>
+                            <a href="" class="btn btn-warning">PERDU</a>
+                      </div>
+                      <hr> </div>';
+
+
+        }
+        $me->closeCursor(); // Complete query
+
+
+    }
+
+
 
     echo'
         </div>
