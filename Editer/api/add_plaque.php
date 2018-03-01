@@ -1,5 +1,5 @@
 <?php
-include('template.php');
+include('api_config.php');
 
 if( !empty($_GET['password']) and !empty($_GET['plaque']) and !empty($_GET['nom']) and !empty($_GET['modele'])){
 	//Si toutes les données sont saisie par le client
