@@ -40,12 +40,19 @@ $password = bourlay;
 
 
 //A changer
-$plaque = "test";
+$plaque = "DON1";
 $pseudo = "Michel";
 $modele = "twingo";
 
 
 $request = array("plaque" => $plaque,"nom" => $pseudo, "modele" => $modele, "password" => $password);
 
+
+//Avec resultat en Json
+/*
 $res = CallAPI($method, $url, $request);
 echo($res);
+*/
+
+//Sans pour l'integration à un site
+CallAPI($method, $url, $request);
