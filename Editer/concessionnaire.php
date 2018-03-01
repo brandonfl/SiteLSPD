@@ -174,6 +174,15 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1 or $_SESSION[
     <strong>Success !</strong> Une nouvelle plaque a bien été ajoutée </div>
     
     ';}
+
+        if($statut == 2){
+            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error !</strong> Cette plaque existe déjà </div>
+    
+    ';}
+
     
 }
     // Get contents of the lspd table
