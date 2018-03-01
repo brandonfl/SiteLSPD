@@ -1,8 +1,9 @@
 <?php
 include('template.php');
 
-if( isset($_POST['password']) and isset($_POST['plaque']) and isset($_POST['nom']) and isset($_POST['modele'])){
+if( !empty($_POST['password']) and !empty($_POST['plaque']) and !empty($_POST['nom']) and !empty($_POST['modele'])){
 	//Si toutes les données sont saisie par le client
+
 
     //Et si le mot de passe est le bon
     if($_POST['password'] == $password){
