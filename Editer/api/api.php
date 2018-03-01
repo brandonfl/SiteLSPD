@@ -23,7 +23,7 @@ if( !empty($_GET['password']) and !empty($_GET['plaque']) and !empty($_GET['nom'
 
 	if( $boolean1 and $boolean2 ){
 		$success = true;
-		$msg = 'Le vol a bien été ajouté';
+		$msg = 'Le vehicule a bien été ajouté';
 	} else {
 		$msg = "Une erreur s'est produite";
 	}
