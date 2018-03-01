@@ -36,15 +36,16 @@ function CallAPI($method, $url, $data = false)
 // Ne pas changer :
 $method = "GET";
 $url = "https://lspd-fivelife.fr/api/add_plaque.php";
-$password = 'bourlay';
+$password = bourlay;
 
 
 //A changer
-$plaque = 'test';
-$pseudo = 'Michel';
-$modele = 'twingo';
+$plaque = "test";
+$pseudo = "Michel";
+$modele = "twingo";
 
 
 $request = array("plaque" => $plaque,"nom" => $pseudo, "modele" => $modele, "password" => $password);
 
-$this->CallAPI($method, $url, $request);
+$res = CallAPI($method, $url, $request);
+echo($res);

@@ -6,7 +6,7 @@ if( !empty($_GET['password']) and !empty($_GET['plaque']) and !empty($_GET['nom'
 
 
     //Et si le mot de passe est le bon
-    if($_GET['password'] == $password){
+    if($_GET['password'] == bourlay){
     $boolean1 = false;
     $boolean2 = false;
     $pseudo = "System";
@@ -15,18 +15,22 @@ if( !empty($_GET['password']) and !empty($_GET['plaque']) and !empty($_GET['nom'
     $boolean1 = $req->execute(array($_GET['plaque'], $_GET['nom'], $_GET['modele'],$pseudo));
 
 
-    $commentaire = 'System : nouveau vehicule';
+    if($boolean1) {
+        $commentaire = 'System : nouveau vehicule';
 
-    $req2 = $bdd->prepare('INSERT INTO controle (horodateur,plaque,nom,commentaire,fin,par) VALUES(NOW() + INTERVAL 1 HOUR,?,?,?,NOW() + INTERVAL 30 DAY,?)');
-    $boolean2 = $req2->execute(array($_GET['plaque'], $_GET['nom'], $commentaire,$pseudo));
+        $req2 = $bdd->prepare('INSERT INTO controle (horodateur,plaque,nom,commentaire,fin,par) VALUES(NOW() + INTERVAL 1 HOUR,?,?,?,NOW() + INTERVAL 30 DAY,?)');
+        $boolean2 = $req2->execute(array($_GET['plaque'], $_GET['nom'], $commentaire, $pseudo));
 
 
-	if( $boolean1 and $boolean2 ){
-		$success = true;
-		$msg = 'Le vehicule a bien été ajouté';
-	} else {
-		$msg = "Une erreur s'est produite";
-	}
+        if ($boolean1 and $boolean2) {
+            $success = true;
+            $msg = 'Le vehicule a bien été ajouté';
+        } else {
+            $msg = "Une erreur s'est produite";
+        }
+    }else{
+        $msg = "Une voiture avec cette plaque existe déjà";
+    }
      }else {
         $msg = "Le mot de passe est incorrect";
 }

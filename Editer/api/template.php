@@ -1,6 +1,5 @@
 <?php
 header('Content-Type: application/json');
-$password = 'bourlay';
 $success = false;
 $data = array();
 include('../config.php');
