@@ -24,12 +24,12 @@ if( !empty($_GET['password']) and !empty($_GET['plaque']) and !empty($_GET['nom'
 
         if ($boolean1 and $boolean2) {
             $success = true;
-            $msg = 'Le vehicule a bien été ajouté';
+            $msg = 'Le vehicule a bien ete ajoute';
         } else {
             $msg = "Une erreur s'est produite";
         }
     }else{
-        $msg = "Une voiture avec cette plaque existe déjà";
+        $msg = "Une voiture avec cette plaque existe deja";
     }
      }else {
         $msg = "Le mot de passe est incorrect";
