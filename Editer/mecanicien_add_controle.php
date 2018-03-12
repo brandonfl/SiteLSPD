@@ -20,7 +20,10 @@
 		<?php include( "config.php"); session_start();
 		if (isset($_SESSION[ 'id']) and  ($_SESSION['mecanicien'] == 1  or $_SESSION['Admin'] == 1) and isset($_POST['plaque'])) {
 
+            $nbplaque = 0;
+
 		    $reponse = $bdd->query('SELECT COUNT(*) AS nb FROM plaque WHERE plaque =\''.$_POST['plaque'].'\'');
+
 
             // Display each entry one by one
             while ($data = $reponse->fetch()) {
@@ -29,7 +32,16 @@
 
             }
 
-		    if(isset($nbplaque) and is_numeric($nbplaque) and $nbplaque == 1) {
+		    if(isset($nbplaque) and is_numeric($nbplaque)) {
+                $modele = ' ';
+                if($nbplaque == 0){
+                    $modele='<div class="form-group">
+								<label for="message">Modele *</label> :
+								<p class="help-block">ex: twingo</p>
+								<input type="text" name="modele" id="modele" class="form-control" required />
+								<br />
+							</div>';
+                }
 
 
                 $nav = '                    <li>
@@ -98,6 +110,7 @@
 								<input type="text" name="nom" id="nom" class="form-control" required />
 								<br />
 							</div>
+							'.$modele.'
 							<div class="form-group">
 								<label for="message">Commentaires *</label> :
 								<p class="help-block">ex: bon etat/contre visite/prochaine visite ...</p>
@@ -111,6 +124,8 @@
 								<br />
 							</div>
 							<input type="hidden" name="plaque" value="' . $_POST['plaque'] . '">
+							<input type="hidden" name="nb" value="' . $nbplaque . '">
+							
 							<input type="submit" value="Send" class="btn btn-info" />
 						</p>
 					</form>
