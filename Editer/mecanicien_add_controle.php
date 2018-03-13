@@ -123,7 +123,7 @@
 								<input type="date" name="date" id="date" class="form-control" />
 								<br />
 							</div>
-							<input type="hidden" name="plaque" value="' . $_POST['plaque'] . '">
+							<input type="hidden" name="plaque" value="' . strtoupper($_POST['plaque']) . '">
 							<input type="hidden" name="nb" value="' . $nbplaque . '">
 							
 							<input type="submit" value="Send" class="btn btn-info" />
