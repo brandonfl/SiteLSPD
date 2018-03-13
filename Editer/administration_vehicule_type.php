@@ -95,6 +95,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                     <th>Nom</th>
                                                     <th>Type</th>
                                                     <th>Img</th>
+                                                    <th>Supprimer</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -130,6 +131,17 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                        echo '<img src="'.$data['img'].'" alt="img">';
                                                        ?>
                                                    </td>
+                                                   <form action='administration_vehicule_type_delete.php' method='post'>
+                                                       <td>
+                                                       <?php
+                                                       if($data['id']>11) {
+                                                           echo '
+                                                             <input type="submit" name="deleteItem" class="btn btn-danger" value="' . $data['id'] . '" />
+                                                     ';
+                                                       }
+                                                       ?>
+                                                       </td>
+                                                   </form>
 
                                                    
 
