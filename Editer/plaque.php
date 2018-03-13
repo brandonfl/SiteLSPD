@@ -142,7 +142,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                         </div>
                     </div>';
 
-        $nbplaque = $bdd->query('SELECT COUNT(*) AS nb FROM plaque WHERE plaque =\''.$_GET['plaque'].'\'');
+        $nbplaque = $bdd->query('SELECT COUNT(*) AS nb FROM plaque WHERE plaque =\''.strtoupper($_GET['plaque']).'\'');
 
         if(isset($nbplaque)){
             while($datanbplaque = $nbplaque->fetch()){
@@ -157,7 +157,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 
 
 
-            $maplaque = $bdd->query('SELECT * FROM plaque WHERE plaque =\''.$_GET['plaque'].'\'');
+            $maplaque = $bdd->query('SELECT * FROM plaque WHERE plaque =\''.strtoupper($_GET['plaque']).'\'');
 
             if(isset($maplaque)){
                 while($datamaplaque = $maplaque->fetch()){
@@ -196,7 +196,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 
 
             // Get contents of the lspd table
-            $reponse = $bdd->query('SELECT * FROM controle WHERE plaque =\''.$_GET['plaque'].'\'');
+            $reponse = $bdd->query('SELECT * FROM controle WHERE plaque =\''.strtoupper($_GET['plaque']).'\'');
 
             // Display each entry one by one
             while ($data = $reponse->fetch()) {
