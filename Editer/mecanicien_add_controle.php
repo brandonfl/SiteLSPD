@@ -22,7 +22,7 @@
 
             $nbplaque = 0;
 
-		    $reponse = $bdd->query('SELECT COUNT(*) AS nb FROM plaque WHERE plaque =\''.$_POST['plaque'].'\'');
+		    $reponse = $bdd->query('SELECT COUNT(*) AS nb FROM plaque WHERE plaque =\''.strtoupper($_POST['plaque']).'\'');
 
 
             // Display each entry one by one
