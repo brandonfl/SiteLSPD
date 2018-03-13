@@ -16,9 +16,31 @@ if (isset($_SESSION['id']) and isset($_POST['deleteItem']) and is_numeric($_POST
 
 
       if($boolean) {
-          $count2 = $bdd->prepare("DELETE FROM type WHERE id=:id");
-          $count2->bindParam(":id", $id, PDO::PARAM_INT);
-          $count2->execute();
+          $reponse = $bdd->query('SELECT * FROM type WHERE id='.$id.' ');
+
+          // Display each entry one by one
+          while ($data = $reponse->fetch()) {
+              $img = $data['img'];
+          }
+          $reponse->closeCursor(); // Complete query
+
+          if(isset($img) and is_string($img)){
+              $table = explode("/",$img);
+              $todelete = $table[4];
+
+
+              unlink('vehicule/'.$todelete.'');
+
+              $count2 = $bdd->prepare("DELETE FROM type WHERE id=:id");
+              $count2->bindParam(":id", $id, PDO::PARAM_INT);
+              $count2->execute();
+
+
+          }
+
+
+
+
       }
 
 
