@@ -222,6 +222,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="action" name="action" type="hidden" value="0">
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success pull-left" value="RENTRER" />
                                                      </form>
@@ -233,6 +234,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="action" name="action" type="hidden" value="1">
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-warning pull-left" value="SORTIR" />
                                                      </form>
@@ -246,6 +248,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="action" name="action" type="hidden" value="0">
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success pull-left" value="RETROUVER" />
                                                      </form>
@@ -257,6 +260,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="action" name="action" type="hidden" value="1">
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger pull-left" value="PERDRE" />
                                                      </form>
@@ -359,6 +363,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="action" name="action" type="hidden" value="0">
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success pull-left" value="RENTRER" />
                                                      </form>
@@ -370,6 +375,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="action" name="action" type="hidden" value="1">
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-warning pull-left" value="SORTIR" />
                                                      </form>
@@ -383,6 +389,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="action" name="action" type="hidden" value="0">
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success pull-left" value="RETROUVER" />
                                                      </form>
@@ -394,6 +401,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['Admin'] 
                                                                     <input id="action" name="action" type="hidden" value="1">
                                                                     <input id="from" name="from" type="hidden" value="vehicule">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger pull-left" value="PERDRE" />
                                                      </form>
