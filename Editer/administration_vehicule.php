@@ -156,6 +156,14 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     
     ';}
 
+        if($statut == 5){
+            echo '
+    <div class="alert alert-warning alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Un vehicule avec cette plaque existe déjà, vous devez donc donner le même type au nouveau</div>
+    
+    ';}
+
 
 
     
@@ -191,6 +199,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                                     <input id="action" name="action" type="hidden" value="0">
                                                                     <input id="from" name="from" type="hidden" value="Admin">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['sorti'] . '" />
                                                      </td></form>';
@@ -201,6 +210,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                                     <input id="action" name="action" type="hidden" value="1">
                                                                     <input id="from" name="from" type="hidden" value="Admin">
                                                                     <input id="for" name="for" type="hidden" value="sorti">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['sorti'] . '" />
                                                      </td></form>';
@@ -214,6 +224,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                                     <input id="action" name="action" type="hidden" value="0">
                                                                     <input id="from" name="from" type="hidden" value="Admin">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['perdu'] . '" />
                                                      </td></form>';
@@ -224,6 +235,7 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                                     <input id="action" name="action" type="hidden" value="1">
                                                                     <input id="from" name="from" type="hidden" value="Admin">
                                                                     <input id="for" name="for" type="hidden" value="perdu">
+                                                                    <input id="plaque" name="plaque" type="hidden" value="' . $data['plaque'] . '">
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['perdu'] . '" />
                                                      </td></form>';

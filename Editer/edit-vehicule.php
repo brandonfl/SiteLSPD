@@ -44,7 +44,7 @@ while ($data = $reponse->fetch()) {
 
     	if($allow == 1){
 
-    		$req = $bdd->prepare('UPDATE vehicule SET last= NOW() + INTERVAL 1 HOUR , par="'.$_SESSION['pseudo'].'", '.$_POST['for'].'='.$_POST['action'].' WHERE id='.$_POST['id'].' ');
+    		$req = $bdd->prepare('UPDATE vehicule SET last= NOW() + INTERVAL 1 HOUR , par="'.$_SESSION['pseudo'].'", '.$_POST['for'].'='.$_POST['action'].' WHERE plaque="'.$_POST['plaque'].'"');
 
     		$req->execute();
 
