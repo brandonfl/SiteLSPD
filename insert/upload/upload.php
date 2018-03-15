@@ -113,8 +113,7 @@ if (isset($_SESSION[ 'id'])) { echo '
      Fichier : <input type="file" name="avatar" id="avatar">
      <script>
 $("#avatar").fileinput({
-    //uploadUrl: "/file-upload-batch/2",
-    allowedFileExtensions: ["jpg", "png", "gif"],
+    allowedFileExtensions: ["jpg", "png"],
     maxImageWidth: 250,
     maxImageHeight: 250,
     maxFileCount: 1,
@@ -135,7 +134,7 @@ $("#avatar").fileinput({
 						<div class="row">
 							<div class="col-md-12">
                    &copy; 2017 LSPD |
-								<a href="https://www.youtube.com/user/davendrix" target="_blank"  > Coded by : Davendrix</a>
+								Coded by : Glen McMahon
 							</div>
 						</div>
 					</div>
