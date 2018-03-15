@@ -29,7 +29,9 @@ if (isset($_SESSION['id']) and isset($_POST['deleteItem']) and is_numeric($_POST
               $todelete = $table[4];
 
 
-              unlink('vehicule/'.$todelete.'');
+              unlink('vehicule/'.$todelete);
+
+
 
               $count2 = $bdd->prepare("DELETE FROM type WHERE id=:id");
               $count2->bindParam(":id", $id, PDO::PARAM_INT);
@@ -46,7 +48,7 @@ if (isset($_SESSION['id']) and isset($_POST['deleteItem']) and is_numeric($_POST
 
   }
 
-    header('Location: administration_vehicule_type.php');
+    header('Location: administration_vehicule_type.php?statut=2');
 
 
 }else{
