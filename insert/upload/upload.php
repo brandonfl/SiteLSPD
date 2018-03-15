@@ -9,11 +9,11 @@
     <![endif]-->
     <title>LSPD</title>
     <!-- BOOTSTRAP CORE STYLE  -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="/assets/css/font-awesome.css" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
@@ -105,49 +105,26 @@ if (isset($_SESSION[ 'id'])) { echo '
 					<p></p>
 				</div>
 				<div class="panel-body">
-					<form action="add_criminal_post.php" method="post">
-						<p>
-							<div class="form-group">
-								<label for="nom">First and Surname</label> :
-								<p class="help-block">ex: John Cena</p>
-								<input type="text" name="nom" id="nom" class="form-control" required />
-								<br />
-							</div>
-							<div class="form-group">
-								<label for="message">User ID</label> :
-								<p class="help-block">ex 123</p>
-								<input type="text" name="telephone" id="telephone" class="form-control" required />
-								<br />
-							</div>
-							<div class="form-group">
-								<label for="message">Steam ID</label> :
-								<p class="help-block">STEAM_0:0:61796428 or 76561198083858584</p>
-								<input type="text" name="steam" id="steam" class="form-control"/>
-								<br />
-							</div>
-							<div class="form-group">
-								<label for="message">Crime</label> :
-								<p class="help-block">Robber/ Car jacking / ...</p>
-								<input type="text" name="crime" id="crime" class="form-control" required />
-								<br />
-							</div>
-							
-<!-- MAXIMUM IMAGE DIMENSIONS -->
-<div class="file-loading">
-    <input id="input-dim-2" name="input-dim-2[]" type="file" accept="image/*">
-</div>
-<script>
-$("#input-dim-2").fileinput({
-    uploadUrl: "/file-upload-batch/2",
+				
+				
+<form method="POST" action="upload-form.php" enctype="multipart/form-data">
+     <!-- On limite le fichier à 100Ko -->
+     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+     Fichier : <input type="file" name="avatar" id="avatar">
+     <script>
+$("#avatar").fileinput({
+    //uploadUrl: "/file-upload-batch/2",
     allowedFileExtensions: ["jpg", "png", "gif"],
     maxImageWidth: 250,
-    maxImageHeight: 250
+    maxImageHeight: 250,
+    maxFileCount: 1,
+    showUpload: false
 });
 </script>
+     <input type="submit" name="envoyer" value="Envoyer le fichier" class="btn btn-info">
+</form>
 
-							<input type="submit" value="Send" class="btn btn-info />
-						</p>
-					</form>
+					
 					<p></p>
 					<img src="https://image.noelshack.com/fichiers/2015/40/1443969486-lspd-logo-modern-2.png" align="center">
 					</div>
