@@ -25,6 +25,11 @@ session_start();
 
 
 if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
+
+        if (isset($_GET['statut'])) {
+            $statut = $_GET['statut'];
+        }
+
     echo '
     <head>
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
@@ -81,6 +86,37 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                         <div class="col-md-12">
                             <h4 class="header-line">VEHICULE TYPE PANEL</h4>
                         </div>
+                    </div>
+                    ';
+
+
+        if (isset($statut)) {
+            if($statut == 1){
+                echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Un nouveau type de vehicule a été ajouté</div>
+    
+    ';}
+
+            if($statut == 2){
+                echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Un type de vehicule a été supprimé</div>
+    
+    ';}
+
+
+
+        }
+
+
+    echo'
+
+<div class="right-div">
+                    <a href="administration_vehicule_type_add.php" class="btn btn-success">Ajouter un nouveau type de véhicule</a>
+                    
                     </div>
                     <div class="row">
                         <div class="col-md-12">
