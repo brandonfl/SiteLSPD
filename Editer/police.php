@@ -185,7 +185,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Administration :</strong> Il y a actuellement ' . $nombrealerte . ' vehicules perdu(s)
     
-    <a href=""><button type="button" class="btn btn-link">Voir les vehicules</button></a>
+    <a href="administration_vehicule.php?showOnlyLost=1"><button type="button" class="btn btn-link">Voir les vehicules</button></a>
     
     </div>';
 

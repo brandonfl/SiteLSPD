@@ -21,6 +21,10 @@
 if (isset($_GET['statut'])) {
     $statut = $_GET['statut'];
 }
+
+if (isset($_GET['showOnlyLost'])) {
+    $showLost = $_GET['showOnlyLost'];
+}
 session_start();
 
 
@@ -173,8 +177,12 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 
     
 }
-    // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM vehicule');
+    if($showLost == 1){
+        $reponse = $bdd->query('SELECT * FROM vehicule WHERE perdu=1');
+    }else {
+        // Get contents of the lspd table
+        $reponse = $bdd->query('SELECT * FROM vehicule');
+    }
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
