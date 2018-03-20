@@ -132,26 +132,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                             <h4 class="header-line">LSPD PANEL</h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Advanced Tables -->
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                            <thead>
-                                                <tr>
-                                                    <th>Horodateur</th>
-                                                    <th>Nom</th>
-                                                    <th>Telephone</th>
-                                                    <th>Crime</th>
-                                                    <th>Sanction</th>
-                                                    <th>Agent</th>
-                                                    <th>delete</th>
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                    
 
                                     ';
     include("config.php");
@@ -230,6 +211,26 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                     }
                 }
 
+                echo'<div class="row">
+                        <div class="col-md-12">
+                            <!-- Advanced Tables -->
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>Horodateur</th>
+                                                    <th>Nom</th>
+                                                    <th>Telephone</th>
+                                                    <th>Crime</th>
+                                                    <th>Sanction</th>
+                                                    <th>Agent</th>
+                                                    <th>delete</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>';
     // Get contents of the lspd table
     $reponse = $bdd->query('SELECT * FROM lspd');
 
