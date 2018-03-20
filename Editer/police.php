@@ -132,7 +132,86 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                             <h4 class="header-line">LSPD PANEL</h4>
                         </div>
                     </div>
-                    <div class="row">
+                    
+
+                                    ';
+    include("config.php");
+
+    if(isset($_SESSION['annonce']) and is_numeric($_SESSION['annonce']) and $_SESSION['annonce'] == 0){
+        $_SESSION['annonce'] = 1;
+
+
+        $nbannonce = $bdd->query('SELECT COUNT(*) AS nb FROM annonce WHERE isActive = 1');
+            while($nbannoncedata = $nbannonce->fetch()){
+                $nombreannonce = $nbannoncedata['nb'];
+                }
+
+                $alerte = false;
+
+            if($_SESSION['Admin']){
+                $nbalerte = $bdd->query('SELECT COUNT(*) AS nb FROM vehicule WHERE perdu = 1');
+                while($nbalertedata = $nbalerte->fetch()){
+                    $nombrealerte = $nbalertedata['nb'];
+                }
+
+                $alerte = ($nombrealerte > 0);
+            }
+
+
+            if($alerte and isset($nombrealerte) and is_numeric($nombrealerte)){
+             if($_SESSION['Admin']==1){
+
+                 echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Administration :</strong> Il y a actuellement ' . $nombrealerte . ' vehicules perdu
+    
+    <a href="administration_vehicule.php?showOnlyLost=1"><button type="button" class="btn btn-link">Voir les vehicules</button></a>
+    
+    </div>';
+
+
+             }
+            }else {
+                if (isset($nombreannonce) and is_numeric($nombreannonce) and $nombreannonce == 1) {
+                    $annonce = $bdd->query('SELECT * FROM annonce WHERE isActive = 1');
+                    while ($annoncedata = $annonce->fetch()) {
+
+                        echo '
+    <div class="alert alert-info alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Annonce :</strong> ' . $annoncedata["texte"] . '</div>';
+
+
+                    }
+                }
+
+                }
+    }else {
+
+                    if (isset($error)) {
+                        if ($error == 1) {
+                            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation peuvent effacer un casier judiciaire  </div>
+    
+    ';
+                        }
+
+                        if ($error == 2) {
+                            echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Uniquement les agents de la LSPD peuvent ajouter un casier judiciaire et non le procureur</div>
+    
+    ';
+                        }
+
+                    }
+                }
+
+                echo'<div class="row">
                         <div class="col-md-12">
                             <!-- Advanced Tables -->
                             <div class="panel panel-default">
@@ -151,54 +230,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                                                     
                                                 </tr>
                                             </thead>
-                                            <tbody>
-
-                                    ';
-    include("config.php");
-    
-    if(isset($_SESSION['annonce']) and is_numeric($_SESSION['annonce']) and $_SESSION['annonce'] == 0){
-        $_SESSION['annonce'] = 1;
-        
-        
-        $nbannonce = $bdd->query('SELECT COUNT(*) AS nb FROM annonce WHERE isActive = 1');
-            while($nbannoncedata = $nbannonce->fetch()){
-                $nombreannonce = $nbannoncedata['nb'];
-                }
-                
-        if(isset($nombreannonce) and is_numeric($nombreannonce) and $nombreannonce == 1){
-            $annonce = $bdd->query('SELECT * FROM annonce WHERE isActive = 1');
-            while ($annoncedata = $annonce->fetch()){
-                
-                echo '
-    <div class="alert alert-info alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Annonce :</strong> ' . $annoncedata["texte"] . '</div>';
-
-                
-            }
-                }
-        }else{
-    
-    if (isset($error)) {
-        if($error == 1){
-    echo '
-    <div class="alert alert-danger alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents avec un haut niveau d\'habilitation peuvent effacer un casier judiciaire  </div>
-    
-    ';}
-    
-    if($error == 2){
-    echo '
-    <div class="alert alert-danger alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Uniquement les agents de la LSPD peuvent ajouter un casier judiciaire et non le procureur</div>
-    
-    ';
-    }
-    
-}
-}
+                                            <tbody>';
     // Get contents of the lspd table
     $reponse = $bdd->query('SELECT * FROM lspd');
 
@@ -222,7 +254,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
         echo $data['telephone'];
 ?>
                                                    </td>
-                                                    
+
                                                     <td class="center">
                                                         <?php
         echo $data['crime'];
@@ -285,4 +317,5 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
 } else {
     header("Location: login.php");
 }
+
 ?> </html>
