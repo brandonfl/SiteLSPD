@@ -247,7 +247,7 @@ echo'
                                                      </td></form>';
 
                                                          } else {
-                                                             echo '<form action="" method="post">
+                                                             echo '<form action="pdg_add_form.php" method="post">
         <td>
                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
                                                             <input type="hidden" name="rang" value="' . $rang . '" />

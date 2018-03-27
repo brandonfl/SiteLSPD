@@ -233,9 +233,10 @@ echo'
                                                      </td></form>';
 
                                                          } else {
-                                                             echo '<form action="" method="post">
+                                                             echo '<form action="pdg_remove_form.php" method="post">
         <td>
                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                            <input type="hidden" name="rang" value="' . $rang . '" />
                                                              <button type="submit" class="btn btn-danger">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                              </button>
