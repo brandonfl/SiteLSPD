@@ -95,31 +95,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <h4 class="header-line">Admin PANEL</h4>
                         </div>
                     </div>
-                    <a href="administration.php" class="btn btn-info pull-right">Actualiser</a>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Advanced Tables -->
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                            <thead>
-                                                <tr>
-                                                    <th>Allow</th>
-                                                    <th>Pseudo</th>
-                                                    <th>Mail</th>
-                                                    <th>Police</th>
-                                                    <th>Procureur</th>
-                                                    <th>Juge</th>
-                                                    <th>Concessionnaire</th>
-                                                    <th>Mecanicien</th>
-                                                    <th>PDG</th>
-                                                    <th>Admin</th>
-                                                    <th>Ban</th>
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                    
+                    
+                 
 
                                     ';
     include("config.php");
@@ -182,6 +160,38 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
 
     
 }
+
+
+echo'
+<div class="right-div">
+                        <a href="administration.php" class="btn btn-info">Actualiser</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- Advanced Tables -->
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>Allow</th>
+                                                    <th>Pseudo</th>
+                                                    <th>Mail</th>
+                                                    <th>Police</th>
+                                                    <th>Procureur</th>
+                                                    <th>Juge</th>
+                                                    <th>Concessionnaire</th>
+                                                    <th>Mecanicien</th>
+                                                    <th>PDG</th>
+                                                    <th>Admin</th>
+                                                    <th>Ban</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+';
     // Get contents of the lspd table
     $reponse = $bdd->query('SELECT * FROM membres');
 
