@@ -202,7 +202,7 @@ echo'
                                             <tbody>
 ';
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM membres WHERE '.$rang.'=1');
+    $reponse = $bdd->query("SELECT * FROM `membres` WHERE `police` = 0 AND `procureur` = 0 AND `juge` = 0 AND `concessionnaire` = 0 AND `mecanicien` = 0 AND `PDG` = 0 AND `ban` = 0");
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
@@ -250,6 +250,7 @@ echo'
                                                              echo '<form action="" method="post">
         <td>
                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                            <input type="hidden" name="rang" value="' . $rang . '" />
                                                              <button type="submit" class="btn btn-success">
                                                                 <span class="glyphicon glyphicon-ok"></span>
                                                              </button>
