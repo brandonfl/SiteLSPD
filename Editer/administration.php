@@ -104,17 +104,17 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
+                                                    <th>Allow</th>
                                                     <th>Pseudo</th>
                                                     <th>Mail</th>
-                                                    <th>Autoriser</th>
-                                                    <th>Allow</th>
                                                     <th>Police</th>
                                                     <th>Procureur</th>
                                                     <th>Juge</th>
                                                     <th>Concessionnaire</th>
                                                     <th>Mecanicien</th>
+                                                    <th>PDG</th>
                                                     <th>Admin</th>
+                                                    <th>Ban</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -183,22 +183,6 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         }
 ?>
                                                <tr class="odd gradeX">
-    
-                                                    <td>
-                                                        <?php
-        echo $data['id'];
-?>
-                                                   </td>
-                                                    <td>
-                                                        <?php
-        echo $data['pseudo'];
-?>
-                                                   </td>
-                                                    <td>
-                                                        <?php
-        echo $data['mail'];
-?>
-                                                   </td>
 
                                                    
                                                      <?php
@@ -221,12 +205,17 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                      </td></form>';
                                                         }}}
 ?>
-
-                                                   <td class="center">
+                                                   <td>
                                                        <?php
-                                                       echo $data['allowed'];
+                                                       echo $data['pseudo'];
                                                        ?>
                                                    </td>
+                                                   <td>
+                                                       <?php
+                                                       echo $data['mail'];
+                                                       ?>
+                                                   </td>
+
                                                    <?php
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
@@ -343,9 +332,20 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                                                    ?>
 
                                                    <td class="center">
+                                                       <?php
+                                                       echo $data['PDG'];
+                                                       ?>
+                                                   </td>
+
+                                                   <td class="center">
                                                         <?php
         echo $data['Admin'];
 ?>
+                                                   </td>
+                                                   <td class="center">
+                                                       <?php
+                                                       echo $data['ban'];
+                                                       ?>
                                                    </td>
                                                  
                                                 </tr>
