@@ -244,7 +244,7 @@ echo'
                                                    if($data['ban'] == 1){
                                                        echo '<form action="administration.php?statut=6" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['id'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['police'] . '" />
                                                      </td></form>';
                                                    }else{
                                                    if($data['Admin'] == 1){
@@ -273,7 +273,7 @@ echo'
                                                    if($data['ban'] == 1){
                                                        echo '<form action="administration.php?statut=6" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['id'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['procureur'] . '" />
                                                      </td></form>';
                                                    }else{
                                                    if($data['Admin'] == 1){
@@ -302,7 +302,7 @@ echo'
                                                    if($data['ban'] == 1){
                                                        echo '<form action="administration.php?statut=6" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['id'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['juge'] . '" />
                                                      </td></form>';
                                                    }else{
                                                    if($data['Admin'] == 1){
@@ -331,7 +331,7 @@ echo'
                                                    if($data['ban'] == 1){
                                                        echo '<form action="administration.php?statut=6" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['id'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['concessionnaire'] . '" />
                                                      </td></form>';
                                                    }else{
                                                    if($data['Admin'] == 1){
@@ -360,7 +360,7 @@ echo'
                                                    if($data['ban'] == 1){
                                                        echo '<form action="administration.php?statut=6" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['id'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['mecanicien'] . '" />
                                                      </td></form>';
                                                    }else{
                                                    if($data['Admin'] == 1){
@@ -406,21 +406,28 @@ echo'
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-default" value="' . $data['ban'] . '" />
+                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                             <button type="submit" class="btn btn-default">
+                                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                             </button>
                                                      </td></form>';
                                                    }else{
                                                        if($data['ban'] == 1){
                                                            echo '<form action="" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['ban'] . '" />
+                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                             <button type="submit" class="btn btn-success">
+                                                                <span class="glyphicon glyphicon-ok-circle"></span>
+                                                             </button>
                                                      </td></form>';
                                                        }else{
                                                            if($data['ban'] == 0){
                                                                echo '<form action="" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warning" value="' . $data['ban'] . '" />
+                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                             <button type="submit" class="btn btn-danger">
+                                                                <span class="glyphicon glyphicon-ban-circle"></span>
+                                                             </button>
                                                      </td></form>';
                                                            }}}
                                                    ?>
