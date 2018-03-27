@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  sam. 17 fév. 2018 à 13:39
--- Version du serveur :  10.1.30-MariaDB
--- Version de PHP :  7.0.27
+-- Généré le :  mar. 27 mars 2018 à 11:11
+-- Version du serveur :  10.1.31-MariaDB
+-- Version de PHP :  7.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -94,15 +94,17 @@ CREATE TABLE `membres` (
   `pseudo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `motdepasse` text COLLATE utf8_unicode_ci NOT NULL,
-  `allowed` tinyint(1) NOT NULL DEFAULT '0' COMMENT ' A value of zero is considered false. 1 considered true',
+  `allowed` tinyint(1) NOT NULL DEFAULT '0',
   `police` tinyint(1) NOT NULL DEFAULT '0',
   `procureur` tinyint(1) NOT NULL DEFAULT '0',
   `juge` tinyint(1) NOT NULL DEFAULT '0',
   `concessionnaire` tinyint(1) NOT NULL DEFAULT '0',
   `mecanicien` tinyint(1) NOT NULL DEFAULT '0',
+  `PDG` tinyint(1) NOT NULL DEFAULT '0',
   `Admin` tinyint(1) NOT NULL DEFAULT '0',
   `lastConnection` datetime DEFAULT NULL,
-  `lastIp` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `lastIp` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ban` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -117,6 +119,36 @@ CREATE TABLE `plaque` (
   `proprietaire` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `modele` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `par` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `type`
+--
+
+CREATE TABLE `type` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vehicule`
+--
+
+CREATE TABLE `vehicule` (
+  `id` int(11) NOT NULL,
+  `plaque` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `assigne` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sorti` tinyint(1) NOT NULL DEFAULT '0',
+  `perdu` tinyint(1) NOT NULL DEFAULT '0',
+  `last` datetime DEFAULT NULL,
   `par` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -152,7 +184,9 @@ ALTER TABLE `lspd`
 -- Index pour la table `membres`
 --
 ALTER TABLE `membres`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `pseudo` (`pseudo`),
+  ADD UNIQUE KEY `mail` (`mail`);
 
 --
 -- Index pour la table `plaque`
@@ -162,6 +196,22 @@ ALTER TABLE `plaque`
   ADD UNIQUE KEY `plaque` (`plaque`);
 
 --
+-- Index pour la table `type`
+--
+ALTER TABLE `type`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `type` (`type`),
+  ADD UNIQUE KEY `img` (`img`);
+
+--
+-- Index pour la table `vehicule`
+--
+ALTER TABLE `vehicule`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vehiculetype` (`type`),
+  ADD KEY `assigne` (`assigne`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -169,37 +219,49 @@ ALTER TABLE `plaque`
 -- AUTO_INCREMENT pour la table `annonce`
 --
 ALTER TABLE `annonce`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `bracelet`
 --
 ALTER TABLE `bracelet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `controle`
 --
 ALTER TABLE `controle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT pour la table `lspd`
 --
 ALTER TABLE `lspd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT pour la table `membres`
 --
 ALTER TABLE `membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT pour la table `plaque`
 --
 ALTER TABLE `plaque`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+
+--
+-- AUTO_INCREMENT pour la table `type`
+--
+ALTER TABLE `type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT pour la table `vehicule`
+--
+ALTER TABLE `vehicule`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

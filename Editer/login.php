@@ -37,6 +37,7 @@ if(isset($_POST['formconnexion'])) {
              $_SESSION['juge'] = $userinfo['juge'];
              $_SESSION['concessionnaire'] = $userinfo['concessionnaire'];
              $_SESSION['mecanicien'] = $userinfo['mecanicien'];
+             $_SESSION['PDG'] = $userinfo['PDG'];
              $gm = 0;
              $gm =  $_SESSION['police'] + $_SESSION['procureur'] + $_SESSION['juge'] + $_SESSION['concessionnaire'] + $_SESSION['mecanicien'];
              if($gm == 0){

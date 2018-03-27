@@ -27,11 +27,32 @@ session_start();
 
 
 
-if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1 or $_SESSION['procureur']==1 or $_SESSION['Admin'] == 1 or $_SESSION['police']==1)) {
+if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicien'] == 1 or $_SESSION['concessionnaire'] == 1)) or $_SESSION['Admin']==1) ) {
 
-    if($_SESSION['concessionnaire'] == 1) {
-        $nav = '                    <li>
-                                        <a href="concessionnaire.php" class="menu-top-active">Home</a>
+
+        if($_SESSION['mecanicien'] == 1){
+            $rang = 'mecanicien';
+
+            $nav = '                    <li>
+                                        <a href="mecanicien.php">Home</a>
+                                    </li>
+									<li>
+										<a href="mecanicien_add.php">Ajouter un controle technique</a>
+									</li>
+										<li>
+											<a href="serveur" target="_blank">Ville</a>
+										</li>';
+
+            $logo = '<a class="navbar-brand" href="mecanicien.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>';
+
+        }else{
+        if($_SESSION['concessionnaire'] == 1){
+            $rang = 'concessionnaire';
+
+            $nav = '                    <li>
+                                        <a href="concessionnaire.php">Home</a>
                                     </li>
 									<li>
 										<a href="concessionnaire_add.php">Ajouter une plaque</a>
@@ -42,59 +63,12 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1 or $_SESSION[
 										<li>
 											<a href="serveur" target="_blank">Ville</a>
 										</li>';
-        $logo = '<a class="navbar-brand" href="concessionnaire.php">
+
+            $logo = '<a class="navbar-brand" href="concessionnaire.php">
                             <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
                         </a>';
-    }else{
-        if($_SESSION['police']==1 or $_SESSION['procureur']==1){
-            if($_SESSION['procureur']==1){
-                $nav = '                    <li>
-                                        <a href="police.php">Home</a>
-                                    </li>
-                                    <li>
-										<a href="add_criminal.php">Ajouter un criminel</a>
-									</li>
-									<li>
-										<a href="bracelet.php">Bracelet</a>
-									</li>
-									<li>
-											<a href="concessionnaire.php" class="menu-top-active">Plaques</a>
-										</li>
-										<li>
-											<a href="trello" target="_blank">Informations Internes</a>
-										</li>';
-            }else{
-                $nav = '                    <li>
-                                        <a href="police.php">Home</a>
-                                    </li>
-                                    <li>
-										<a href="add_criminal.php">Ajouter un criminel</a>
-									</li>
-									<li>
-										<a href="bracelet.php">Bracelet</a>
-									</li>
-									<li>
-											<a href="concessionnaire.php" class="menu-top-active">Plaques</a>
-										</li>
-										<li>
-										<a href="vehicule.php">Vehicule</a>
-									</li>
-										<li>
-											<a href="trello" target="_blank">Informations Internes</a>
-										</li>
-										<li>
-											<a href="drive" target="_blank">Documents</a>
-										</li>';
-            }
-
-            $logo = '<a class="navbar-brand" href="police.php">
-                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
-                        </a>';
-
-        }else{
-            header("Location: login.php");
         }
-    }
+        }
 
 
     echo '
@@ -102,7 +76,6 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1 or $_SESSION[
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
 <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" /><![endif]-->
     </head>
-
         <body>
             <div class="navbar navbar-inverse set-radius-zero" >
                 <div class="container">
@@ -136,107 +109,160 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1 or $_SESSION[
                         <div class="col-md-12">
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                    '. $nav .'
+                                    '.$nav.'
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <div class="panel panel-info">
+            <div class="panel-heading">
+					<p></p>
+					<p></p>Ajouter un '.$rang.'
+					<p></p>
+					<p></p>
+				</div>
+				</div>
             <!-- MENU SECTION END-->
             <div class="content-wrapper">
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">CONCESSIONNAIRE PANEL</h4>
+                            <h4 class="header-line">PDG PANEL</h4>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Advanced Tables -->
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                            <thead>
-                                                <tr>
-                                                    <th>Horodateur</th>
-                                                    <th>Plaque</th>
-                                                    <th>Propriétaire</th>
-                                                    <th>Modele</th>
-                                                    <th>Fait par</th>
-                                                    <th>informations</th>
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                        </div>
+                    
+                           
 
                                     ';
     include("config.php");
-
-    
     if (isset($statut)) {
         if($statut == 1){
     echo '
     <div class="alert alert-success alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Une nouvelle plaque a bien été ajoutée </div>
+    <strong>Success !</strong> Un nouveau membre a été recruté</div>
+    
+    ';}
+    
+    if($statut == 0){
+    echo '
+    <div class="alert alert-success alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success !</strong> Un membre a été révoqué</div>
+    
+    ';}
+    
+    if($statut == 2){
+    echo '
+    <div class="alert alert-danger alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Vous ne pouvez pas vous editer vous même</div>
     
     ';}
 
-        if($statut == 2){
+        if($statut == 3){
             echo '
     <div class="alert alert-danger alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error !</strong> Cette plaque existe déjà </div>
+    <strong>Attention !</strong> Vous ne pouvez pas editer un administrateur</div>
     
     ';}
 
     
 }
+
+
+echo'
+
+                     <div class="right-div">
+                     <a href="pdg.php">
+                     <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        Retour
+                    </button>
+                    </a>
+                    
+                    <a href="pdg_add.php" class="btn btn-info">Actualiser</a>
+                    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Advanced Tables -->
+    <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pseudo</th>
+                                                    <th>Mail</th>
+                                                    <th>'.$rang.'</th>
+                                                    <th>Recruter</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+';
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM plaque');
+    $reponse = $bdd->query("SELECT * FROM `membres` WHERE `police` = 0 AND `procureur` = 0 AND `juge` = 0 AND `concessionnaire` = 0 AND `mecanicien` = 0 AND `PDG` = 0 AND `ban` = 0");
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
+        if($data['pseudo']=="All" or $data['pseudo']=="System"){
+            continue;
+        }
 ?>
                                                <tr class="odd gradeX">
+
                                                     <td>
                                                         <?php
-        echo $data['date'];
-?>
-                                                   </td>
-                                                    <td>
-                                                        <?php
-        echo $data['plaque'];
+        echo $data['pseudo'];
 ?>
                                                    </td>
                                                     <td>
                                                         <?php
-        echo $data['proprietaire'];
+        echo $data['mail'];
 ?>
                                                    </td>
-                                                    
-                                                    <td class="center">
+                                                    <td>
                                                         <?php
-        echo $data['modele'];
-?>
-                                                   </td>
-                                                    <td class="center">
-                                                        <?php
-        echo $data['par'];
+        echo $data[$rang];
 ?>
                                                    </td>
 
-                                                 <form action='plaque.php' method='get'>
+
                                                      <?php
-        echo '<td>                                            
-                                                            <input type="hidden" name="plaque" value="'.$data['plaque'].'" />
-                                                             <input type="submit" name="id" class="btn btn-info" value="' . $data['id'] . '" />
-                                                             
-                                                     </td>';
+                                                     if($data['Admin'] == 1){
+                                                         echo '<form action="pdg_add.php?statut=3" method="post">
+        <td>
+                                                             <button type="submit" class="btn btn-warninng">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                             </button>
+                                                     </td></form>';
+                                                     }else {
+                                                         if ($data['id'] == $_SESSION['id']) {
+                                                             echo '<form action="pdg_add.php?statut=2" method="post">
+        <td>
+                                                             <button type="submit" class="btn btn-warninng">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                             </button>
+                                                     </td></form>';
+
+                                                         } else {
+                                                             echo '<form action="pdg_add_form.php" method="post">
+        <td>
+                                                            <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                            <input type="hidden" name="rang" value="' . $rang . '" />
+                                                             <button type="submit" class="btn btn-success">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                             </button>
+                                                     </td></form>';
+                                                         }
+                                                     }
 ?>
-                                                </form>
+                                                 
                                                 </tr>
 
                                                 <?php
@@ -270,7 +296,7 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1 or $_SESSION[
     <div class="row">
         <div class="col-md-12">
                    &copy; 2017 LSPD |
-            <a href="https://www.youtube.com/user/davendrix" target="_blank"  > Coded by : Davendrix</a> &amp; Glen McMahon
+             Coded by : Glen McMahon
         </div>
     </div>
 </div> </section> <!-- FOOTER SECTION END--> <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  --> <!-- CORE JQUERY  --> <script src="assets/js/jquery-1.10.2.js"></script> <!-- BOOTSTRAP SCRIPTS  --> <script src="assets/js/bootstrap.js"></script> <!-- DATATABLE SCRIPTS  --> <script src="assets/js/dataTables/jquery.dataTables.js"></script> <script src="assets/js/dataTables/dataTables.bootstrap.js"></script> <!-- CUSTOM SCRIPTS  --> <script src="assets/js/custom.js"></script> </body>';
