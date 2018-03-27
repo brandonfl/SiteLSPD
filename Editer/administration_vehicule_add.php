@@ -39,7 +39,12 @@
 							<img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
 						</a>
 					</div>
-					<div class="right-div">
+					<div class="right-div">';
+            if($_SESSION['Admin']==1){
+                echo'<a href="administration.php" class="btn btn-info">ADMIN</a>';
+            }
+
+            echo'
                         <a href="profil.php" class="btn btn-info">PROFIL</a>
                         <a href="logout.php" class="btn btn-danger">DECONNEXION</a>
                     </div>

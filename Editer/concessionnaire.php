@@ -114,7 +114,12 @@ if (isset($_SESSION['id']) and  ($_SESSION['concessionnaire'] == 1 or $_SESSION[
                         </button>
                         '.$logo.'
                     </div>
-                    <div class="right-div">
+                    <div class="right-div">';
+    if($_SESSION['Admin']==1){
+        echo'<a href="administration.php" class="btn btn-info">ADMIN</a>';
+    }
+
+    echo'
                         <a href="profil.php" class="btn btn-info">PROFIL</a>
                         <a href="logout.php" class="btn btn-danger">DECONNEXION</a>
                     </div>

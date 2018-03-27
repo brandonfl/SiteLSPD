@@ -75,9 +75,15 @@ if (isset($_SESSION[ 'id']) and $_SESSION['Admin']==1) { echo '
                             <img src="assets/img/lspd.png" width=180 height=70/>
                         </a>
 					</div>
-					<div class="right-div">
-						<a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
-					</div>
+					<div class="right-div">';
+            if($_SESSION['Admin']==1){
+                echo'<a href="administration.php" class="btn btn-info">ADMIN</a>';
+            }
+
+            echo'
+                        <a href="profil.php" class="btn btn-info">PROFIL</a>
+                        <a href="logout.php" class="btn btn-danger">DECONNEXION</a>
+                    </div>
 				</div>
 			</div>
 			<!-- LOGO HEADER END-->
@@ -109,7 +115,7 @@ if (isset($_SESSION[ 'id']) and $_SESSION['Admin']==1) { echo '
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<p></p>
-					<p></p>Add a Criminal
+					<p></p>Add a Type
 					<p></p>
 					<p></p>
 				</div>
