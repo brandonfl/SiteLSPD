@@ -299,7 +299,7 @@ if (isset($_SESSION['id'])) {
                     </div>
                     <div class="panel-body">
                          <div class="label label-success">'.$rang.'</div>
-                         '.$pdg.$ad.'
+                         '.$pdg.'<strong> </strong>'.$ad.'
                     </div>
                 </div>
                 
