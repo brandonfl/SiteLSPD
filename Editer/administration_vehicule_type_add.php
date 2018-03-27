@@ -76,9 +76,13 @@ if (isset($_SESSION[ 'id']) and $_SESSION['Admin']==1) { echo '
                         </a>
 					</div>
 					<div class="right-div">';
-            if($_SESSION['Admin']==1){
-                echo'<a href="administration.php" class="btn btn-info">ADMIN</a>';
-            }
+    if($_SESSION['Admin']==1){
+        echo'<a href="administration.php" class="btn btn-info">ADMIN</a>';
+    }else{
+        if($_SESSION['PDG']==1){
+            echo'<a href="pdg.php" class="btn btn-info">PDG</a>';
+        }
+    }
 
             echo'
                         <a href="profil.php" class="btn btn-info">PROFIL</a>

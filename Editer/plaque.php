@@ -116,6 +116,10 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                     <div class="right-div">';
         if($_SESSION['Admin']==1){
             echo'<a href="administration.php" class="btn btn-info">ADMIN</a>';
+        }else{
+            if($_SESSION['PDG']==1){
+                echo'<a href="pdg.php" class="btn btn-info">PDG</a>';
+            }
         }
 
         echo'
@@ -300,6 +304,10 @@ if (isset($_SESSION['id']) and  ($_SESSION['police'] == 1 or $_SESSION['procureu
                     <div class="right-div">';
         if($_SESSION['Admin']==1){
             echo'<a href="administration.php" class="btn btn-info">ADMIN</a>';
+        }else{
+            if($_SESSION['PDG']==1){
+                echo'<a href="pdg.php" class="btn btn-info">PDG</a>';
+            }
         }
 
         echo'
