@@ -112,6 +112,14 @@ if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicie
                     </div>
                 </div>
             </section>
+            <div class="panel panel-info">
+            <div class="panel-heading">
+					<p></p>
+					<p></p>Ajouter un '.$rang.'
+					<p></p>
+					<p></p>
+				</div>
+				</div>
             <!-- MENU SECTION END-->
             <div class="content-wrapper">
                 <div class="container">
@@ -163,10 +171,16 @@ if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicie
 
 
 echo'
-                   
+
                      <div class="right-div">
-                    <a href="pdg_add.php" class="btn btn-success">Recruter de nouveaux membres</a>
-                    <a href="pdg.php" class="btn btn-info">Actualiser</a>
+                     <a href="pdg.php">
+                     <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        Retour
+                    </button>
+                    </a>
+                    
+                    <a href="pdg_add.php" class="btn btn-info">Actualiser</a>
                     
                     </div>
                     <div class="row">
@@ -181,7 +195,7 @@ echo'
                                                     <th>Pseudo</th>
                                                     <th>Mail</th>
                                                     <th>'.$rang.'</th>
-                                                    <th>Virer</th>
+                                                    <th>Recruter</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -217,18 +231,18 @@ echo'
 
                                                      <?php
                                                      if($data['Admin'] == 1){
-                                                         echo '<form action="pdg.php?statut=3" method="post">
+                                                         echo '<form action="pdg_add.php?statut=3" method="post">
         <td>
                                                              <button type="submit" class="btn btn-warninng">
-                                                                <span class="glyphicon glyphicon-remove"></span>
+                                                                <span class="glyphicon glyphicon-ok"></span>
                                                              </button>
                                                      </td></form>';
                                                      }else {
                                                          if ($data['id'] == $_SESSION['id']) {
-                                                             echo '<form action="pdg.php?statut=2" method="post">
+                                                             echo '<form action="pdg_add.php?statut=2" method="post">
         <td>
                                                              <button type="submit" class="btn btn-warninng">
-                                                                <span class="glyphicon glyphicon-remove"></span>
+                                                                <span class="glyphicon glyphicon-ok"></span>
                                                              </button>
                                                      </td></form>';
 
@@ -236,8 +250,8 @@ echo'
                                                              echo '<form action="" method="post">
         <td>
                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
-                                                             <button type="submit" class="btn btn-danger">
-                                                                <span class="glyphicon glyphicon-remove"></span>
+                                                             <button type="submit" class="btn btn-success">
+                                                                <span class="glyphicon glyphicon-ok"></span>
                                                              </button>
                                                      </td></form>';
                                                          }
