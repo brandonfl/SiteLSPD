@@ -28,6 +28,49 @@ session_start();
 
 
 if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicien'] == 1 or $_SESSION['concessionnaire'] == 1)) or $_SESSION['Admin']==1) ) {
+
+
+        if($_SESSION['mecanicien'] == 1){
+            $rang = 'mecanicien';
+
+            $nav = '                    <li>
+                                        <a href="mecanicien.php">Home</a>
+                                    </li>
+									<li>
+										<a href="mecanicien_add.php">Ajouter un controle technique</a>
+									</li>
+										<li>
+											<a href="serveur" target="_blank">Ville</a>
+										</li>';
+
+            $logo = '<a class="navbar-brand" href="mecanicien.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>';
+
+        }else{
+        if($_SESSION['concessionnaire'] == 1){
+            $rang = 'concessionnaire';
+
+            $nav = '                    <li>
+                                        <a href="concessionnaire.php">Home</a>
+                                    </li>
+									<li>
+										<a href="concessionnaire_add.php">Ajouter une plaque</a>
+									</li>
+									<li>
+										<a href="plaque.php">Rechercher une plaque</a>
+									</li>
+										<li>
+											<a href="serveur" target="_blank">Ville</a>
+										</li>';
+
+            $logo = '<a class="navbar-brand" href="concessionnaire.php">
+                            <img src="https://i.imgur.com/BQoTEoz.png" width=180 height=70/>
+                        </a>';
+        }
+        }
+
+
     echo '
     <head>
     <link rel="icon" type="image/x-icon" href="https://lspd-fivelife.fr/assets/img/lspdlogo.ico" />
@@ -42,9 +85,7 @@ if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicie
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="police.php">
-                            <img src="assets/img/lspd.png" width=180 height=70/>
-                        </a>
+                        '.$logo.'
                     </div>
                     <div class="right-div">';
     if($_SESSION['Admin']==1){
@@ -64,18 +105,7 @@ if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicie
                         <div class="col-md-12">
                             <div class="navbar-collapse collapse ">
                                 <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <a href="police.php">Police</a>
-                                    </li>
-                                    <li>
-										<a href="administration.php" class="menu-top-active">Administration</a>
-									</li>
-									<li>
-										<a href="administration_annonce.php">Annonce</a>
-									</li>
-									<li>
-										<a href="administration_vehicule.php">Véhicule</a>
-									</li>
+                                    '.$nav.'
                                 </ul>
                             </div>
                         </div>
@@ -87,34 +117,11 @@ if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicie
                 <div class="container">
                     <div class="row pad-botm">
                         <div class="col-md-12">
-                            <h4 class="header-line">Admin PANEL</h4>
+                            <h4 class="header-line">PDG PANEL</h4>
                         </div>
-                    </div>
-                    <a href="administration.php" class="btn btn-info pull-right">Actualiser</a>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Advanced Tables -->
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                            <thead>
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Pseudo</th>
-                                                    <th>Mail</th>
-                                                    <th>Autoriser</th>
-                                                    <th>Allow</th>
-                                                    <th>Police</th>
-                                                    <th>Procureur</th>
-                                                    <th>Juge</th>
-                                                    <th>Concessionnaire</th>
-                                                    <th>Mecanicien</th>
-                                                    <th>Admin</th>
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                        </div>
+                    
+                           
 
                                     ';
     include("config.php");
@@ -123,7 +130,7 @@ if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicie
     echo '
     <div class="alert alert-success alert-dismissable fade in">
     <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Un nouveau membre a été autorisé</div>
+    <strong>Success !</strong> Un nouveau membre a été recruté</div>
     
     ';}
     
@@ -151,26 +158,37 @@ if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicie
     
     ';}
 
-        if($statut == 4){
-            echo '
-    <div class="alert alert-warning alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attention !</strong> Un membre n\'ayant plus de droits ne pourra pas se connecter</div>
-    
-    ';}
-
-        if($statut == 5){
-            echo '
-    <div class="alert alert-success alert-dismissable fade in">
-    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> Les droits d\'un membre ont été modifiés</div>
-    
-    ';}
-
     
 }
+
+
+echo'
+                   
+                     <div class="right-div">
+                    <a href="" class="btn btn-success">Recruter de nouveaux membres</a>
+                    <a href="pdg.php" class="btn btn-info">Actualiser</a>
+                    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Advanced Tables -->
+    <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pseudo</th>
+                                                    <th>Mail</th>
+                                                    <th>'.$rang.'</th>
+                                                    <th>Virer</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+';
     // Get contents of the lspd table
-    $reponse = $bdd->query('SELECT * FROM membres');
+    $reponse = $bdd->query('SELECT * FROM membres WHERE '.$rang.'=1');
 
     // Display each entry one by one
     while ($data = $reponse->fetch()) {
@@ -179,12 +197,7 @@ if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicie
         }
 ?>
                                                <tr class="odd gradeX">
-    
-                                                    <td>
-                                                        <?php
-        echo $data['id'];
-?>
-                                                   </td>
+
                                                     <td>
                                                         <?php
         echo $data['pseudo'];
@@ -195,154 +208,41 @@ if (isset($_SESSION['id']) and (($_SESSION['PDG'] == 1 and ($_SESSION['mecanicie
         echo $data['mail'];
 ?>
                                                    </td>
+                                                    <td>
+                                                        <?php
+        echo $data[$rang];
+?>
+                                                   </td>
 
-                                                   
+
                                                      <?php
                                                      if($data['Admin'] == 1){
-                                                         echo '<form action="administration.php?statut=3" method="post">
+                                                         echo '<form action="pdg.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['id'] . '" />
+                                                             <button type="submit" class="btn btn-warninng">
+                                                                <span class="glyphicon glyphicon-remove"></span>
+                                                             </button>
                                                      </td></form>';
-                                                     }else{
-                                                    if($data['allowed'] == 1){
-                                                            echo '<form action="administration_form.php?allowed=0" method="post">
+                                                     }else {
+                                                         if ($data['id'] == $_SESSION['id']) {
+                                                             echo '<form action="pdg.php?statut=2" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['id'] . '" />
+                                                             <button type="submit" class="btn btn-warninng">
+                                                                <span class="glyphicon glyphicon-remove"></span>
+                                                             </button>
                                                      </td></form>';
-                                                        }else{
-                                                        if($data['allowed'] == 0){
-                                                            echo '<form action="administration_form.php?allowed=1" method="post">
+
+                                                         } else {
+                                                             echo '<form action="" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['id'] . '" />
+                                                            <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                             <button type="submit" class="btn btn-danger">
+                                                                <span class="glyphicon glyphicon-remove"></span>
+                                                             </button>
                                                      </td></form>';
-                                                        }}}
+                                                         }
+                                                     }
 ?>
-
-                                                   <td class="center">
-                                                       <?php
-                                                       echo $data['allowed'];
-                                                       ?>
-                                                   </td>
-                                                   <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['police'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['police'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=police" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['police'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['police'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=1" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['police'] . '" />
-                                                     </td></form>';
-                                                           }}}
-                                                   ?>
-
-                                                   <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['procureur'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['procureur'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=procureur" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['procureur'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['procureur'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=2" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['procureur'] . '" />
-                                                     </td></form>';
-                                                           }}}
-                                                   ?>
-
-                                                   <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['juge'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['juge'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=juge" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['juge'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['juge'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=3" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['juge'] . '" />
-                                                     </td></form>';
-                                                           }}}
-                                                   ?>
-
-                                                   <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['concessionnaire'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['concessionnaire'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=concessionnaire" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['concessionnaire'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['concessionnaire'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=4" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['concessionnaire'] . '" />
-                                                     </td></form>';
-                                                           }}}
-                                                   ?>
-
-                                                   <?php
-                                                   if($data['Admin'] == 1){
-                                                       echo '<form action="administration.php?statut=3" method="post">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['mecanicien'] . '" />
-                                                     </td></form>';
-                                                   }else{
-                                                       if($data['mecanicien'] == 1){
-                                                           echo '<form action="administration_droit_desactiver.php?rang=mecanicien" method="post">
-                                                                    <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-success" value="' . $data['mecanicien'] . '" />
-                                                     </td></form>';
-                                                       }else{
-                                                           if($data['mecanicien'] == 0){
-                                                               echo '<form action="administration_droit_activer.php?rang=5" method="post">
-                                                                        <input id="prodId" name="prodId" type="hidden" value="' . $data['id'] . '">
-        <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['mecanicien'] . '" />
-                                                     </td></form>';
-                                                           }}}
-                                                   ?>
-
-                                                   <td class="center">
-                                                        <?php
-        echo $data['Admin'];
-?>
-                                                   </td>
                                                  
                                                 </tr>
 
