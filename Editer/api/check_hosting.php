@@ -46,7 +46,7 @@ if(!empty($_GET['password']) and !empty($_GET['id'])){
     //https://tmi.twitch.tv/hosts?include_logins=1&host=211293297
 
 
-    $request = array("include_logins" => 1,"host" => 211293297);
+    $request = array("include_logins" => 1,"host" => $_GET['id']);
 
     $res = CallAPI($method,$url,$request);
     //echo($res);
