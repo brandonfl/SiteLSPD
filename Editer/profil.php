@@ -254,6 +254,13 @@ if (isset($_SESSION['id'])) {
         $ad = ' ';
     }
 
+    if($_SESSION['PDG'] == 1){
+        $pdg = '<a href="pdg.php"><div class="label label-danger">PDG</div></a>';
+    }else{
+        $pdg = ' ';
+    }
+
+
     echo '
                                             
 <!------ Include the above in your HEAD tag ---------->
@@ -292,7 +299,7 @@ if (isset($_SESSION['id'])) {
                     </div>
                     <div class="panel-body">
                          <div class="label label-success">'.$rang.'</div>
-                         '.$ad.'
+                         '.$pdg.'<strong> </strong>'.$ad.'
                     </div>
                 </div>
                 

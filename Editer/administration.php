@@ -16,7 +16,8 @@
             <link href="assets/css/style.css" rel="stylesheet" /> 
             <!-- GOOGLE FONT -->
             <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-        </head>
+
+    </head>
         <?php
 if (isset($_GET['statut'])) {
     $statut = $_GET['statut'];
@@ -94,31 +95,9 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
                             <h4 class="header-line">Admin PANEL</h4>
                         </div>
                     </div>
-                    <a href="administration.php" class="btn btn-info pull-right">Actualiser</a>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Advanced Tables -->
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                            <thead>
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Pseudo</th>
-                                                    <th>Mail</th>
-                                                    <th>Autoriser</th>
-                                                    <th>Allow</th>
-                                                    <th>Police</th>
-                                                    <th>Procureur</th>
-                                                    <th>Juge</th>
-                                                    <th>Concessionnaire</th>
-                                                    <th>Mecanicien</th>
-                                                    <th>Admin</th>
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                    
+                    
+                 
 
                                     ';
     include("config.php");
@@ -171,8 +150,48 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
     
     ';}
 
+        if($statut == 6){
+            echo '
+    <div class="alert alert-warning alert-dismissable fade in">
+    <a  href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attention !</strong> Ce membre est banni</div>
+    
+    ';}
+
     
 }
+
+
+echo'
+<div class="right-div">
+                        <a href="administration.php" class="btn btn-info">Actualiser</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- Advanced Tables -->
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>Allow</th>
+                                                    <th>Pseudo</th>
+                                                    <th>Mail</th>
+                                                    <th>Police</th>
+                                                    <th>Procureur</th>
+                                                    <th>Juge</th>
+                                                    <th>Concessionnaire</th>
+                                                    <th>Mecanicien</th>
+                                                    <th>PDG</th>
+                                                    <th>Admin</th>
+                                                    <th>Ban</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+';
     // Get contents of the lspd table
     $reponse = $bdd->query('SELECT * FROM membres');
 
@@ -183,29 +202,18 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         }
 ?>
                                                <tr class="odd gradeX">
-    
-                                                    <td>
-                                                        <?php
-        echo $data['id'];
-?>
-                                                   </td>
-                                                    <td>
-                                                        <?php
-        echo $data['pseudo'];
-?>
-                                                   </td>
-                                                    <td>
-                                                        <?php
-        echo $data['mail'];
-?>
-                                                   </td>
-
                                                    
                                                      <?php
+                                                     if($data['ban'] == 1){
+                                                         echo '<form action="administration.php?statut=6" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['id'] . '" />
+                                                     </td></form>';
+                                                     }else{
                                                      if($data['Admin'] == 1){
                                                          echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['id'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-default" value="' . $data['id'] . '" />
                                                      </td></form>';
                                                      }else{
                                                     if($data['allowed'] == 1){
@@ -219,19 +227,30 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['id'] . '" />
                                                      </td></form>';
-                                                        }}}
+                                                        }}}}
 ?>
-
-                                                   <td class="center">
+                                                   <td>
                                                        <?php
-                                                       echo $data['allowed'];
+                                                       echo $data['pseudo'];
                                                        ?>
                                                    </td>
+                                                   <td>
+                                                       <?php
+                                                       echo $data['mail'];
+                                                       ?>
+                                                   </td>
+
                                                    <?php
+                                                   if($data['ban'] == 1){
+                                                       echo '<form action="administration.php?statut=6" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['police'] . '" />
+                                                     </td></form>';
+                                                   }else{
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['police'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-default" value="' . $data['police'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['police'] == 1){
@@ -247,14 +266,20 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['police'] . '" />
                                                      </td></form>';
-                                                           }}}
+                                                           }}}}
                                                    ?>
 
                                                    <?php
+                                                   if($data['ban'] == 1){
+                                                       echo '<form action="administration.php?statut=6" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['procureur'] . '" />
+                                                     </td></form>';
+                                                   }else{
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['procureur'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-default" value="' . $data['procureur'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['procureur'] == 1){
@@ -270,14 +295,20 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['procureur'] . '" />
                                                      </td></form>';
-                                                           }}}
+                                                           }}}}
                                                    ?>
 
                                                    <?php
+                                                   if($data['ban'] == 1){
+                                                       echo '<form action="administration.php?statut=6" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['juge'] . '" />
+                                                     </td></form>';
+                                                   }else{
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['juge'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-default" value="' . $data['juge'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['juge'] == 1){
@@ -293,14 +324,20 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['juge'] . '" />
                                                      </td></form>';
-                                                           }}}
+                                                           }}}}
                                                    ?>
 
                                                    <?php
+                                                   if($data['ban'] == 1){
+                                                       echo '<form action="administration.php?statut=6" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['concessionnaire'] . '" />
+                                                     </td></form>';
+                                                   }else{
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['concessionnaire'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-default" value="' . $data['concessionnaire'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['concessionnaire'] == 1){
@@ -316,14 +353,20 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['concessionnaire'] . '" />
                                                      </td></form>';
-                                                           }}}
+                                                           }}}}
                                                    ?>
 
                                                    <?php
+                                                   if($data['ban'] == 1){
+                                                       echo '<form action="administration.php?statut=6" method="post">
+        <td>
+                                                             <input type="submit" name="allowItem" class="btn btn-warnn" value="' . $data['mecanicien'] . '" />
+                                                     </td></form>';
+                                                   }else{
                                                    if($data['Admin'] == 1){
                                                        echo '<form action="administration.php?statut=3" method="post">
         <td>
-                                                             <input type="submit" name="allowItem" class="btn btn-warningg" value="' . $data['mecanicien'] . '" />
+                                                             <input type="submit" name="allowItem" class="btn btn-default" value="' . $data['mecanicien'] . '" />
                                                      </td></form>';
                                                    }else{
                                                        if($data['mecanicien'] == 1){
@@ -339,14 +382,56 @@ if (isset($_SESSION['id']) and $_SESSION['Admin'] == 1) {
         <td>
                                                              <input type="submit" name="allowItem" class="btn btn-danger" value="' . $data['mecanicien'] . '" />
                                                      </td></form>';
-                                                           }}}
+                                                           }}}}
                                                    ?>
+
+                                                   <td class="center">
+                                                       <?php
+                                                       echo $data['PDG'];
+                                                       ?>
+                                                   </td>
 
                                                    <td class="center">
                                                         <?php
         echo $data['Admin'];
 ?>
                                                    </td>
+
+
+
+
+
+
+                                                   <?php
+                                                   if($data['Admin'] == 1){
+                                                       echo '<form action="administration.php?statut=3" method="post">
+        <td>
+                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                             <button type="submit" class="btn btn-default">
+                                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                             </button>
+                                                     </td></form>';
+                                                   }else{
+                                                       if($data['ban'] == 1){
+                                                           echo '<form action="" method="post">
+        <td>
+                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                             <button type="submit" class="btn btn-success">
+                                                                <span class="glyphicon glyphicon-ok-circle"></span>
+                                                             </button>
+                                                     </td></form>';
+                                                       }else{
+                                                           if($data['ban'] == 0){
+                                                               echo '<form action="" method="post">
+        <td>
+                                                             <input type="hidden" name="id" value="' . $data['id'] . '" />
+                                                             <button type="submit" class="btn btn-danger">
+                                                                <span class="glyphicon glyphicon-ban-circle"></span>
+                                                             </button>
+                                                     </td></form>';
+                                                           }}}
+                                                   ?>
+
                                                  
                                                 </tr>
 
