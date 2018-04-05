@@ -49,7 +49,39 @@ if(!empty($_GET['password']) and !empty($_GET['id'])){
     $request = array("include_logins" => 1,"host" => 211293297);
 
     $res = CallAPI($method,$url,$request);
-    echo($res);
+    //echo($res);
+
+    //echo('</br>');
+
+    $firstparse = explode('[',$res);
+    //print_r($firstparse);
+    //print($firstparse[1]);
+
+        $secondparse = explode("]",$firstparse[1]);
+        //print_r($secondparse);
+        //print($secondparse[0]);
+
+            $json = json_decode($secondparse[0]);
+            print_r($json);
+
+                //$resultat = false;
+        $int = $json->{'host_id'};
+
+        if(is_int($int)){
+            $resultat = true;
+        }else{
+            $resultat = false;
+        }
+
+                //echo("hey");
+
+                $success = $resultat;
+                $msg = "API fonctionnel, voici le resultat";
+                $data = $json;
+
+
+
+
 
 
     }else {
