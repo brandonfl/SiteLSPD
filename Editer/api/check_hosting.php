@@ -1,5 +1,6 @@
 <?php
 include('api_config.php');
+header("Access-Control-Allow-Origin: *");
 
 if(!empty($_GET['password']) and !empty($_GET['id'])){
 	//Si toutes les données sont saisie par le client
@@ -94,4 +95,5 @@ if(!empty($_GET['password']) and !empty($_GET['id'])){
 	$msg = "Il manque des informations";
 }
 
+//echo(''+$resultat);
 reponse_json($success, $data, $msg);
