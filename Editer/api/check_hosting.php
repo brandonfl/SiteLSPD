@@ -62,10 +62,11 @@ if(!empty($_GET['password']) and !empty($_GET['id'])){
         //print($secondparse[0]);
 
             $json = json_decode($secondparse[0]);
-            print_r($json);
+            //print_r($json);
 
                 //$resultat = false;
-        $int = $json->{'host_id'};
+        $int = $json->{'target_id'};
+        //print($int);
 
         if(is_int($int)){
             $resultat = true;
@@ -76,7 +77,7 @@ if(!empty($_GET['password']) and !empty($_GET['id'])){
                 //echo("hey");
 
                 $success = $resultat;
-                $msg = "API fonctionnel, voici le resultat";
+                $msg = "API fonctionnelle, voici le resultat";
                 $data = $json;
 
 
