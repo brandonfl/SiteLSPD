@@ -1,6 +1,9 @@
 <?php
 include('api_config.php');
 
+header("Access-Control-Allow-Origin: *");
+
+
 if( !empty($_GET['password']) and !empty($_GET['plaque']) and !empty($_GET['nom']) and !empty($_GET['modele'])){
 	//Si toutes les données sont saisie par le client
 
@@ -17,7 +20,7 @@ if( !empty($_GET['password']) and !empty($_GET['plaque']) and !empty($_GET['nom'
 
     if($boolean1) {
         $commentaire = 'System : nouveau vehicule';
-
+    
         $req2 = $bdd->prepare('INSERT INTO controle (horodateur,plaque,nom,commentaire,fin,par) VALUES(NOW() + INTERVAL 1 HOUR,?,?,?,NOW() + INTERVAL 30 DAY,?)');
         $boolean2 = $req2->execute(array($_GET['plaque'], $_GET['nom'], $commentaire, $pseudo));
 
