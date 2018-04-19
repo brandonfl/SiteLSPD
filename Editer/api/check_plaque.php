@@ -30,7 +30,7 @@ if( !empty($_GET['password']) and !empty($_GET['plaques'])){
         while ($data = $reponse->fetch()) {
 
             if ($data['fin'] == null){
-                $resray[str_replace("'", "", $value)] = Array("modele"=>"non defini","controle"=>"pas encore de controle");
+                $resray[str_replace("'", "", $value)] = Array("modele"=>"non defini","controle"=>"le plus rapidement possible");
 
             }else {
                 $reponse2 = $bdd->query('SELECT modele FROM plaque WHERE plaque = '.$value);
