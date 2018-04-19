@@ -20,23 +20,32 @@ if( !empty($_GET['password']) and !empty($_GET['plaques'])){
 
     $resray = Array();
 
+
+
     foreach ($array as $value){
         // Get contents of the lspd table
         $reponse = $bdd->query('SELECT MAX(fin) AS fin FROM controle WHERE plaque = '.$value);
 
         // Display each entry one by one
         while ($data = $reponse->fetch()) {
+
             if ($data['fin'] == null){
-                $resray[str_replace("'", "", $value)] = 'pas encore de controle';
+                $resray[str_replace("'", "", $value)] = Array("modele"=>"non defini","controle"=>"pas encore de controle");
 
             }else {
-                $resray[str_replace("'", "", $value)] = $data['fin'];
+                $reponse2 = $bdd->query('SELECT modele FROM plaque WHERE plaque = '.$value);
+
+                // Display each entry one by one
+                while ($data2 = $reponse2->fetch()) {
+                    $resray[str_replace("'", "", $value)] = Array("modele"=>$data2['modele'],"controle"=>$data['fin']);
+                }
+                $reponse2->closeCursor(); // Complete query
             }
         }
         $reponse->closeCursor(); // Complete query
     }
 
-    print_r($resray);
+    //print_r($resray);
 
     //$sql = 'SELECT  FROM controle WHERE plaque IN ('.$plaquedecode.')';
     //print $sql;
