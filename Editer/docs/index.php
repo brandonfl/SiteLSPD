@@ -95,10 +95,10 @@ class DirectoryListing {
 	public $overwriteOnUpload = false;
 
 	// Set to true to enable file deletion options
-	public $enableFileDeletion = true;
+	public $enableFileDeletion = false;
 
 	// Set to true to enable directory deletion options (only available when the directory is empty)
-	public $enableDirectoryDeletion = true;
+	public $enableDirectoryDeletion = false;
 
 	// List of all mime types that can be uploaded. Full list of mime types: http://www.iana.org/assignments/media-types/media-types.xhtml
 	public $allowedUploadMimeTypes = array(
