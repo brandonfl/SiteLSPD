@@ -19,7 +19,7 @@
 		</head>
 		<?php include( "config.php"); session_start(); if (isset($_SESSION[ 'id'])) { 
 		
-		if($_SESSION['procureur'] == 0 and $_SESSION['Admin'] == 0){
+		if($_SESSION['procureur'] == 0 and $_SESSION['Admin'] == 0 and $_SESSION['police']==0){
 		    if($_SESSION['juge']==1){
                 $statut = 3;
             }else{
