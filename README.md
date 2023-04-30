@@ -3,10 +3,6 @@ Dans le cadre d'un projet de serveur RP, voici un site pour la partie Police du 
 
 Site original : https://github.com/TwitchParadise/Police-Portal
 
-Final avec ajout des fonctionnalités : ~~https://lspd-fivelife.fr/~~
-
-Test : https://brandon.fontany-legall.xyz/public/dev/SiteLSPD/ (email : admin@admin.com | password : admin)
-
 ## Fonctionnalités
  - [x] Système de casier judiciaires
  - [x] Système de plaque d'immatriculation
@@ -17,9 +13,9 @@ Test : https://brandon.fontany-legall.xyz/public/dev/SiteLSPD/ (email : admin@ad
 
 ## Images
 <p align="center">
-  <img src="https://brandon.fontany-legall.xyz/public/images/sites/lspd/lspd.png">
-  <img src="https://brandon.fontany-legall.xyz/public/images/sites/lspd/main.png">
-  <img src="https://brandon.fontany-legall.xyz/public/images/sites/lspd/bracelet.png">
-  <img src="https://brandon.fontany-legall.xyz/public/images/sites/lspd/plaque.png">
-  <img src="https://brandon.fontany-legall.xyz/public/images/sites/lspd/vehicules.png">
+  <img src="https://github.com/brandonfl/SiteLSPD/blob/demo-images/lspd.png?raw=true">
+  <img src="https://github.com/brandonfl/SiteLSPD/blob/demo-images/main.png?raw=true">
+  <img src="https://github.com/brandonfl/SiteLSPD/blob/demo-images/bracelet.png?raw=true">
+  <img src="https://github.com/brandonfl/SiteLSPD/blob/demo-images/plaque.png?raw=true">
+  <img src="https://github.com/brandonfl/SiteLSPD/blob/demo-images/vehicules.png?raw=true">
 </p>
